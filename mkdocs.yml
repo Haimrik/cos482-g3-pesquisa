@@ -11,6 +11,6 @@ pages:
 - ['VISION.md', 'Visão']
 - ['MEASUREMENT.md', 'Medição']
 - ['REQUIREMENTS.md', 'Requisitos']
-- ['USECASES.md', 'Casos de Uso']
+- ['models/USECASES.md', 'Casos de Uso']
 - ['models/EAP.md', 'EAP']
 - ['models/CLASSDIAGRAM.md', 'Diagrama de Classe']
