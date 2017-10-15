@@ -4,19 +4,7 @@
 
 ```plantuml format="png" classes="uml" alt="Diagrama de Casos de Uso" title="Diagrama de Casos de Uso"
 @startuml
-left to right direction
-skinparam packageStyle rect
-
-!define CREATE(actor,model) actor -down- (Cadastrar model) 
-!define READ(actor,model) actor -down- (Visualizar model) 
-!define UPDATE(actor,model) actor -down- (Atualizar model) 
-!define DESTROY(actor,model) actor -down- (Remover model) 
-!definelong CRUD(actor, model)
-  CREATE(actor,model)
-  READ(actor,model)
-  UPDATE(actor,model)
-  DESTROY(actor,model)
-!enddefinelong
+!include docs/uc.plantuml
 
 :Membro da Banca: as MB
 :Organizador de Seminario: as OS
