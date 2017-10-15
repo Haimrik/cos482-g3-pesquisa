@@ -3,7 +3,7 @@ entity Aluno {
     nome String required,
     dre String required,
     dataDeEntrada ZonedDateTime required,
-    orientador Professor required,
+    orientador Professor,
     coorientadores Professor[],
     publicacoes Publicacao[]
 }
@@ -12,28 +12,84 @@ entity Professor {
 	id Integer required,
 	nome String required,
     matricula String required,
-    lattes String required,
-    publicacoes Publicacao[] required,
+    linkLattes String required,
     programa String,
     linhaDePesquisa String,
-    areasDeInteresse String
+    areasDeInteresse String[],
+    publicacoes Publicacao[]
 }
 
 entity Publicacao {
 	id Integer required,
     url String required,
-    aluno Aluno required,
-    orientador Professor
+    autor Autor required,
+    coautores Autor[],
+    pertenceAoPrograma Boolean
+}
+
+entity Seminario {
+	id Integer required,
+    titulo String,
+    dataEHora ZonedDateTime,
+    local String,
+    organizador OrganizadorDeSeminario
+}
+
+entity Autor {
+
+}
+
+entity OrganizadorDeSeminario {
+
+}
+
+entity ParticipacaoBanca {
+	idDefesa Integer required,
+    idProfessor Integer required,
+    confirmado Boolean
+}
+
+entity Defesa {
+	id Integer required,
+    dataEHora ZonedDateTime,
+    local String,
+    arquivoTexto File,
+    tipoDefesa TipoDefesa,
+    estadoAprovacaoDefesa EstadoAprovacaoDefesa
+}
+
+entity Reuniao {
+	id Integer required,
+    dataEHora ZonedDateTime,
+    local String
+}
+
+enum EstadoAprovacaoDefesa {
+	PENDENTE, APROVADO, REPROVADO
+}
+
+enum TipoDefesa {
+	QUALIFICACAO, DEFESADETESE
 }
 
 relationship OneToMany {
     Professor{orientador} to Aluno,
-    Aluno to Publicacao
+    Professor{participanteBanca} to ParticipacaoBanca,
+    Professor to Reuniao,
+    Aluno to Reuniao,
+    OrganizadorDeSeminario{organizador} to Seminario
 }
 
 relationship ManyToMany {
-    Professor to Aluno{coorientador},
-	Professor to Publicacao
+	Autor{coautor} to Publicacao
+}
+
+relationship OneToOne {
+	Professor{autorProfessor} to Autor,
+    Aluno{autorAluno} to Autor,
+    Professor{organizadorProfessor} to OrganizadorDeSeminario,
+    Aluno{organizadorAluno} to OrganizadorDeSeminario,
+    Defesa{defesa} to ParticipacaoBanca
 }
 
 // Set pagination options
