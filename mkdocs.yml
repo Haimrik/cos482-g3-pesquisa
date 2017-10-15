@@ -1,0 +1,16 @@
+site_name: SIAPES
+site_description: Sistema de acompanhamento de pesquisa COPPE/UFRJ
+theme: 'material'
+theme_dir: 'docs/theme'
+markdown_extensions:
+  - plantuml
+  - tables
+  - graphviz
+pages:
+- ['index.md', 'Introdução']
+- ['VISION.md', 'Visão']
+- ['MEASUREMENT.md', 'Medição']
+- ['REQUIREMENTS.md', 'Requisitos']
+- ['USECASES.md', 'Casos de Uso']
+- ['models/EAP.md', 'EAP']
+- ['models/CLASSDIAGRAM.md', 'Diagrama de Classe']
