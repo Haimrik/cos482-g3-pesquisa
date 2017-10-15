@@ -1,7 +1,4 @@
-// Cadastro
-
-entity Usuario {
-}
+entity Usuario {}
 
 entity Aluno {
   nome String required,
@@ -18,46 +15,16 @@ entity Professor {
   areasDeInteresse String
 }
 
-relationship OneToMany {
-  Professor{orientador} to Aluno
-}
-
-// Herança não existe em JDL, então fazemos composição + constraints
-relationship OneToOne {
-  Aluno to Usuario,
-  Professor to Usuario
-}
-
-
-// Publicacao
-
 entity Publicacao {
   url String required,
   pertenceAoPrograma Boolean
 }
-
-relationship OneToMany {
-  Aluno{autor} to Publicacao
-}
-
-relationship ManyToMany {
-  Usuario{coautor} to Publicacao
-}
-
-
-// Seminario
 
 entity Seminario {
   titulo String,
   dataEHora ZonedDateTime,
   local String
 }
-
-relationship OneToMany {
-  Usuario{organizador} to Seminario
-}
-
-// Defesa
 
 enum EstadoAprovacaoDefesa {
 	PENDENTE, APROVADO, REPROVADO
@@ -75,17 +42,9 @@ enum TipoDefesa {
 entity Defesa {
   dataEHora ZonedDateTime,
   local String
-  arquivoTexto File,
+  arquivoTexto String,
   tipoDefesa TipoDefesa
 }
-
-relationship OneToMany {
-  Aluno to Defesa,
-  Defesa to ParticipacaoBanca,
-  Professor to ParticipacaoBanca
-}
-
-// Reuniao
 
 entity Reuniao {
   dataEHora ZonedDateTime,
@@ -93,8 +52,25 @@ entity Reuniao {
 }
 
 relationship OneToMany {
-    Professor to Reuniao,
-    Aluno to Reuniao
+  Professor{aluno} to Aluno{orientador},
+  Aluno{publicacao} to Publicacao{aluno},
+  Usuario{seminario} to Seminario{organizador},
+  Aluno{defesa} to Defesa{aluno},
+  Defesa{participacaoBanca} to ParticipacaoBanca{defesa},
+  Professor{participacaoBanca} to ParticipacaoBanca{professor},
+  Professor{reuniao} to Reuniao{professor},
+  Aluno{reuniao} to Reuniao{aluno}
+}
+
+// Herança não existe em JDL, então fazemos composição + constraints
+relationship OneToOne {
+  Aluno{usuario} to Usuario{aluno},
+  Professor{usuario} to Usuario{professor}
+}
+
+relationship ManyToMany {
+  Usuario{publicacao} to Publicacao{coautor},
+  Professor{coorientador} to Aluno{aluno}
 }
 
 // Set pagination options
@@ -106,4 +82,4 @@ dto * with mapstruct
 service all with serviceImpl
 
 // Set an angular suffix
-angularSuffix * with cos482-g3
+angularSuffix * with cos482_g3
