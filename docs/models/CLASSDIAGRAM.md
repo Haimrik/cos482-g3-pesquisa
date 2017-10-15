@@ -2,60 +2,115 @@
 
 ```plantuml format="png" classes="uml myDiagram" alt="My super diagram placeholder" title="My super diagram"
 @startuml
-class Professor {
-  Int id
-  String nome
-  String linkLattes
-  String programa
-  String linhaDePesquisa
-  List<String> areasDeInteresse
+' Cadastro
+package Cadastro {
+  class Aluno {
+    Int id
+    String nome
+    String dre
+    Date dataDeEntrada
+
+    escolherOrientador(Professor novoOrientador)
+  }
+
+  class Professor {
+    Int id
+    String nome
+    String linkLattes
+    String programa
+    String linhaDePesquisa
+    List<String> areasDeInteresse
+  }
+
+  Aluno "0..*" - "1" Professor : orientador
 }
 
-class PublicacaoProfessores {
-  Int id
-  String link
+
+' Seminario
+package Seminario {
+  class Seminario {
+    Int id
+    String titulo
+    DateTime dataEHora
+    String local
+  }
+  Seminario "0..*" - "1" OrganizadorDeSeminario : organizador
+  OrganizadorDeSeminario <|-down- Aluno
+  OrganizadorDeSeminario <|-down- Professor
 }
 
-Professor "1" -- "*" PublicacaoProfessores : autor
-Professor "*" -- "*" PublicacaoAlunos : coautor
+' Reunião
 
-class Coorientador {
-  Bool aprovarProposta()
-  Bool aprovarTese()
-  Bool confirmarParticipacaoBanca()
+class Reuniao {
+  DateTime dataEHora
+  String local
 }
 
-Coorientador --|> Professor
+Reuniao "0..*" -up- "1" Professor
+Reuniao "0..*" -up- "1" Aluno
 
-class Orientador {
-  Bool aprovarProposta()
-  Bool aprovarTese()
-  Bool confirmarOrientacaoAluno()
+
+' Defesa
+package Defesa {
+  enum TipoDefesa {
+    Qualificacao
+    DefesaDeTese
+  }
+
+  class Defesa {
+    DateTime dataEHora
+    String local
+    File arquivoTexto
+
+    submeterTexto(File arquivoTexto)
+    EstadoAprovacaoDefesa obterEstado()
+  }
+
+  class ParticipacaoBanca {
+    Bool confirmado
+    confirmarParticipacao()
+    aprovarDefesa()
+    rejeitarDefesa()
+  }
+
+  enum EstadoAprovacaoDefesa {
+    Pendente
+    Aprovado
+    Rejeitado
+  }
+
+  Defesa "0..*" -up- "1" Aluno
+  Defesa "1" - "1..*" ParticipacaoBanca
+  Defesa -down- TipoDefesa
+  ParticipacaoBanca -down- EstadoAprovacaoDefesa
+  ParticipacaoBanca "0..*" -up- "1" Professor
 }
-Orientador --|> Professor
 
-class Aluno {
-  Int id
-  String nome
-  String dre
-  Date dataDeEntrada
-  
-  agendarSeminario()
-  realizarPublicacao()
-  agendarDefesa()
-  escreverProposta()
-  escreverTese()
+' Publicação
+
+package Publicacao {
+  class Publicacao {
+    Bool pertenceAoPrograma
+  }
+
+  Aluno -up-|> Autor
+  Professor -up-|> Autor
+  Publicacao "*" - "*" Autor : coautor
+  Aluno "1" -up- "0..*" Publicacao : autor
 }
 
-Aluno "*" -- "1" Orientador : orientador
-Aluno "*" -- "*" Coorientador : coorientador
-
-class PublicacaoAlunos {
-  Int id
-  String link
-}
-
-Aluno "1" -- "*" PublicacaoAlunos : aluno
-Orientador "1" -- "*" PublicacaoAlunos : orientador
 @enduml
 ```
+
+## Observação sobre estado da Defesa
+
+Se algum membro da banca rejeitou,
+o estado final é Rejeitado
+
+Caso contrario, mas se algum membro
+da  banca está com estado Pendente,
+estado final é Pendente
+
+Por fim, se todos os estados dos
+membros estão como Aprovado, estado
+final é aprovado
