@@ -39,18 +39,15 @@ package Seminario {
   OrganizadorDeSeminario <|-down- Professor
 }
 
-' Orientação
+' Reunião
 
-package Reuniao {
-
-  class Reuniao {
-    DateTime dataEHora
-    String local
-  }
-
-  Reuniao "0..*" -up- "1" Professor
-  Reuniao "0..*" -up- "1" Aluno
+class Reuniao {
+  DateTime dataEHora
+  String local
 }
+
+Reuniao "0..*" -up- "1" Professor
+Reuniao "0..*" -up- "1" Aluno
 
 
 ' Defesa
@@ -104,3 +101,16 @@ package Publicacao {
 
 @enduml
 ```
+
+## Observação sobre estado da Defesa
+
+Se algum membro da banca rejeitou,
+o estado final é Rejeitado
+
+Caso contrario, mas se algum membro
+da  banca está com estado Pendente,
+estado final é Pendente
+
+Por fim, se todos os estados dos
+membros estão como Aprovado, estado
+final é aprovado
