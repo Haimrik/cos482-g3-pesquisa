@@ -1,0 +1,116 @@
+// Cadastro
+
+entity Aluno {
+  nome String required,
+  dre String required,
+  dataDeEntrada ZonedDateTime required
+}
+
+entity Professor {
+	nome String required,
+  matricula String required,
+  linkLattes String required,
+  programa String,
+  linhaDePesquisa String,
+  areasDeInteresse String
+}
+
+relationship OneToMany {
+  Professor{orientador} to Aluno
+}
+
+
+// Publicacao
+
+entity Publicacao {
+  url String required,
+  pertenceAoPrograma Boolean
+}
+
+entity Autor {
+}
+
+relationship OneToMany {
+  Aluno{autor} to Publicacao
+}
+
+relationship OneToOne {
+  Aluno to Autor,
+  Professor to Autor
+}
+
+relationship ManyToMany {
+  Autor{coautor} to Publicacao
+}
+
+
+// Seminario
+
+entity Seminario {
+  titulo String,
+  dataEHora ZonedDateTime,
+  local String
+}
+
+entity OrganizadorDeSeminario {
+}
+
+relationship OneToOne {
+  Aluno to OrganizadorDeSeminario,
+  Professor to OrganizadorDeSeminario
+}
+
+relationship OneToMany {
+  OrganizadorDeSeminario{organizador} to Seminario
+}
+
+// Defesa
+
+enum EstadoAprovacaoDefesa {
+	PENDENTE, APROVADO, REPROVADO
+}
+
+entity ParticipacaoBanca {
+  confirmado Boolean,
+  estadoAprovacaoDefesa EstadoAprovacaoDefesa
+}
+
+enum TipoDefesa {
+	QUALIFICACAO, DEFESADETESE
+}
+
+entity Defesa {
+  dataEHora ZonedDateTime,
+  local String
+  arquivoTexto File,
+  tipoDefesa TipoDefesa
+}
+
+relationship OneToMany {
+  Aluno to Defesa,
+  Defesa to ParticipacaoBanca,
+  Professor to ParticipacaoBanca
+}
+
+// Reuniao
+
+entity Reuniao {
+  dataEHora ZonedDateTime,
+  local String
+}
+
+relationship OneToMany {
+    Professor to Reuniao,
+    Aluno to Reuniao
+}
+
+// Set pagination options
+paginate all with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+angularSuffix * with cos482-g3
