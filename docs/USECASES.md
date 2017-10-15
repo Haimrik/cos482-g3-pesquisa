@@ -50,269 +50,305 @@ O -|> P
 @enduml
 ```
 
-## Detalhamento dos Casos de Uso
+## Detalhamento dos Casos de Uso (contemplados para a primiera iteração)
 
 
 ### UC01 - Cadastrar aluno
-* **Pré-condições**: Aluno ainda não existe no sistema
+* **Descrição**: O ator deseja cadastrar um novo aluno na plataforma
+* **Atores**: Administrador
+* **Pré-condições**: 
+  * Aluno ainda não existe no sistema
+  * O ator deve estar logado no sistema
 * **Pos-condições**: Aluno existe no sistema
 
-| Fluxo Principal                                         |
-| ------------------------------------------------------- |
-| 1. Secretaria informa [dados do aluno](#dados-do-aluno) |
-| 2. Sistema confirma cadastro                            |
+| Fluxo Principal                                                                 |
+| -------------------------------------------------------                         |
+| 1. O Administrador deverá acessar a página de Alunos.                           |
+| 2. O Administrador deverá clicar no botão Cadastrar Aluno                       |
+| 3. O sistema exibe o formulário com as informações do aluno a serem preenchidas |
+| 4. As informações são: Nome, DRE, Data de Entrada, Orientador, Coorientado      |
+| 5. O Administrador deverá clicar no botão Salvar                                |
 
 
 ### UC02 - Visualizar aluno
-* **Pré-condições**: Aluno existe no sistema
+* **Descrição**:  O ator deseja ver os eventos que estão sendo anunciados na plataforma
+* **Atores**: Administrador
+* **Pré-condições**: 
+  * Aluno existe no sistema
+  * O ator deve estar logado no sistema
 * **Pos-condições**: -
 
 | Fluxo principal                                       |
 | ----------------------------------------------------- |
-| 1. Secretaria informa numero de cadastro do aluno     |
-| 2. Sistema exibe os [dados do aluno](#dados-do-aluno) |
+| 1. O ator deverá acessar a página de listagem de alunos |
+| 2. O ator irá visualizar os alunos na plataforma        |
+| 3. O ator clica no aluno de seu interesse               |
+| 4. O sistema exibe as informações sobre o aluno         |
+| 5. As informações são: Nome, DRE, Data de Entrada, Orientador, Coorientado  |
 
 
 ### UC03 - Atualizar aluno
-* **Pré-condições**: Aluno existe no sistea
+* **Descrição**: O ator deseja que seja possível editar um cadastro de aluno previamente realizado.
+* **Atores**: Administrador
+* **Pré-condições**: 
+  * Aluno existe no sistema
+  * O ator deve estar logado no sistema
 * **Pos-condições**: Aluno é modificado no sistema
 
 | Fluxo principal                                               |
 | ------------------------------------------------------------- |
-| 1. Secretaria informa número de cadastro do aluno             |
-| 2. Secretaria informa novos [dados do aluno](#dados-do-aluno) |
-| 3. Sistema confirma atualização do aluno                      |
+| 1. O ator deverá acessar a página de listagem de alunos       | 
+| 2. O ator deverá clicar no botão indicado para editar)        |
+| 3. O ator poderá editar os seguintes campos: Nome Orientador Coorientador |
+| 4. O ator  deverá clicar em salvar para que as mudanças sejam efetuadas.  |
+
 
 
 ### UC04 - Remover aluno
-* **Pré-condições**: Aluno existe no sistema
+* **Descrição**: O ator deseja deletar um aluno
+* **Atores**: Administrador
+* **Pré-condições**: 
+  * Aluno existe no sistema
+  * O ator deve estar logado no sistema
 * **Pos-condições**: Aluno não existe mais no sistema
 
 | Fluxo principal                                   |
 | ------------------------------------------------- |
-| 1. Secretaria informa número de cadastro do aluno |
-| 2. Sistema confirma remoção do aluno              |
+| 1. O ator deverá acessar a página de listagem de alunos. |
+| 2. O ator irá visualizar os alunos na plataforma         |
+| 3. O ator clica no botão Deletar ao lado do Aluno que deseja deletar |
+| 4. O Sistema irá exibir uma mensagem perguntando se o Administrador deseja realmente deletar esse aluno |
+| 5. O Administrador deverá clicar no botão Deletar |
 
 
 ### UC05 - Cadastrar professor
-* **Pré-condições**: Professor ainda não existe no sistema
+* **Descrição**: O administrador do sistema deseja que seja possível cadastrar um novo professor no sistema
+* **Atores**: Administrador
+* **Pré-condições**: 
+  * Professor ainda não existe no sistema
+  * O ator deve estar logado no sistema
 * **Pos-condições**: Professor existe no sistema
 
 | Fluxo principal                                                 |
 | --------------------------------------------------------------- |
-| 1. Secretaria informa [dados do professor](#dados-do-professor) |
-| 2. Sistema confirma cadastro                                    |
+| 1. O ator deverá acessar a página de listagem de professores    |
+| 2. O ator deverá clicar no botão Cadastrar Professor            |
+| 3. O sistema exibe o formulário com as informações do professor a serem preenchidas. |
+| 4. As informações são: Nome, Link para o lattes, Programa, Linha de pesquisa, Áreas de interesse |
 
 
 ### UC06 - Visualizar professor
-* **Pré-condições**: Professor existe no sistema
+* **Descrição**: O ator deseja ver os eventos que estão sendo anunciados na plataforma
+* **Atores**: Administrador
+* **Pré-condições**: 
+  * Professor existe no sistema
+  * O ator deve estar logado no sistema
 * **Pos-condições**: -
 
 | Fluxo principal                                               |
 | ------------------------------------------------------------- |
-| 1. Secretaria informa numero de cadastro do professor         |
-| 2. Sistema exibe os [dados do professor](#dados-do-professor) |
+| 1. O ator deverá acessar a página de listagem de professores  |
+| 2. O ator irá visualizar os professores cadastrados na plataforma |
+| 3. O ator clica no professor de seu interesse. |
+| 4. O sistema exibe as informações sobre o professor: Nome, Link para o lattes, Programa, Linha de pesquisa, Áreas de interesse |
 
 
 ### UC07 - Atualizar professor
-* **Pré-condições**: Professor existe no sistea
+* **Descrição**: O ator do sistema deseja que seja possível editar um cadastro de professor previamente realizado
+* **Atores**: Administrador
+* **Pré-condições**: 
+  * Professor existe no sistema
+  * O ator deve estar logado no sistema
 * **Pos-condições**: Professor é modificado no sistema
 
 | Fluxo principal                                                       |
 | --------------------------------------------------------------------- |
-| 1. Secretaria informa número de cadastro do professor                 |
-| 2. Secretaria informa novos [dados do professor](#dados-do-professor) |
-| 3. Sistema confirma atualização do professor                          |
+| 1. O ator deverá acessar a página de listagem de professores          |
+| 2. O ator deverá clicar no botão indicado para editar.                |
+| 3. O ator poderá editar os campos: Nome, Link para o lattes, Programa, Linha de pesquisa, Áreas de interesse |
+| 4. O ator deverá clicar em salvar para que as mudanças sejam efetuadas |
 
 
 ### UC08 - Remover professor
-* **Pré-condições**: Professor existe no sistema
+* **Descrição**: O ator deseja deletar o um Professor do sistema.
+* **Atores**: Administrador
+* **Pré-condições**: 
+  * Professor existe no sistema
+  * O ator deve estar logado no sistema
 * **Pos-condições**: Professor não existe mais no sistema
 
 | Fluxo principal                                       |
 | ----------------------------------------------------- |
-| 1. Secretaria informa número de cadastro do professor |
-| 2. Sistema confirma remoção do professor              |
+| 1. O ator deverá acessar a página de listagem de professores      |   
+| 2. O ator irá visualizar os professores registrados na plataforma |
+| 3. O ator deverá clicar no botão Deletar ao lado do Professor que deseja deletar |
+| 4. O Sistema irá exibir uma mensagem perguntando se o ator deseja realmente deletar esse Professor |
 
 
-### UC09 - Escolher professor orientador
-
-* **Pré-condições**: Aluno existe no sistema e está autenticado
-* **Pos-condições**: Professor é associado como orientador do aluno em estado não confirmado
+### UC09 - Cadastrar professor orientador
+* **Descrição**: O ator deseja que seja possível deletar o um Professor do sistema.
+* **Atores**: Administrador
+* **Pré-condições**: 
+  * Ator existe no sistema e está autenticado
+  * O ator deve estar logado no sistema
+* **Pos-condições**: Professor é associado como orientador do ator em estado não confirmado
 
 | Fluxo principal                                                              |
 | ---------------------------------------------------------------------------- |
-| 1. Aluno informa nome completo ou parcial do professor                       |
-| 2. Sistema exibe lista de professores que correspondem aos critérios         |
-| 3. Aluno informa desejo de ser orientado por algum dos professores exibidos  |
-| 4. Sistema confirma recebimento de pedido de escolha de professor orientador |
+| 1. O ator deverá acessar a página do seu cadastro                            |
+| 2. O ator deverá clicar no botão de edição de dados do seu cadastro          |
+| 3. O ator deverá escolher um professor da lista de professores disponibilizada pelo sistema   |
+| 4. O ator deverá clicar no botão Salvar                                      |
 
-### UC10 - Agendar reunião com orientador
 
+### UC10 - Cadastrar publicação
+* **Descrição**: O aluno deseja uma nova publicação sua no sistema
+* **Atores**: Aluno 
 * **Pré-condições**:
   * Aluno existe no sistema
-  * Aluno está autenticado
+  * O ator deve estar logado no sistema
   * Aluno tem professor orientador escolhido
-* **Pos-condições**: Reunião com orientador é agendada
+* **Pos-condições**: Publicação é registrada no sistema
 
 | Fluxo principal                                        |
 | ------------------------------------------------------ |
-| 1. Aluno informa data e hora e duração da reunião      |
-| 2. Sistema exibe confirmação do agendamento de reunião |
+| 1. O ator deverá acessar a página de publicações      |
+| 2. O ator irá visualizar todas as publicações cadastradas no sistemas |
+| 3. O ator deverá clicar em Cadastrar Publicação |
+| 4. O sistema exibe o formulário com as informações da publicação a serem preenchidas: link, colaboradores |
+| 5. O autor deverá clicar no botão salvar |
 
 
-### UC11 - Submeter texto para defesa
-
+### UC11 - Visualizar Cadastro da Publicação
+* **Descrição**: O ator deseja ver os dados de uma publicação cadastrada no sistema
+* **Atores**: Usuário logado
 * **Pré-condições**:
-  * Aluno existe no sistema
-  * Aluno está autenticado
-  * Aluno já agendou defesa
-* **Pos-condições**: Texto da defesa está atualizado 
+  * O ator deve estar logado no sistema
+  * A publicação deverá estar previamente cadastrada no sistema
+* **Pos-condições**: -
 
 | Fluxo principal                                                |
 | -------------------------------------------------------------- |
-| 1. Aluno informa identificação da defesa e envia o texto       |
-| 2. Sistema exibe confirmação de atualização do texto da defesa |
+| 1. O ator deverá acessar a página de listagem de publicações       |
+| 2. O ator irá clicar no botão de visualização dos dados cadastrados da sua publicação de interesse  |
+| 3. O sistema exibe as informações sobre a publicação: link, coautores |
 
-### UC12 - Cadastrar publicação
+
+### UC12 - Remover publicação
+* **Descrição**:  O ator deseja deletar uma publicação realizada
+* **Atores**: Aluno
 * **Pré-condições**
   * Aluno existe no sistema
-  * Aluno está autenticado
-  * Publicação ainda não existe no sistema
-* **Pos-condições**: Publicação existe no sistema
+  * O ator deve estar logado no sistema
+  * Publicação existe no sistema
+* **Pos-condições**: Publicação não existe no sistema
 
 | Fluxo Principal                                                   |
 | ----------------------------------------------------------------- |
-| 1. Aluno informa [dados da publicação](#dados-da-publicacao)      |
-| 2. Sistema confirma cadastro                                      |
+| 1. O ator deverá acessar a página de listagem de publicações      |
+| 2. O ator deverá encontrar a publicação que deseja deletar        |
+| 3. O ator deverá clicar no botão Deletar ao lado da publicação que deseja deletar |
+| 4. O Sistema irá exibir uma mensagem perguntando se o ator deseja realmente deletar essa publicação |
+| 5. o ator deverá clicar no botão Deletar |
 
 
-### UC13 - Visualizar publicação
+### UC13 - Cadastrar Seminário
+* **Descrição**: O ator deseja cadastrar um seminário no sistema
+* **Atores**: Aluno ou professor
 * **Pré-condições**
-  * Aluno existe no sistema
-  * Aluno está autenticado
-  * Publicação existe no sistema
-* **Pos-condições**: -
+  * O ator deve estar logado no sistema
+* **Pos-condições**:  Seminário existe no sistema
 
 | Fluxo principal                                                 |
 | --------------------------------------------------------------- |
-| 1. Aluno informa numero de cadastro do publicação               |
-| 2. Sistema exibe os [dados da publicação](#dados-da-publicacao) |
+| 1. O ator deverá acessar a página de seminários                 |
+| 2. O Aluno deverá clicar no botão Cadastrar Seminário           |
+| 3. O sistema exibe o formulário para cadastramento de seminário com as seguintes informações : Data do Seminário, Hora do Seminário, Local do seminário, Título do seminário |
+| 4. O ator deverá clicar no botão Salvar                         |
 
 
-### UC14 - Atualizar publicação
+### UC14 - Editar cadastro de Seminário
+* **Descrição**:  O ator deseja editar um seminário cadastrado
+* **Atores**: Aluno ou professor
 * **Pré-condições**
-  * Aluno existe no sistema
-  * Aluno está autenticado
-  * Publicação existe no sistea
-* **Pos-condições**: Publicação é modificado no sistema
+  * O ator deve estar logado no sistema
+  * Seminário existe no sistema
+* **Pos-condições**: Seminário é modificado no sistema
 
 | Fluxo principal                                                         |
 | ----------------------------------------------------------------------- |
-| 1. Aluno informa número de cadastro do publicação                       |
-| 2. Aluno informa novos [dados da publicação](#dados-da-publicacao)      |
-| 3. Sistema confirma atualização do publicação                           |
+| 1. O ator deverá acessar a página de Seminários                         |
+| 2. O ator deverá encontrar o Seminário que ele deseja editar            |
+| 3. O ator deverá clicar no Botão editar                                 |
+| 4. O ator poderá editar as seguintes informações: Data do Seminário, Hora do Seminário, Local do Seminário, Título do Seminário |
 
 
-### UC15 - Remover publicação
+### UC15 - Visualizar Seminário
+* **Descrição**: O ator deseja visualizar os seminários agendados no sistema
+* **Atores**: Aluno ou professor
 * **Pré-condições**
-  * Aluno existe no sistema
-  * Aluno está autenticado
-  * Publicação existe no sistema
-* **Pos-condições**: Publicação não existe mais no sistema
+  * O ator deve estar logado no sistema
+  * Seminário existe no sistea
+* **Pos-condições**: -
 
 | Fluxo principal                                        |
 | ------------------------------------------------------ |
-| 1. Aluno informa número de cadastro do publicação      |
-| 2. Sistema confirma remoção do publicação              |
+| 1. O ator deverá acessar a página de Seminários        |
+| 2. O ator deverá escolher o seminário desejado a partir da lista disponibilizada pelo sistema |
+| 3. O sistema exibirá as seguintes informações: Data do Seminário, Hora do Seminário, Local do Seminário, Título do Seminário |
 
 
-### UC16 - Agendar defesa
-
-* **Pré-condições**: -
-* **Pos-condições**: -
-
-| Fluxo principal |
-| --------------- |
-
-
-### UC17 - Modificar banca da defesa
-
-* **Pré-condições**: -
-* **Pos-condições**: -
+### UC16 - Deletar Seminário
+* **Descrição**: O ator deseja que seja possível deletar o um Professor do sistema.
+* **Atores**: Administrador
+* **Pré-condições**:
+  * O ator deve estar logado no sistema
+  * Seminário existe no sistema
+* **Pos-condições**: O seminário não existe no sistema
 
 | Fluxo principal |
 | --------------- |
+| 1. O ator deverá acessar a página de listagem de seminários      |
+| 2. O ator deverá encontrar o seminário que deseja deletar        |
+| 3. O ator deverá clicar no botão Deletar ao lado do seminário que deseja deletar |
+| 4. O Sistema irá exibir uma mensagem perguntando se o ator deseja realmente deletar esse seminário |
+| 5. o ator deverá clicar no botão Deletar |
 
 
+### UC17 - Modificar cadastro de publicação
+* **Descrição**:  O ator deseja editar uma publicação cadastrada
+* **Atores**: Aluno
+* **Pré-condições**
+  * O ator deve estar logado no sistema
+  * Publicação existe no sistema
+* **Pos-condições**: Publicação é modificada no sistema
 
-### UC18 - Confirmar participação na banca
-
-* **Pré-condições**: -
-* **Pos-condições**: -
-
-| Fluxo principal |
-| --------------- |
-
-
-
-### UC19 - Aprovar defesa
-
-* **Pré-condições**: -
-* **Pos-condições**: -
-
-| Fluxo principal |
-| --------------- |
+| Fluxo principal                                                         |
+| ----------------------------------------------------------------------- |
+| 1. O ator deverá acessar a página de publicações                        |
+| 2. O ator deverá encontrar a publicação que ele deseja editar           |
+| 3. O ator deverá clicar no Botão editar                                 |
+| 4. O ator poderá editar as seguintes informações: link, coautores       |
 
 
-### UC20 - Rejeitar defesa
-
-* **Pré-condições**: -
-* **Pos-condições**: -
-
-| Fluxo principal |
-| --------------- |
+## Declaração de casos de uso não contemplados para iteração 
 
 
-### UC21 - Cadastrar seminário
-* **Pré-condições**: Seminário ainda não existe no sistema
-* **Pos-condições**: Seminário existe no sistema
+###  Escolher professor orientador
 
-| Fluxo Principal                                                               |
-| ----------------------------------------------------------------------------- |
-| 1. Organizador do seminário informa [dados do seminário](#dados-do-seminario) |
-| 2. Sistema confirma cadastro                                                  |
+### Agendar reunião com orientador
 
+### Submeter texto para defesa
 
-### UC22 - Visualizar seminário
-* **Pré-condições**: Seminário existe no sistema
-* **Pos-condições**: -
+### Agendar defesa
 
-| Fluxo principal                                                     |
-| ------------------------------------------------------------------- |
-| 1. Organizador do seminário informa numero de cadastro do seminário |
-| 2. Sistema exibe os [dados do seminário](#dados-do-seminario)       |
+### Modificar banca da defesa
 
+### Confirmar participação na banca
 
-### UC23 - Atualizar seminário
-* **Pré-condições**: Seminário existe no sistea
-* **Pos-condições**: Seminário é modificado no sistema
+### Aprovar defesa
 
-| Fluxo principal                                                                     |
-| ----------------------------------------------------------------------------------- |
-| 1. Organizador do seminário informa número de cadastro do seminário                 |
-| 2. Organizador do seminário informa novos [dados do seminário](#dados-do-seminario) |
-| 3. Sistema confirma atualização do seminário                                        |
-
-
-### UC24 - Remover seminário
-* **Pré-condições**: Seminário existe no sistema
-* **Pos-condições**: Seminário não existe mais no sistema
-
-| Fluxo principal                                                     |
-| ------------------------------------------------------------------- |
-| 1. Organizador do seminário informa número de cadastro do seminário |
-| 2. Sistema confirma remoção do seminário                            |
+### Rejeitar defesa
 
 
 ## Tabelas auxiliares
