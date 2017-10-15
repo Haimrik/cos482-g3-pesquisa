@@ -4,6 +4,9 @@
 @startuml
 ' Cadastro
 package Cadastro {
+  class Usuario {
+  }
+
   class Aluno {
     Int id
     String nome
@@ -23,6 +26,8 @@ package Cadastro {
   }
 
   Aluno "0..*" - "1" Professor : orientador
+  Aluno -up-|> Usuario
+  Professor -up-|> Usuario
 }
 
 
@@ -34,9 +39,7 @@ package Seminario {
     DateTime dataEHora
     String local
   }
-  Seminario "0..*" - "1" OrganizadorDeSeminario : organizador
-  OrganizadorDeSeminario <|-down- Aluno
-  OrganizadorDeSeminario <|-down- Professor
+  Seminario "0..*" -down- "1" Usuario : organizador
 }
 
 ' Reunião
@@ -93,9 +96,7 @@ package Publicacao {
     Bool pertenceAoPrograma
   }
 
-  Aluno -up-|> Autor
-  Professor -up-|> Autor
-  Publicacao "*" - "*" Autor : coautor
+  Publicacao "*" -down- "*" Usuario : coautor
   Aluno "1" -up- "0..*" Publicacao : autor
 }
 

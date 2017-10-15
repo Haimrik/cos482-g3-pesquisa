@@ -1,5 +1,8 @@
 // Cadastro
 
+entity Usuario {
+}
+
 entity Aluno {
   nome String required,
   dre String required,
@@ -19,6 +22,12 @@ relationship OneToMany {
   Professor{orientador} to Aluno
 }
 
+// Herança não existe em JDL, então fazemos composição + constraints
+relationship OneToOne {
+  Aluno to Usuario,
+  Professor to Usuario
+}
+
 
 // Publicacao
 
@@ -27,20 +36,12 @@ entity Publicacao {
   pertenceAoPrograma Boolean
 }
 
-entity Autor {
-}
-
 relationship OneToMany {
   Aluno{autor} to Publicacao
 }
 
-relationship OneToOne {
-  Aluno to Autor,
-  Professor to Autor
-}
-
 relationship ManyToMany {
-  Autor{coautor} to Publicacao
+  Usuario{coautor} to Publicacao
 }
 
 
@@ -52,16 +53,8 @@ entity Seminario {
   local String
 }
 
-entity OrganizadorDeSeminario {
-}
-
-relationship OneToOne {
-  Aluno to OrganizadorDeSeminario,
-  Professor to OrganizadorDeSeminario
-}
-
 relationship OneToMany {
-  OrganizadorDeSeminario{organizador} to Seminario
+  Usuario{organizador} to Seminario
 }
 
 // Defesa
