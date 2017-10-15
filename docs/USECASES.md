@@ -278,41 +278,41 @@ O -|> P
 * **Pré-condições**: Seminário ainda não existe no sistema
 * **Pos-condições**: Seminário existe no sistema
 
-| Fluxo Principal                                         |
-| ------------------------------------------------------- |
+| Fluxo Principal                                                               |
+| ----------------------------------------------------------------------------- |
 | 1. Organizador do seminário informa [dados do seminário](#dados-do-seminario) |
-| 2. Sistema confirma cadastro                            |
+| 2. Sistema confirma cadastro                                                  |
 
 
 ### UC22 - Visualizar seminário
 * **Pré-condições**: Seminário existe no sistema
 * **Pos-condições**: -
 
-| Fluxo principal                                       |
-| ----------------------------------------------------- |
-| 1. Organizador do seminário informa numero de cadastro do seminário     |
-| 2. Sistema exibe os [dados do seminário](#dados-do-seminario) |
+| Fluxo principal                                                     |
+| ------------------------------------------------------------------- |
+| 1. Organizador do seminário informa numero de cadastro do seminário |
+| 2. Sistema exibe os [dados do seminário](#dados-do-seminario)       |
 
 
 ### UC23 - Atualizar seminário
 * **Pré-condições**: Seminário existe no sistea
 * **Pos-condições**: Seminário é modificado no sistema
 
-| Fluxo principal                                               |
-| ------------------------------------------------------------- |
-| 1. Organizador do seminário informa número de cadastro do seminário             |
+| Fluxo principal                                                                     |
+| ----------------------------------------------------------------------------------- |
+| 1. Organizador do seminário informa número de cadastro do seminário                 |
 | 2. Organizador do seminário informa novos [dados do seminário](#dados-do-seminario) |
-| 3. Sistema confirma atualização do seminário                      |
+| 3. Sistema confirma atualização do seminário                                        |
 
 
 ### UC24 - Remover seminário
 * **Pré-condições**: Seminário existe no sistema
 * **Pos-condições**: Seminário não existe mais no sistema
 
-| Fluxo principal                                   |
-| ------------------------------------------------- |
+| Fluxo principal                                                     |
+| ------------------------------------------------------------------- |
 | 1. Organizador do seminário informa número de cadastro do seminário |
-| 2. Sistema confirma remoção do seminário              |
+| 2. Sistema confirma remoção do seminário                            |
 
 
 ## Tabelas auxiliares
