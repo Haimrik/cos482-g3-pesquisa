@@ -53,10 +53,9 @@ entity ParticipacaoBanca {
 entity Defesa {
 	id Integer required,
     dataEHora ZonedDateTime,
-    local String,
+    local String
     arquivoTexto File,
-    tipoDefesa TipoDefesa,
-    estadoAprovacaoDefesa EstadoAprovacaoDefesa
+    tipoDefesa TipoDefesa
 }
 
 entity Reuniao {
