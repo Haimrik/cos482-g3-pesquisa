@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { G3PesquisaSharedModule } from '../shared';
+import { PesquisaSharedModule } from '../shared';
 
 import {
     Register,
@@ -21,7 +21,7 @@ import {
 
 @NgModule({
     imports: [
-        G3PesquisaSharedModule,
+        PesquisaSharedModule,
         RouterModule.forRoot(accountState, { useHash: true })
     ],
     declarations: [
@@ -42,4 +42,4 @@ import {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class G3PesquisaAccountModule {}
+export class PesquisaAccountModule {}

@@ -26,18 +26,18 @@ import java.util.Collection;
 @EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
 @EnableDiscoveryClient
-public class G3PesquisaApp {
+public class PesquisaApp {
 
-    private static final Logger log = LoggerFactory.getLogger(G3PesquisaApp.class);
+    private static final Logger log = LoggerFactory.getLogger(PesquisaApp.class);
 
     private final Environment env;
 
-    public G3PesquisaApp(Environment env) {
+    public PesquisaApp(Environment env) {
         this.env = env;
     }
 
     /**
-     * Initializes g3_pesquisa.
+     * Initializes pesquisa.
      * <p>
      * Spring profiles can be configured with a program arguments --spring.profiles.active=your-active-profile
      * <p>
@@ -63,7 +63,7 @@ public class G3PesquisaApp {
      * @throws UnknownHostException if the local host name could not be resolved into an address
      */
     public static void main(String[] args) throws UnknownHostException {
-        SpringApplication app = new SpringApplication(G3PesquisaApp.class);
+        SpringApplication app = new SpringApplication(PesquisaApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         String protocol = "http";

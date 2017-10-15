@@ -1,6 +1,6 @@
 package br.ufrj.cos482.web.rest;
 
-import br.ufrj.cos482.G3PesquisaApp;
+import br.ufrj.cos482.PesquisaApp;
 import br.ufrj.cos482.web.rest.vm.LoggerVM;
 import ch.qos.logback.classic.AsyncAppender;
 import ch.qos.logback.classic.LoggerContext;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see LogsResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = G3PesquisaApp.class)
+@SpringBootTest(classes = PesquisaApp.class)
 public class LogsResourceIntTest {
 
     private MockMvc restLogsMockMvc;

@@ -1,6 +1,6 @@
 package br.ufrj.cos482.web.rest;
 
-import br.ufrj.cos482.G3PesquisaApp;
+import br.ufrj.cos482.PesquisaApp;
 import br.ufrj.cos482.config.audit.AuditEventConverter;
 import br.ufrj.cos482.domain.PersistentAuditEvent;
 import br.ufrj.cos482.repository.PersistenceAuditEventRepository;
@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see AuditResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = G3PesquisaApp.class)
+@SpringBootTest(classes = PesquisaApp.class)
 @Transactional
 public class AuditResourceIntTest {
 

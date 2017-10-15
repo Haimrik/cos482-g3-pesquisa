@@ -1,7 +1,7 @@
 import { TestBed, async, tick, fakeAsync, inject } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { G3PesquisaTestModule } from '../../../test.module';
+import { PesquisaTestModule } from '../../../test.module';
 import { MockActivatedRoute } from '../../../helpers/mock-route.service';
 import { LoginModalService } from '../../../../../../main/webapp/app/shared';
 import { ActivateService } from '../../../../../../main/webapp/app/account/activate/activate.service';
@@ -15,7 +15,7 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [G3PesquisaTestModule],
+                imports: [PesquisaTestModule],
                 declarations: [ActivateComponent],
                 providers: [
                     ActivateService,

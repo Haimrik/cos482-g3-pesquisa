@@ -1,7 +1,7 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "project": {
-        "name": "g-3-pesquisa"
+        "name": "pesquisa"
     },
     "apps": [{
         "root": "src/main/webapp",

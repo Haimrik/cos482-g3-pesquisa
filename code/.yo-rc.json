@@ -5,7 +5,7 @@
       "nativeLanguage": "en"
     },
     "jhipsterVersion": "4.9.0",
-    "baseName": "g3_pesquisa",
+    "baseName": "pesquisa",
     "packageName": "br.ufrj.cos482",
     "packageFolder": "br/ufrj/cos482",
     "serverPort": "8080",
@@ -22,7 +22,7 @@
     "buildTool": "maven",
     "enableSocialSignIn": false,
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "2cafd844a6c4fee6a0665d1e5b56de8bcd6125c1",
+    "jwtSecretKey": "d4fa8adc85b3335258673407b4be31d64427307a",
     "clientFramework": "angularX",
     "useSass": false,
     "clientPackageManager": "yarn",

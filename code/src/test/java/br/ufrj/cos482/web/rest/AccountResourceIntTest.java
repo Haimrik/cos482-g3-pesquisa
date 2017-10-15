@@ -1,7 +1,7 @@
 package br.ufrj.cos482.web.rest;
 import br.ufrj.cos482.config.Constants;
 
-import br.ufrj.cos482.G3PesquisaApp;
+import br.ufrj.cos482.PesquisaApp;
 import br.ufrj.cos482.domain.Authority;
 import br.ufrj.cos482.domain.User;
 import br.ufrj.cos482.repository.AuthorityRepository;
@@ -49,7 +49,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see AccountResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = G3PesquisaApp.class)
+@SpringBootTest(classes = PesquisaApp.class)
 public class AccountResourceIntTest {
 
     @Autowired

@@ -1,7 +1,7 @@
 {
-  "name": "g-3-pesquisa",
+  "name": "pesquisa",
   "version": "0.0.0",
-  "description": "Description for g3_pesquisa",
+  "description": "Description for pesquisa",
   "private": true,
   "license": "UNLICENSED",
   "cacheDirectories": [
