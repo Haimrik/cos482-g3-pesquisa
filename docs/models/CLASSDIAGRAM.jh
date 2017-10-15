@@ -46,7 +46,8 @@ entity OrganizadorDeSeminario {
 entity ParticipacaoBanca {
 	idDefesa Integer required,
     idProfessor Integer required,
-    confirmado Boolean
+    confirmado Boolean,
+    estadoAprovacaoDefesa EstadoAprovacaoDefesa
 }
 
 entity Defesa {
@@ -77,7 +78,8 @@ relationship OneToMany {
     Professor{participanteBanca} to ParticipacaoBanca,
     Professor to Reuniao,
     Aluno to Reuniao,
-    OrganizadorDeSeminario{organizador} to Seminario
+    OrganizadorDeSeminario{organizador} to Seminario,
+    Defesa{defesa} to ParticipacaoBanca
 }
 
 relationship ManyToMany {
@@ -88,8 +90,7 @@ relationship OneToOne {
 	Professor{autorProfessor} to Autor,
     Aluno{autorAluno} to Autor,
     Professor{organizadorProfessor} to OrganizadorDeSeminario,
-    Aluno{organizadorAluno} to OrganizadorDeSeminario,
-    Defesa{defesa} to ParticipacaoBanca
+    Aluno{organizadorAluno} to OrganizadorDeSeminario
 }
 
 // Set pagination options
