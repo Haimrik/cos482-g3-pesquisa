@@ -1,19 +1,19 @@
 version: '2'
 services:
-    g3_pesquisa-app:
-        image: g3_pesquisa
+    pesquisa-app:
+        image: pesquisa
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
             - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
-            - SPRING_DATASOURCE_URL=jdbc:mysql://g3_pesquisa-mysql:3306/g3_pesquisa?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - SPRING_DATASOURCE_URL=jdbc:mysql://pesquisa-mysql:3306/pesquisa?useUnicode=true&characterEncoding=utf8&useSSL=false
             - JHIPSTER_SLEEP=30 # gives time for the JHipster Registry to boot before the application
         ports:
             - 8080:8080
-    g3_pesquisa-mysql:
+    pesquisa-mysql:
         extends:
             file: mysql.yml
-            service: g3_pesquisa-mysql
+            service: pesquisa-mysql
     jhipster-registry:
         extends:
             file: jhipster-registry.yml

@@ -1,0 +1,73 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "usuario",
+            "otherEntityName": "usuario",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "aluno"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "publicacao",
+            "otherEntityName": "publicacao",
+            "otherEntityRelationshipName": "aluno"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "defesa",
+            "otherEntityName": "defesa",
+            "otherEntityRelationshipName": "aluno"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "reuniao",
+            "otherEntityName": "reuniao",
+            "otherEntityRelationshipName": "aluno"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "orientador",
+            "otherEntityName": "professor",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "aluno",
+            "otherEntityName": "professor",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "coorientador"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dataDeEntrada",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20171015234856",
+    "entityTableName": "aluno",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularJSSuffix": "cos482_g3"
+}

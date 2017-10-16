@@ -1,6 +1,6 @@
 package br.ufrj.cos482.web.rest;
 
-import br.ufrj.cos482.G3PesquisaApp;
+import br.ufrj.cos482.PesquisaApp;
 import br.ufrj.cos482.domain.Authority;
 import br.ufrj.cos482.domain.User;
 import br.ufrj.cos482.repository.UserRepository;
@@ -47,7 +47,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see UserResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = G3PesquisaApp.class)
+@SpringBootTest(classes = PesquisaApp.class)
 public class UserResourceIntTest {
 
     private static final Long DEFAULT_ID = 1L;

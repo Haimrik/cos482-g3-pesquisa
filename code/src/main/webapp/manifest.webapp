@@ -1,6 +1,6 @@
 {
-  "name": "G3Pesquisa",
-  "short_name": "G3Pesquisa",
+  "name": "Pesquisa",
+  "short_name": "Pesquisa",
   "icons": [
       {
           "src": "./content/images/logo-jhipster.png",

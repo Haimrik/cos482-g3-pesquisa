@@ -1,0 +1,24 @@
+{
+    "pesquisaApp": {
+        "reuniao" : {
+            "home": {
+                "title": "Reuniaos",
+                "createLabel": "Create a new Reuniao",
+                "createOrEditLabel": "Create or edit a Reuniao"
+            },
+            "created": "A new Reuniao is created with identifier {{ param }}",
+            "updated": "A Reuniao is updated with identifier {{ param }}",
+            "deleted": "A Reuniao is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Reuniao {{ id }}?"
+            },
+            "detail": {
+                "title": "Reuniao"
+            },
+            "dataEHora": "Data E Hora",
+            "local": "Local",
+            "professor": "Professor",
+            "aluno": "Aluno"
+        }
+    }
+}

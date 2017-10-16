@@ -17,19 +17,19 @@ eureka:
     client:
         enabled: true
     instance:
-        appname: g3_pesquisa
-        instanceId: g3_pesquisa:${spring.application.instance-id:${random.value}}
+        appname: pesquisa
+        instanceId: pesquisa:${spring.application.instance-id:${random.value}}
 
 spring:
     application:
-        name: g3_pesquisa
+        name: pesquisa
     jackson:
         serialization.write_dates_as_timestamps: false
     cache:
         type: none
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:g3_pesquisa;DB_CLOSE_DELAY=-1
+        url: jdbc:h2:mem:pesquisa;DB_CLOSE_DELAY=-1
         name:
         username:
         password:
@@ -98,7 +98,7 @@ jhipster:
     security:
         authentication:
             jwt:
-                secret: 2cafd844a6c4fee6a0665d1e5b56de8bcd6125c1
+                secret: d4fa8adc85b3335258673407b4be31d64427307a
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration

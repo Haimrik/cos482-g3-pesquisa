@@ -1,0 +1,26 @@
+{
+    "pesquisaApp": {
+        "defesa" : {
+            "home": {
+                "title": "Defesas",
+                "createLabel": "Criar novo Defesa",
+                "createOrEditLabel": "Criar ou editar Defesa"
+            },
+            "created": "Um novo Defesa foi criado com o identificador {{ param }}",
+            "updated": "Um Defesa foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Defesa foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Defesa {{ id }}?"
+            },
+            "detail": {
+                "title": "Defesa"
+            },
+            "dataEHora": "Data E Hora",
+            "local": "Local",
+            "arquivoTexto": "Arquivo Texto",
+            "tipoDefesa": "Tipo Defesa",
+            "participacaoBanca": "Participacao Banca",
+            "aluno": "Aluno"
+        }
+    }
+}

@@ -1,13 +1,13 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { G3PesquisaSharedModule } from '../shared';
+import { PesquisaSharedModule } from '../shared';
 
 import { HOME_ROUTE, HomeComponent } from './';
 
 @NgModule({
     imports: [
-        G3PesquisaSharedModule,
+        PesquisaSharedModule,
         RouterModule.forRoot([ HOME_ROUTE ], { useHash: true })
     ],
     declarations: [
@@ -19,4 +19,4 @@ import { HOME_ROUTE, HomeComponent } from './';
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class G3PesquisaHomeModule {}
+export class PesquisaHomeModule {}

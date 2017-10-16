@@ -1,5 +1,5 @@
-var dataCacheName = 'G3Pesquisa-v1';
-var cacheName = 'G3Pesquisa-1';
+var dataCacheName = 'Pesquisa-v1';
+var cacheName = 'Pesquisa-1';
 var filesToCache = [
     '/',
     '/index.html'

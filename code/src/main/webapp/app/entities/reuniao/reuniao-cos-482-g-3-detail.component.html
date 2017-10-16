@@ -1,0 +1,41 @@
+
+<div *ngIf="reuniao">
+    <h2><span jhiTranslate="pesquisaApp.reuniao.detail.title">Reuniao</span> {{reuniao.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="pesquisaApp.reuniao.dataEHora">Data E Hora</span></dt>
+        <dd>
+            <span>{{reuniao.dataEHora | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.reuniao.local">Local</span></dt>
+        <dd>
+            <span>{{reuniao.local}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.reuniao.professor">Professor</span></dt>
+        <dd>
+            <div *ngIf="reuniao.professorId">
+                <a [routerLink]="['/professor-cos-482-g-3', reuniao.professorId]">{{reuniao.professorId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.reuniao.aluno">Aluno</span></dt>
+        <dd>
+            <div *ngIf="reuniao.alunoId">
+                <a [routerLink]="['/aluno-cos-482-g-3', reuniao.alunoId]">{{reuniao.alunoId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'reuniao-cos-482-g-3/'+ reuniao.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

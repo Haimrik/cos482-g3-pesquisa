@@ -1,0 +1,45 @@
+
+<div *ngIf="aluno">
+    <h2><span jhiTranslate="pesquisaApp.aluno.detail.title">Aluno</span> {{aluno.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="pesquisaApp.aluno.nome">Nome</span></dt>
+        <dd>
+            <span>{{aluno.nome}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.aluno.dre">Dre</span></dt>
+        <dd>
+            <span>{{aluno.dre}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.aluno.dataDeEntrada">Data De Entrada</span></dt>
+        <dd>
+            <span>{{aluno.dataDeEntrada | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.aluno.usuario">Usuario</span></dt>
+        <dd>
+            <div *ngIf="aluno.usuarioId">
+                <a [routerLink]="['/usuario-cos-482-g-3', aluno.usuarioId]">{{aluno.usuarioId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.aluno.orientador">Orientador</span></dt>
+        <dd>
+            <div *ngIf="aluno.orientadorId">
+                <a [routerLink]="['/professor-cos-482-g-3', aluno.orientadorId]">{{aluno.orientadorId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'aluno-cos-482-g-3/'+ aluno.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

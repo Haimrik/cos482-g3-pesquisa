@@ -1,7 +1,7 @@
 package br.ufrj.cos482.service;
 import br.ufrj.cos482.config.Constants;
 
-import br.ufrj.cos482.G3PesquisaApp;
+import br.ufrj.cos482.PesquisaApp;
 import br.ufrj.cos482.domain.User;
 import io.github.jhipster.config.JHipsterProperties;
 import org.junit.Before;
@@ -30,7 +30,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = G3PesquisaApp.class)
+@SpringBootTest(classes = PesquisaApp.class)
 public class MailServiceIntTest {
 
     @Autowired

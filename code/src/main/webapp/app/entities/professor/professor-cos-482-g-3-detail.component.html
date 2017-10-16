@@ -1,0 +1,57 @@
+
+<div *ngIf="professor">
+    <h2><span jhiTranslate="pesquisaApp.professor.detail.title">Professor</span> {{professor.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="pesquisaApp.professor.nome">Nome</span></dt>
+        <dd>
+            <span>{{professor.nome}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.professor.matricula">Matricula</span></dt>
+        <dd>
+            <span>{{professor.matricula}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.professor.linkLattes">Link Lattes</span></dt>
+        <dd>
+            <span>{{professor.linkLattes}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.professor.programa">Programa</span></dt>
+        <dd>
+            <span>{{professor.programa}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.professor.linhaDePesquisa">Linha De Pesquisa</span></dt>
+        <dd>
+            <span>{{professor.linhaDePesquisa}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.professor.areasDeInteresse">Areas De Interesse</span></dt>
+        <dd>
+            <span>{{professor.areasDeInteresse}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.professor.usuario">Usuario</span></dt>
+        <dd>
+            <div *ngIf="professor.usuarioId">
+                <a [routerLink]="['/usuario-cos-482-g-3', professor.usuarioId]">{{professor.usuarioId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.professor.coorientador">Coorientador</span></dt>
+        <dd>
+            <span *ngFor="let coorientador of professor.coorientadors; let last = last">
+                <a [routerLink]="['/aluno-cos-482-g-3', coorientador?.id ]">{{coorientador.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'professor-cos-482-g-3/'+ professor.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -2,8 +2,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 import {
-    G3PesquisaSharedLibsModule,
-    G3PesquisaSharedCommonModule,
+    PesquisaSharedLibsModule,
+    PesquisaSharedCommonModule,
     CSRFService,
     AuthServerProvider,
     AccountService,
@@ -18,8 +18,8 @@ import {
 
 @NgModule({
     imports: [
-        G3PesquisaSharedLibsModule,
-        G3PesquisaSharedCommonModule
+        PesquisaSharedLibsModule,
+        PesquisaSharedCommonModule
     ],
     declarations: [
         JhiLoginModalComponent,
@@ -38,7 +38,7 @@ import {
     ],
     entryComponents: [JhiLoginModalComponent],
     exports: [
-        G3PesquisaSharedCommonModule,
+        PesquisaSharedCommonModule,
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
         DatePipe
@@ -46,4 +46,4 @@ import {
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
-export class G3PesquisaSharedModule {}
+export class PesquisaSharedModule {}

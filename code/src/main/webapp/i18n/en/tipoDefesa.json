@@ -1,0 +1,9 @@
+{
+    "pesquisaApp": {
+        "TipoDefesa" : {
+            "null": "",
+            "QUALIFICACAO": "QUALIFICACAO",
+            "DEFESADETESE": "DEFESADETESE"
+        }
+    }
+}

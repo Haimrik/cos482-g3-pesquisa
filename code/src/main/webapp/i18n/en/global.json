@@ -1,12 +1,20 @@
 {
     "global": {
-        "title": "G3_pesquisa",
+        "title": "Pesquisa",
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
         "menu": {
             "home": "Home",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "usuarioCos482G3": "Usuario",
+                "alunoCos482G3": "Aluno",
+                "professorCos482G3": "Professor",
+                "publicacaoCos482G3": "Publicacao",
+                "seminarioCos482G3": "Seminario",
+                "participacaoBancaCos482G3": "Participacao Banca",
+                "defesaCos482G3": "Defesa",
+                "reuniaoCos482G3": "Reuniao",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

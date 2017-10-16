@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ng2-webstorage';
 
-import { G3PesquisaSharedModule, UserRouteAccessService } from './shared';
-import { G3PesquisaHomeModule } from './home/home.module';
-import { G3PesquisaAdminModule } from './admin/admin.module';
-import { G3PesquisaAccountModule } from './account/account.module';
-import { G3PesquisaEntityModule } from './entities/entity.module';
+import { PesquisaSharedModule, UserRouteAccessService } from './shared';
+import { PesquisaHomeModule } from './home/home.module';
+import { PesquisaAdminModule } from './admin/admin.module';
+import { PesquisaAccountModule } from './account/account.module';
+import { PesquisaEntityModule } from './entities/entity.module';
 
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
@@ -30,11 +30,11 @@ import {
         BrowserModule,
         LayoutRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
-        G3PesquisaSharedModule,
-        G3PesquisaHomeModule,
-        G3PesquisaAdminModule,
-        G3PesquisaAccountModule,
-        G3PesquisaEntityModule,
+        PesquisaSharedModule,
+        PesquisaHomeModule,
+        PesquisaAdminModule,
+        PesquisaAccountModule,
+        PesquisaEntityModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
@@ -53,4 +53,4 @@ import {
     ],
     bootstrap: [ JhiMainComponent ]
 })
-export class G3PesquisaAppModule {}
+export class PesquisaAppModule {}

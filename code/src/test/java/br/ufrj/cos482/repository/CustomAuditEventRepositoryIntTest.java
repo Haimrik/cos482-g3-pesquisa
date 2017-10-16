@@ -1,6 +1,6 @@
 package br.ufrj.cos482.repository;
 
-import br.ufrj.cos482.G3PesquisaApp;
+import br.ufrj.cos482.PesquisaApp;
 import br.ufrj.cos482.config.Constants;
 import br.ufrj.cos482.config.audit.AuditEventConverter;
 import br.ufrj.cos482.domain.PersistentAuditEvent;
@@ -32,7 +32,7 @@ import static br.ufrj.cos482.repository.CustomAuditEventRepository.EVENT_DATA_CO
  * @see CustomAuditEventRepository
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = G3PesquisaApp.class)
+@SpringBootTest(classes = PesquisaApp.class)
 @Transactional
 public class CustomAuditEventRepositoryIntTest {
 

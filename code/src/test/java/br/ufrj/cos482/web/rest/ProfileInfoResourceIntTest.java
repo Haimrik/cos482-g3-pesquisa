@@ -1,7 +1,7 @@
 package br.ufrj.cos482.web.rest;
 
 import io.github.jhipster.config.JHipsterProperties;
-import br.ufrj.cos482.G3PesquisaApp;
+import br.ufrj.cos482.PesquisaApp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ProfileInfoResource
  **/
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = G3PesquisaApp.class)
+@SpringBootTest(classes = PesquisaApp.class)
 public class ProfileInfoResourceIntTest {
 
     @Mock
