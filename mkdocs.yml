@@ -7,12 +7,12 @@ markdown_extensions:
   - tables
   - graphviz
 pages:
-- ['index.md', 'Introdução']
-- ['VISION.md', 'Visão']
-- ['MEASUREMENT.md', 'Medição']
-- ['REQUIREMENTS.md', 'Requisitos']
-- ['models/USECASES.md', 'Casos de Uso']
-- [models/TESTPLAN.md, 'Plano de Testes']
-- ['models/EAP.md', 'EAP']
-- ['models/CLASSDIAGRAM.md', 'Diagrama de Classe']
-- ['reports/README.md', Relatórios]
+- Introdução: 'index.md'
+- Visão: 'VISION.md'
+- Medição: 'MEASUREMENT.md'
+- Requisitos: 'REQUIREMENTS.md'
+- Casos de Uso: 'models/USECASES.md'
+- Plano de Testes: 'models/TESTPLAN.md'
+- EAP: 'models/EAP.md'
+- Diagrama de Classe: 'models/CLASSDIAGRAM.md'
+- Relatórios: 'reports/README.md'
