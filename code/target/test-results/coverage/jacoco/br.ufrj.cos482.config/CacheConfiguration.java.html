@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CacheConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.config</a> &gt; <span class="el_source">CacheConfiguration.java</span></div><h1>CacheConfiguration.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.config;
+
+import io.github.jhipster.config.JHipsterProperties;
+import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.ResourcePoolsBuilder;
+import org.ehcache.expiry.Duration;
+import org.ehcache.expiry.Expirations;
+import org.ehcache.jsr107.Eh107Configuration;
+
+import java.util.concurrent.TimeUnit;
+
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.cache.JCacheManagerCustomizer;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.serviceregistry.Registration;
+import org.springframework.context.annotation.*;
+
+@Configuration
+@EnableCaching
+@AutoConfigureAfter(value = { MetricsConfiguration.class })
+@AutoConfigureBefore(value = { WebConfigurer.class, DatabaseConfiguration.class })
+public class CacheConfiguration {
+
+    private final javax.cache.configuration.Configuration&lt;Object, Object&gt; jcacheConfiguration;
+
+<span class="fc" id="L29">    public CacheConfiguration(JHipsterProperties jHipsterProperties) {</span>
+<span class="fc" id="L30">        JHipsterProperties.Cache.Ehcache ehcache =</span>
+<span class="fc" id="L31">            jHipsterProperties.getCache().getEhcache();</span>
+
+<span class="fc" id="L33">        jcacheConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(</span>
+<span class="fc" id="L34">            CacheConfigurationBuilder.newCacheConfigurationBuilder(Object.class, Object.class,</span>
+<span class="fc" id="L35">                ResourcePoolsBuilder.heap(ehcache.getMaxEntries()))</span>
+<span class="fc" id="L36">                .withExpiry(Expirations.timeToLiveExpiration(Duration.of(ehcache.getTimeToLiveSeconds(), TimeUnit.SECONDS)))</span>
+<span class="fc" id="L37">                .build());</span>
+<span class="fc" id="L38">    }</span>
+
+    @Bean
+    public JCacheManagerCustomizer cacheManagerCustomizer() {
+<span class="fc" id="L42">        return cm -&gt; {</span>
+<span class="nc" id="L43">            cm.createCache(&quot;users&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L44">            cm.createCache(br.ufrj.cos482.domain.User.class.getName(), jcacheConfiguration);</span>
+<span class="nc" id="L45">            cm.createCache(br.ufrj.cos482.domain.Authority.class.getName(), jcacheConfiguration);</span>
+<span class="nc" id="L46">            cm.createCache(br.ufrj.cos482.domain.User.class.getName() + &quot;.authorities&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L47">            cm.createCache(br.ufrj.cos482.domain.Usuario.class.getName(), jcacheConfiguration);</span>
+<span class="nc" id="L48">            cm.createCache(br.ufrj.cos482.domain.Usuario.class.getName() + &quot;.seminarios&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L49">            cm.createCache(br.ufrj.cos482.domain.Usuario.class.getName() + &quot;.publicacaos&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L50">            cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName(), jcacheConfiguration);</span>
+<span class="nc" id="L51">            cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName() + &quot;.publicacaos&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L52">            cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName() + &quot;.defesas&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L53">            cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName() + &quot;.reuniaos&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L54">            cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName() + &quot;.alunos&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L55">            cm.createCache(br.ufrj.cos482.domain.Professor.class.getName(), jcacheConfiguration);</span>
+<span class="nc" id="L56">            cm.createCache(br.ufrj.cos482.domain.Professor.class.getName() + &quot;.alunos&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L57">            cm.createCache(br.ufrj.cos482.domain.Professor.class.getName() + &quot;.participacaoBancas&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L58">            cm.createCache(br.ufrj.cos482.domain.Professor.class.getName() + &quot;.reuniaos&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L59">            cm.createCache(br.ufrj.cos482.domain.Professor.class.getName() + &quot;.coorientadors&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L60">            cm.createCache(br.ufrj.cos482.domain.Publicacao.class.getName(), jcacheConfiguration);</span>
+<span class="nc" id="L61">            cm.createCache(br.ufrj.cos482.domain.Publicacao.class.getName() + &quot;.coautors&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L62">            cm.createCache(br.ufrj.cos482.domain.Seminario.class.getName(), jcacheConfiguration);</span>
+<span class="nc" id="L63">            cm.createCache(br.ufrj.cos482.domain.ParticipacaoBanca.class.getName(), jcacheConfiguration);</span>
+<span class="nc" id="L64">            cm.createCache(br.ufrj.cos482.domain.Defesa.class.getName(), jcacheConfiguration);</span>
+<span class="nc" id="L65">            cm.createCache(br.ufrj.cos482.domain.Defesa.class.getName() + &quot;.participacaoBancas&quot;, jcacheConfiguration);</span>
+<span class="nc" id="L66">            cm.createCache(br.ufrj.cos482.domain.Reuniao.class.getName(), jcacheConfiguration);</span>
+            // jhipster-needle-ehcache-add-entry
+<span class="nc" id="L68">        };</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

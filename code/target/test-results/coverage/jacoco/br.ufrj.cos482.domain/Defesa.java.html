@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Defesa.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.domain</a> &gt; <span class="el_source">Defesa.java</span></div><h1>Defesa.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
+
+import br.ufrj.cos482.domain.enumeration.TipoDefesa;
+
+/**
+ * A Defesa.
+ */
+@Entity
+@Table(name = &quot;defesa&quot;)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+<span class="fc" id="L22">public class Defesa implements Serializable {</span>
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = &quot;data_e_hora&quot;)
+    private ZonedDateTime dataEHora;
+
+    @Column(name = &quot;jhi_local&quot;)
+    private String local;
+
+    @Column(name = &quot;arquivo_texto&quot;)
+    private String arquivoTexto;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = &quot;tipo_defesa&quot;)
+    private TipoDefesa tipoDefesa;
+
+<span class="fc" id="L43">    @OneToMany(mappedBy = &quot;defesa&quot;)</span>
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set&lt;ParticipacaoBanca&gt; participacaoBancas = new HashSet&lt;&gt;();
+
+    @ManyToOne
+    private Aluno aluno;
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public Long getId() {
+<span class="fc" id="L53">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L57">        this.id = id;</span>
+<span class="fc" id="L58">    }</span>
+
+    public ZonedDateTime getDataEHora() {
+<span class="fc" id="L61">        return dataEHora;</span>
+    }
+
+    public Defesa dataEHora(ZonedDateTime dataEHora) {
+<span class="fc" id="L65">        this.dataEHora = dataEHora;</span>
+<span class="fc" id="L66">        return this;</span>
+    }
+
+    public void setDataEHora(ZonedDateTime dataEHora) {
+<span class="fc" id="L70">        this.dataEHora = dataEHora;</span>
+<span class="fc" id="L71">    }</span>
+
+    public String getLocal() {
+<span class="fc" id="L74">        return local;</span>
+    }
+
+    public Defesa local(String local) {
+<span class="fc" id="L78">        this.local = local;</span>
+<span class="fc" id="L79">        return this;</span>
+    }
+
+    public void setLocal(String local) {
+<span class="fc" id="L83">        this.local = local;</span>
+<span class="fc" id="L84">    }</span>
+
+    public String getArquivoTexto() {
+<span class="fc" id="L87">        return arquivoTexto;</span>
+    }
+
+    public Defesa arquivoTexto(String arquivoTexto) {
+<span class="fc" id="L91">        this.arquivoTexto = arquivoTexto;</span>
+<span class="fc" id="L92">        return this;</span>
+    }
+
+    public void setArquivoTexto(String arquivoTexto) {
+<span class="fc" id="L96">        this.arquivoTexto = arquivoTexto;</span>
+<span class="fc" id="L97">    }</span>
+
+    public TipoDefesa getTipoDefesa() {
+<span class="fc" id="L100">        return tipoDefesa;</span>
+    }
+
+    public Defesa tipoDefesa(TipoDefesa tipoDefesa) {
+<span class="fc" id="L104">        this.tipoDefesa = tipoDefesa;</span>
+<span class="fc" id="L105">        return this;</span>
+    }
+
+    public void setTipoDefesa(TipoDefesa tipoDefesa) {
+<span class="fc" id="L109">        this.tipoDefesa = tipoDefesa;</span>
+<span class="fc" id="L110">    }</span>
+
+    public Set&lt;ParticipacaoBanca&gt; getParticipacaoBancas() {
+<span class="nc" id="L113">        return participacaoBancas;</span>
+    }
+
+    public Defesa participacaoBancas(Set&lt;ParticipacaoBanca&gt; participacaoBancas) {
+<span class="nc" id="L117">        this.participacaoBancas = participacaoBancas;</span>
+<span class="nc" id="L118">        return this;</span>
+    }
+
+    public Defesa addParticipacaoBanca(ParticipacaoBanca participacaoBanca) {
+<span class="nc" id="L122">        this.participacaoBancas.add(participacaoBanca);</span>
+<span class="nc" id="L123">        participacaoBanca.setDefesa(this);</span>
+<span class="nc" id="L124">        return this;</span>
+    }
+
+    public Defesa removeParticipacaoBanca(ParticipacaoBanca participacaoBanca) {
+<span class="nc" id="L128">        this.participacaoBancas.remove(participacaoBanca);</span>
+<span class="nc" id="L129">        participacaoBanca.setDefesa(null);</span>
+<span class="nc" id="L130">        return this;</span>
+    }
+
+    public void setParticipacaoBancas(Set&lt;ParticipacaoBanca&gt; participacaoBancas) {
+<span class="nc" id="L134">        this.participacaoBancas = participacaoBancas;</span>
+<span class="nc" id="L135">    }</span>
+
+    public Aluno getAluno() {
+<span class="fc" id="L138">        return aluno;</span>
+    }
+
+    public Defesa aluno(Aluno aluno) {
+<span class="nc" id="L142">        this.aluno = aluno;</span>
+<span class="nc" id="L143">        return this;</span>
+    }
+
+    public void setAluno(Aluno aluno) {
+<span class="fc" id="L147">        this.aluno = aluno;</span>
+<span class="fc" id="L148">    }</span>
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L153" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L154">            return true;</span>
+        }
+<span class="fc bfc" id="L156" title="All 4 branches covered.">        if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L157">            return false;</span>
+        }
+<span class="fc" id="L159">        Defesa defesa = (Defesa) o;</span>
+<span class="fc bfc" id="L160" title="All 4 branches covered.">        if (defesa.getId() == null || getId() == null) {</span>
+<span class="fc" id="L161">            return false;</span>
+        }
+<span class="fc" id="L163">        return Objects.equals(getId(), defesa.getId());</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L168">        return Objects.hashCode(getId());</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L173">        return &quot;Defesa{&quot; +</span>
+<span class="fc" id="L174">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L175">            &quot;, dataEHora='&quot; + getDataEHora() + &quot;'&quot; +</span>
+<span class="fc" id="L176">            &quot;, local='&quot; + getLocal() + &quot;'&quot; +</span>
+<span class="fc" id="L177">            &quot;, arquivoTexto='&quot; + getArquivoTexto() + &quot;'&quot; +</span>
+<span class="fc" id="L178">            &quot;, tipoDefesa='&quot; + getTipoDefesa() + &quot;'&quot; +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

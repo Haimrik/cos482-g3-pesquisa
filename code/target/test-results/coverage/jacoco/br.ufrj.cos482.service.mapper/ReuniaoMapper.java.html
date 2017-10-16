@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReuniaoMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.service.mapper</a> &gt; <span class="el_source">ReuniaoMapper.java</span></div><h1>ReuniaoMapper.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.service.mapper;
+
+import br.ufrj.cos482.domain.*;
+import br.ufrj.cos482.service.dto.ReuniaoDTO;
+
+import org.mapstruct.*;
+
+/**
+ * Mapper for the entity Reuniao and its DTO ReuniaoDTO.
+ */
+@Mapper(componentModel = &quot;spring&quot;, uses = {ProfessorMapper.class, AlunoMapper.class, })
+public interface ReuniaoMapper extends EntityMapper &lt;ReuniaoDTO, Reuniao&gt; {
+
+    @Mapping(source = &quot;professor.id&quot;, target = &quot;professorId&quot;)
+
+    @Mapping(source = &quot;aluno.id&quot;, target = &quot;alunoId&quot;)
+    ReuniaoDTO toDto(Reuniao reuniao); 
+
+    @Mapping(source = &quot;professorId&quot;, target = &quot;professor&quot;)
+
+    @Mapping(source = &quot;alunoId&quot;, target = &quot;aluno&quot;)
+    Reuniao toEntity(ReuniaoDTO reuniaoDTO); 
+    default Reuniao fromId(Long id) {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (id == null) {</span>
+<span class="fc" id="L25">            return null;</span>
+        }
+<span class="fc" id="L27">        Reuniao reuniao = new Reuniao();</span>
+<span class="fc" id="L28">        reuniao.setId(id);</span>
+<span class="fc" id="L29">        return reuniao;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

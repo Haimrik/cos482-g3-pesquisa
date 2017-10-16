@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Professor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.domain</a> &gt; <span class="el_source">Professor.java</span></div><h1>Professor.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
+
+/**
+ * A Professor.
+ */
+@Entity
+@Table(name = &quot;professor&quot;)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+<span class="fc" id="L20">public class Professor implements Serializable {</span>
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    @Column(name = &quot;nome&quot;, nullable = false)
+    private String nome;
+
+    @NotNull
+    @Column(name = &quot;matricula&quot;, nullable = false)
+    private String matricula;
+
+    @NotNull
+    @Column(name = &quot;link_lattes&quot;, nullable = false)
+    private String linkLattes;
+
+    @Column(name = &quot;programa&quot;)
+    private String programa;
+
+    @Column(name = &quot;linha_de_pesquisa&quot;)
+    private String linhaDePesquisa;
+
+    @Column(name = &quot;areas_de_interesse&quot;)
+    private String areasDeInteresse;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Usuario usuario;
+
+<span class="fc" id="L53">    @OneToMany(mappedBy = &quot;orientador&quot;)</span>
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set&lt;Aluno&gt; alunos = new HashSet&lt;&gt;();
+
+<span class="fc" id="L58">    @OneToMany(mappedBy = &quot;professor&quot;)</span>
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set&lt;ParticipacaoBanca&gt; participacaoBancas = new HashSet&lt;&gt;();
+
+<span class="fc" id="L63">    @OneToMany(mappedBy = &quot;professor&quot;)</span>
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set&lt;Reuniao&gt; reuniaos = new HashSet&lt;&gt;();
+
+<span class="fc" id="L68">    @ManyToMany</span>
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = &quot;professor_coorientador&quot;,
+               joinColumns = @JoinColumn(name=&quot;professors_id&quot;, referencedColumnName=&quot;id&quot;),
+               inverseJoinColumns = @JoinColumn(name=&quot;coorientadors_id&quot;, referencedColumnName=&quot;id&quot;))
+    private Set&lt;Aluno&gt; coorientadors = new HashSet&lt;&gt;();
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public Long getId() {
+<span class="fc" id="L77">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L81">        this.id = id;</span>
+<span class="fc" id="L82">    }</span>
+
+    public String getNome() {
+<span class="fc" id="L85">        return nome;</span>
+    }
+
+    public Professor nome(String nome) {
+<span class="fc" id="L89">        this.nome = nome;</span>
+<span class="fc" id="L90">        return this;</span>
+    }
+
+    public void setNome(String nome) {
+<span class="fc" id="L94">        this.nome = nome;</span>
+<span class="fc" id="L95">    }</span>
+
+    public String getMatricula() {
+<span class="fc" id="L98">        return matricula;</span>
+    }
+
+    public Professor matricula(String matricula) {
+<span class="fc" id="L102">        this.matricula = matricula;</span>
+<span class="fc" id="L103">        return this;</span>
+    }
+
+    public void setMatricula(String matricula) {
+<span class="fc" id="L107">        this.matricula = matricula;</span>
+<span class="fc" id="L108">    }</span>
+
+    public String getLinkLattes() {
+<span class="fc" id="L111">        return linkLattes;</span>
+    }
+
+    public Professor linkLattes(String linkLattes) {
+<span class="fc" id="L115">        this.linkLattes = linkLattes;</span>
+<span class="fc" id="L116">        return this;</span>
+    }
+
+    public void setLinkLattes(String linkLattes) {
+<span class="fc" id="L120">        this.linkLattes = linkLattes;</span>
+<span class="fc" id="L121">    }</span>
+
+    public String getPrograma() {
+<span class="fc" id="L124">        return programa;</span>
+    }
+
+    public Professor programa(String programa) {
+<span class="fc" id="L128">        this.programa = programa;</span>
+<span class="fc" id="L129">        return this;</span>
+    }
+
+    public void setPrograma(String programa) {
+<span class="fc" id="L133">        this.programa = programa;</span>
+<span class="fc" id="L134">    }</span>
+
+    public String getLinhaDePesquisa() {
+<span class="fc" id="L137">        return linhaDePesquisa;</span>
+    }
+
+    public Professor linhaDePesquisa(String linhaDePesquisa) {
+<span class="fc" id="L141">        this.linhaDePesquisa = linhaDePesquisa;</span>
+<span class="fc" id="L142">        return this;</span>
+    }
+
+    public void setLinhaDePesquisa(String linhaDePesquisa) {
+<span class="fc" id="L146">        this.linhaDePesquisa = linhaDePesquisa;</span>
+<span class="fc" id="L147">    }</span>
+
+    public String getAreasDeInteresse() {
+<span class="fc" id="L150">        return areasDeInteresse;</span>
+    }
+
+    public Professor areasDeInteresse(String areasDeInteresse) {
+<span class="fc" id="L154">        this.areasDeInteresse = areasDeInteresse;</span>
+<span class="fc" id="L155">        return this;</span>
+    }
+
+    public void setAreasDeInteresse(String areasDeInteresse) {
+<span class="fc" id="L159">        this.areasDeInteresse = areasDeInteresse;</span>
+<span class="fc" id="L160">    }</span>
+
+    public Usuario getUsuario() {
+<span class="fc" id="L163">        return usuario;</span>
+    }
+
+    public Professor usuario(Usuario usuario) {
+<span class="nc" id="L167">        this.usuario = usuario;</span>
+<span class="nc" id="L168">        return this;</span>
+    }
+
+    public void setUsuario(Usuario usuario) {
+<span class="fc" id="L172">        this.usuario = usuario;</span>
+<span class="fc" id="L173">    }</span>
+
+    public Set&lt;Aluno&gt; getAlunos() {
+<span class="nc" id="L176">        return alunos;</span>
+    }
+
+    public Professor alunos(Set&lt;Aluno&gt; alunos) {
+<span class="nc" id="L180">        this.alunos = alunos;</span>
+<span class="nc" id="L181">        return this;</span>
+    }
+
+    public Professor addAluno(Aluno aluno) {
+<span class="nc" id="L185">        this.alunos.add(aluno);</span>
+<span class="nc" id="L186">        aluno.setOrientador(this);</span>
+<span class="nc" id="L187">        return this;</span>
+    }
+
+    public Professor removeAluno(Aluno aluno) {
+<span class="nc" id="L191">        this.alunos.remove(aluno);</span>
+<span class="nc" id="L192">        aluno.setOrientador(null);</span>
+<span class="nc" id="L193">        return this;</span>
+    }
+
+    public void setAlunos(Set&lt;Aluno&gt; alunos) {
+<span class="nc" id="L197">        this.alunos = alunos;</span>
+<span class="nc" id="L198">    }</span>
+
+    public Set&lt;ParticipacaoBanca&gt; getParticipacaoBancas() {
+<span class="nc" id="L201">        return participacaoBancas;</span>
+    }
+
+    public Professor participacaoBancas(Set&lt;ParticipacaoBanca&gt; participacaoBancas) {
+<span class="nc" id="L205">        this.participacaoBancas = participacaoBancas;</span>
+<span class="nc" id="L206">        return this;</span>
+    }
+
+    public Professor addParticipacaoBanca(ParticipacaoBanca participacaoBanca) {
+<span class="nc" id="L210">        this.participacaoBancas.add(participacaoBanca);</span>
+<span class="nc" id="L211">        participacaoBanca.setProfessor(this);</span>
+<span class="nc" id="L212">        return this;</span>
+    }
+
+    public Professor removeParticipacaoBanca(ParticipacaoBanca participacaoBanca) {
+<span class="nc" id="L216">        this.participacaoBancas.remove(participacaoBanca);</span>
+<span class="nc" id="L217">        participacaoBanca.setProfessor(null);</span>
+<span class="nc" id="L218">        return this;</span>
+    }
+
+    public void setParticipacaoBancas(Set&lt;ParticipacaoBanca&gt; participacaoBancas) {
+<span class="nc" id="L222">        this.participacaoBancas = participacaoBancas;</span>
+<span class="nc" id="L223">    }</span>
+
+    public Set&lt;Reuniao&gt; getReuniaos() {
+<span class="nc" id="L226">        return reuniaos;</span>
+    }
+
+    public Professor reuniaos(Set&lt;Reuniao&gt; reuniaos) {
+<span class="nc" id="L230">        this.reuniaos = reuniaos;</span>
+<span class="nc" id="L231">        return this;</span>
+    }
+
+    public Professor addReuniao(Reuniao reuniao) {
+<span class="nc" id="L235">        this.reuniaos.add(reuniao);</span>
+<span class="nc" id="L236">        reuniao.setProfessor(this);</span>
+<span class="nc" id="L237">        return this;</span>
+    }
+
+    public Professor removeReuniao(Reuniao reuniao) {
+<span class="nc" id="L241">        this.reuniaos.remove(reuniao);</span>
+<span class="nc" id="L242">        reuniao.setProfessor(null);</span>
+<span class="nc" id="L243">        return this;</span>
+    }
+
+    public void setReuniaos(Set&lt;Reuniao&gt; reuniaos) {
+<span class="nc" id="L247">        this.reuniaos = reuniaos;</span>
+<span class="nc" id="L248">    }</span>
+
+    public Set&lt;Aluno&gt; getCoorientadors() {
+<span class="fc" id="L251">        return coorientadors;</span>
+    }
+
+    public Professor coorientadors(Set&lt;Aluno&gt; alunos) {
+<span class="nc" id="L255">        this.coorientadors = alunos;</span>
+<span class="nc" id="L256">        return this;</span>
+    }
+
+    public Professor addCoorientador(Aluno aluno) {
+<span class="nc" id="L260">        this.coorientadors.add(aluno);</span>
+<span class="nc" id="L261">        aluno.getAlunos().add(this);</span>
+<span class="nc" id="L262">        return this;</span>
+    }
+
+    public Professor removeCoorientador(Aluno aluno) {
+<span class="nc" id="L266">        this.coorientadors.remove(aluno);</span>
+<span class="nc" id="L267">        aluno.getAlunos().remove(this);</span>
+<span class="nc" id="L268">        return this;</span>
+    }
+
+    public void setCoorientadors(Set&lt;Aluno&gt; alunos) {
+<span class="fc" id="L272">        this.coorientadors = alunos;</span>
+<span class="fc" id="L273">    }</span>
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L278" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L279">            return true;</span>
+        }
+<span class="fc bfc" id="L281" title="All 4 branches covered.">        if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L282">            return false;</span>
+        }
+<span class="fc" id="L284">        Professor professor = (Professor) o;</span>
+<span class="fc bfc" id="L285" title="All 4 branches covered.">        if (professor.getId() == null || getId() == null) {</span>
+<span class="fc" id="L286">            return false;</span>
+        }
+<span class="fc" id="L288">        return Objects.equals(getId(), professor.getId());</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L293">        return Objects.hashCode(getId());</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L298">        return &quot;Professor{&quot; +</span>
+<span class="fc" id="L299">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L300">            &quot;, nome='&quot; + getNome() + &quot;'&quot; +</span>
+<span class="fc" id="L301">            &quot;, matricula='&quot; + getMatricula() + &quot;'&quot; +</span>
+<span class="fc" id="L302">            &quot;, linkLattes='&quot; + getLinkLattes() + &quot;'&quot; +</span>
+<span class="fc" id="L303">            &quot;, programa='&quot; + getPrograma() + &quot;'&quot; +</span>
+<span class="fc" id="L304">            &quot;, linhaDePesquisa='&quot; + getLinhaDePesquisa() + &quot;'&quot; +</span>
+<span class="fc" id="L305">            &quot;, areasDeInteresse='&quot; + getAreasDeInteresse() + &quot;'&quot; +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

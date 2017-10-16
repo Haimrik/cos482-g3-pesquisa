@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsuarioServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.service.impl</a> &gt; <span class="el_source">UsuarioServiceImpl.java</span></div><h1>UsuarioServiceImpl.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.service.impl;
+
+import br.ufrj.cos482.service.UsuarioService;
+import br.ufrj.cos482.domain.Usuario;
+import br.ufrj.cos482.repository.UsuarioRepository;
+import br.ufrj.cos482.service.dto.UsuarioDTO;
+import br.ufrj.cos482.service.mapper.UsuarioMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+/**
+ * Service Implementation for managing Usuario.
+ */
+@Service
+@Transactional
+public class UsuarioServiceImpl implements UsuarioService{
+
+<span class="fc" id="L27">    private final Logger log = LoggerFactory.getLogger(UsuarioServiceImpl.class);</span>
+
+    private final UsuarioRepository usuarioRepository;
+
+    private final UsuarioMapper usuarioMapper;
+
+<span class="fc" id="L33">    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, UsuarioMapper usuarioMapper) {</span>
+<span class="fc" id="L34">        this.usuarioRepository = usuarioRepository;</span>
+<span class="fc" id="L35">        this.usuarioMapper = usuarioMapper;</span>
+<span class="fc" id="L36">    }</span>
+
+    /**
+     * Save a usuario.
+     *
+     * @param usuarioDTO the entity to save
+     * @return the persisted entity
+     */
+    @Override
+    public UsuarioDTO save(UsuarioDTO usuarioDTO) {
+<span class="fc" id="L46">        log.debug(&quot;Request to save Usuario : {}&quot;, usuarioDTO);</span>
+<span class="fc" id="L47">        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);</span>
+<span class="fc" id="L48">        usuario = usuarioRepository.save(usuario);</span>
+<span class="fc" id="L49">        return usuarioMapper.toDto(usuario);</span>
+    }
+
+    /**
+     *  Get all the usuarios.
+     *
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page&lt;UsuarioDTO&gt; findAll(Pageable pageable) {
+<span class="fc" id="L61">        log.debug(&quot;Request to get all Usuarios&quot;);</span>
+<span class="fc" id="L62">        return usuarioRepository.findAll(pageable)</span>
+<span class="fc" id="L63">            .map(usuarioMapper::toDto);</span>
+    }
+
+
+    /**
+     *  get all the usuarios where Aluno is null.
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true) 
+    public List&lt;UsuarioDTO&gt; findAllWhereAlunoIsNull() {
+<span class="nc" id="L73">        log.debug(&quot;Request to get all usuarios where Aluno is null&quot;);</span>
+<span class="nc" id="L74">        return StreamSupport</span>
+<span class="nc" id="L75">            .stream(usuarioRepository.findAll().spliterator(), false)</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">            .filter(usuario -&gt; usuario.getAluno() == null)</span>
+<span class="nc" id="L77">            .map(usuarioMapper::toDto)</span>
+<span class="nc" id="L78">            .collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+
+    /**
+     *  get all the usuarios where Professor is null.
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true) 
+    public List&lt;UsuarioDTO&gt; findAllWhereProfessorIsNull() {
+<span class="nc" id="L88">        log.debug(&quot;Request to get all usuarios where Professor is null&quot;);</span>
+<span class="nc" id="L89">        return StreamSupport</span>
+<span class="nc" id="L90">            .stream(usuarioRepository.findAll().spliterator(), false)</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">            .filter(usuario -&gt; usuario.getProfessor() == null)</span>
+<span class="nc" id="L92">            .map(usuarioMapper::toDto)</span>
+<span class="nc" id="L93">            .collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    /**
+     *  Get one usuario by id.
+     *
+     *  @param id the id of the entity
+     *  @return the entity
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public UsuarioDTO findOne(Long id) {
+<span class="fc" id="L105">        log.debug(&quot;Request to get Usuario : {}&quot;, id);</span>
+<span class="fc" id="L106">        Usuario usuario = usuarioRepository.findOneWithEagerRelationships(id);</span>
+<span class="fc" id="L107">        return usuarioMapper.toDto(usuario);</span>
+    }
+
+    /**
+     *  Delete the  usuario by id.
+     *
+     *  @param id the id of the entity
+     */
+    @Override
+    public void delete(Long id) {
+<span class="fc" id="L117">        log.debug(&quot;Request to delete Usuario : {}&quot;, id);</span>
+<span class="fc" id="L118">        usuarioRepository.delete(id);</span>
+<span class="fc" id="L119">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

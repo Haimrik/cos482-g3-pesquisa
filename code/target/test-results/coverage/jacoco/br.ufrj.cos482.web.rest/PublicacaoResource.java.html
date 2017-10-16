@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PublicacaoResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.web.rest</a> &gt; <span class="el_source">PublicacaoResource.java</span></div><h1>PublicacaoResource.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.web.rest;
+
+import com.codahale.metrics.annotation.Timed;
+import br.ufrj.cos482.service.PublicacaoService;
+import br.ufrj.cos482.web.rest.util.HeaderUtil;
+import br.ufrj.cos482.web.rest.util.PaginationUtil;
+import br.ufrj.cos482.service.dto.PublicacaoDTO;
+import io.swagger.annotations.ApiParam;
+import io.github.jhipster.web.util.ResponseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * REST controller for managing Publicacao.
+ */
+@RestController
+@RequestMapping(&quot;/api&quot;)
+public class PublicacaoResource {
+
+<span class="fc" id="L33">    private final Logger log = LoggerFactory.getLogger(PublicacaoResource.class);</span>
+
+    private static final String ENTITY_NAME = &quot;publicacao&quot;;
+
+    private final PublicacaoService publicacaoService;
+
+<span class="fc" id="L39">    public PublicacaoResource(PublicacaoService publicacaoService) {</span>
+<span class="fc" id="L40">        this.publicacaoService = publicacaoService;</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * POST  /publicacaos : Create a new publicacao.
+     *
+     * @param publicacaoDTO the publicacaoDTO to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new publicacaoDTO, or with status 400 (Bad Request) if the publicacao has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping(&quot;/publicacaos&quot;)
+    @Timed
+    public ResponseEntity&lt;PublicacaoDTO&gt; createPublicacao(@Valid @RequestBody PublicacaoDTO publicacaoDTO) throws URISyntaxException {
+<span class="fc" id="L53">        log.debug(&quot;REST request to save Publicacao : {}&quot;, publicacaoDTO);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (publicacaoDTO.getId() != null) {</span>
+<span class="fc" id="L55">            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, &quot;idexists&quot;, &quot;A new publicacao cannot already have an ID&quot;)).body(null);</span>
+        }
+<span class="fc" id="L57">        PublicacaoDTO result = publicacaoService.save(publicacaoDTO);</span>
+<span class="fc" id="L58">        return ResponseEntity.created(new URI(&quot;/api/publicacaos/&quot; + result.getId()))</span>
+<span class="fc" id="L59">            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))</span>
+<span class="fc" id="L60">            .body(result);</span>
+    }
+
+    /**
+     * PUT  /publicacaos : Updates an existing publicacao.
+     *
+     * @param publicacaoDTO the publicacaoDTO to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated publicacaoDTO,
+     * or with status 400 (Bad Request) if the publicacaoDTO is not valid,
+     * or with status 500 (Internal Server Error) if the publicacaoDTO couldn't be updated
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PutMapping(&quot;/publicacaos&quot;)
+    @Timed
+    public ResponseEntity&lt;PublicacaoDTO&gt; updatePublicacao(@Valid @RequestBody PublicacaoDTO publicacaoDTO) throws URISyntaxException {
+<span class="fc" id="L75">        log.debug(&quot;REST request to update Publicacao : {}&quot;, publicacaoDTO);</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        if (publicacaoDTO.getId() == null) {</span>
+<span class="fc" id="L77">            return createPublicacao(publicacaoDTO);</span>
+        }
+<span class="fc" id="L79">        PublicacaoDTO result = publicacaoService.save(publicacaoDTO);</span>
+<span class="fc" id="L80">        return ResponseEntity.ok()</span>
+<span class="fc" id="L81">            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, publicacaoDTO.getId().toString()))</span>
+<span class="fc" id="L82">            .body(result);</span>
+    }
+
+    /**
+     * GET  /publicacaos : get all the publicacaos.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of publicacaos in body
+     */
+    @GetMapping(&quot;/publicacaos&quot;)
+    @Timed
+    public ResponseEntity&lt;List&lt;PublicacaoDTO&gt;&gt; getAllPublicacaos(@ApiParam Pageable pageable) {
+<span class="fc" id="L94">        log.debug(&quot;REST request to get a page of Publicacaos&quot;);</span>
+<span class="fc" id="L95">        Page&lt;PublicacaoDTO&gt; page = publicacaoService.findAll(pageable);</span>
+<span class="fc" id="L96">        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, &quot;/api/publicacaos&quot;);</span>
+<span class="fc" id="L97">        return new ResponseEntity&lt;&gt;(page.getContent(), headers, HttpStatus.OK);</span>
+    }
+
+    /**
+     * GET  /publicacaos/:id : get the &quot;id&quot; publicacao.
+     *
+     * @param id the id of the publicacaoDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the publicacaoDTO, or with status 404 (Not Found)
+     */
+    @GetMapping(&quot;/publicacaos/{id}&quot;)
+    @Timed
+    public ResponseEntity&lt;PublicacaoDTO&gt; getPublicacao(@PathVariable Long id) {
+<span class="fc" id="L109">        log.debug(&quot;REST request to get Publicacao : {}&quot;, id);</span>
+<span class="fc" id="L110">        PublicacaoDTO publicacaoDTO = publicacaoService.findOne(id);</span>
+<span class="fc" id="L111">        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(publicacaoDTO));</span>
+    }
+
+    /**
+     * DELETE  /publicacaos/:id : delete the &quot;id&quot; publicacao.
+     *
+     * @param id the id of the publicacaoDTO to delete
+     * @return the ResponseEntity with status 200 (OK)
+     */
+    @DeleteMapping(&quot;/publicacaos/{id}&quot;)
+    @Timed
+    public ResponseEntity&lt;Void&gt; deletePublicacao(@PathVariable Long id) {
+<span class="fc" id="L123">        log.debug(&quot;REST request to delete Publicacao : {}&quot;, id);</span>
+<span class="fc" id="L124">        publicacaoService.delete(id);</span>
+<span class="fc" id="L125">        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

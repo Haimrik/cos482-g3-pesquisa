@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Usuario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.domain</a> &gt; <span class="el_source">Usuario.java</span></div><h1>Usuario.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
+
+/**
+ * A Usuario.
+ */
+@Entity
+@Table(name = &quot;usuario&quot;)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+<span class="fc" id="L19">public class Usuario implements Serializable {</span>
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+<span class="fc" id="L27">    @OneToMany(mappedBy = &quot;organizador&quot;)</span>
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set&lt;Seminario&gt; seminarios = new HashSet&lt;&gt;();
+
+<span class="fc" id="L32">    @ManyToMany</span>
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = &quot;usuario_publicacao&quot;,
+               joinColumns = @JoinColumn(name=&quot;usuarios_id&quot;, referencedColumnName=&quot;id&quot;),
+               inverseJoinColumns = @JoinColumn(name=&quot;publicacaos_id&quot;, referencedColumnName=&quot;id&quot;))
+    private Set&lt;Publicacao&gt; publicacaos = new HashSet&lt;&gt;();
+
+    @OneToOne(mappedBy = &quot;usuario&quot;)
+    @JsonIgnore
+    private Aluno aluno;
+
+    @OneToOne(mappedBy = &quot;usuario&quot;)
+    @JsonIgnore
+    private Professor professor;
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public Long getId() {
+<span class="fc" id="L49">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L53">        this.id = id;</span>
+<span class="fc" id="L54">    }</span>
+
+    public Set&lt;Seminario&gt; getSeminarios() {
+<span class="nc" id="L57">        return seminarios;</span>
+    }
+
+    public Usuario seminarios(Set&lt;Seminario&gt; seminarios) {
+<span class="nc" id="L61">        this.seminarios = seminarios;</span>
+<span class="nc" id="L62">        return this;</span>
+    }
+
+    public Usuario addSeminario(Seminario seminario) {
+<span class="nc" id="L66">        this.seminarios.add(seminario);</span>
+<span class="nc" id="L67">        seminario.setOrganizador(this);</span>
+<span class="nc" id="L68">        return this;</span>
+    }
+
+    public Usuario removeSeminario(Seminario seminario) {
+<span class="nc" id="L72">        this.seminarios.remove(seminario);</span>
+<span class="nc" id="L73">        seminario.setOrganizador(null);</span>
+<span class="nc" id="L74">        return this;</span>
+    }
+
+    public void setSeminarios(Set&lt;Seminario&gt; seminarios) {
+<span class="nc" id="L78">        this.seminarios = seminarios;</span>
+<span class="nc" id="L79">    }</span>
+
+    public Set&lt;Publicacao&gt; getPublicacaos() {
+<span class="fc" id="L82">        return publicacaos;</span>
+    }
+
+    public Usuario publicacaos(Set&lt;Publicacao&gt; publicacaos) {
+<span class="nc" id="L86">        this.publicacaos = publicacaos;</span>
+<span class="nc" id="L87">        return this;</span>
+    }
+
+    public Usuario addPublicacao(Publicacao publicacao) {
+<span class="nc" id="L91">        this.publicacaos.add(publicacao);</span>
+<span class="nc" id="L92">        publicacao.getCoautors().add(this);</span>
+<span class="nc" id="L93">        return this;</span>
+    }
+
+    public Usuario removePublicacao(Publicacao publicacao) {
+<span class="nc" id="L97">        this.publicacaos.remove(publicacao);</span>
+<span class="nc" id="L98">        publicacao.getCoautors().remove(this);</span>
+<span class="nc" id="L99">        return this;</span>
+    }
+
+    public void setPublicacaos(Set&lt;Publicacao&gt; publicacaos) {
+<span class="fc" id="L103">        this.publicacaos = publicacaos;</span>
+<span class="fc" id="L104">    }</span>
+
+    public Aluno getAluno() {
+<span class="nc" id="L107">        return aluno;</span>
+    }
+
+    public Usuario aluno(Aluno aluno) {
+<span class="nc" id="L111">        this.aluno = aluno;</span>
+<span class="nc" id="L112">        return this;</span>
+    }
+
+    public void setAluno(Aluno aluno) {
+<span class="nc" id="L116">        this.aluno = aluno;</span>
+<span class="nc" id="L117">    }</span>
+
+    public Professor getProfessor() {
+<span class="nc" id="L120">        return professor;</span>
+    }
+
+    public Usuario professor(Professor professor) {
+<span class="nc" id="L124">        this.professor = professor;</span>
+<span class="nc" id="L125">        return this;</span>
+    }
+
+    public void setProfessor(Professor professor) {
+<span class="nc" id="L129">        this.professor = professor;</span>
+<span class="nc" id="L130">    }</span>
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L135" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L136">            return true;</span>
+        }
+<span class="fc bfc" id="L138" title="All 4 branches covered.">        if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L139">            return false;</span>
+        }
+<span class="fc" id="L141">        Usuario usuario = (Usuario) o;</span>
+<span class="fc bfc" id="L142" title="All 4 branches covered.">        if (usuario.getId() == null || getId() == null) {</span>
+<span class="fc" id="L143">            return false;</span>
+        }
+<span class="fc" id="L145">        return Objects.equals(getId(), usuario.getId());</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L150">        return Objects.hashCode(getId());</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L155">        return &quot;Usuario{&quot; +</span>
+<span class="fc" id="L156">            &quot;id=&quot; + getId() +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

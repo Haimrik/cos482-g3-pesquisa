@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProfessorResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.web.rest</a> &gt; <span class="el_source">ProfessorResource.java</span></div><h1>ProfessorResource.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.web.rest;
+
+import com.codahale.metrics.annotation.Timed;
+import br.ufrj.cos482.service.ProfessorService;
+import br.ufrj.cos482.web.rest.util.HeaderUtil;
+import br.ufrj.cos482.web.rest.util.PaginationUtil;
+import br.ufrj.cos482.service.dto.ProfessorDTO;
+import io.swagger.annotations.ApiParam;
+import io.github.jhipster.web.util.ResponseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * REST controller for managing Professor.
+ */
+@RestController
+@RequestMapping(&quot;/api&quot;)
+public class ProfessorResource {
+
+<span class="fc" id="L33">    private final Logger log = LoggerFactory.getLogger(ProfessorResource.class);</span>
+
+    private static final String ENTITY_NAME = &quot;professor&quot;;
+
+    private final ProfessorService professorService;
+
+<span class="fc" id="L39">    public ProfessorResource(ProfessorService professorService) {</span>
+<span class="fc" id="L40">        this.professorService = professorService;</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * POST  /professors : Create a new professor.
+     *
+     * @param professorDTO the professorDTO to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new professorDTO, or with status 400 (Bad Request) if the professor has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping(&quot;/professors&quot;)
+    @Timed
+    public ResponseEntity&lt;ProfessorDTO&gt; createProfessor(@Valid @RequestBody ProfessorDTO professorDTO) throws URISyntaxException {
+<span class="fc" id="L53">        log.debug(&quot;REST request to save Professor : {}&quot;, professorDTO);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (professorDTO.getId() != null) {</span>
+<span class="fc" id="L55">            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, &quot;idexists&quot;, &quot;A new professor cannot already have an ID&quot;)).body(null);</span>
+        }
+<span class="fc" id="L57">        ProfessorDTO result = professorService.save(professorDTO);</span>
+<span class="fc" id="L58">        return ResponseEntity.created(new URI(&quot;/api/professors/&quot; + result.getId()))</span>
+<span class="fc" id="L59">            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))</span>
+<span class="fc" id="L60">            .body(result);</span>
+    }
+
+    /**
+     * PUT  /professors : Updates an existing professor.
+     *
+     * @param professorDTO the professorDTO to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated professorDTO,
+     * or with status 400 (Bad Request) if the professorDTO is not valid,
+     * or with status 500 (Internal Server Error) if the professorDTO couldn't be updated
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PutMapping(&quot;/professors&quot;)
+    @Timed
+    public ResponseEntity&lt;ProfessorDTO&gt; updateProfessor(@Valid @RequestBody ProfessorDTO professorDTO) throws URISyntaxException {
+<span class="fc" id="L75">        log.debug(&quot;REST request to update Professor : {}&quot;, professorDTO);</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        if (professorDTO.getId() == null) {</span>
+<span class="fc" id="L77">            return createProfessor(professorDTO);</span>
+        }
+<span class="fc" id="L79">        ProfessorDTO result = professorService.save(professorDTO);</span>
+<span class="fc" id="L80">        return ResponseEntity.ok()</span>
+<span class="fc" id="L81">            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, professorDTO.getId().toString()))</span>
+<span class="fc" id="L82">            .body(result);</span>
+    }
+
+    /**
+     * GET  /professors : get all the professors.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of professors in body
+     */
+    @GetMapping(&quot;/professors&quot;)
+    @Timed
+    public ResponseEntity&lt;List&lt;ProfessorDTO&gt;&gt; getAllProfessors(@ApiParam Pageable pageable) {
+<span class="fc" id="L94">        log.debug(&quot;REST request to get a page of Professors&quot;);</span>
+<span class="fc" id="L95">        Page&lt;ProfessorDTO&gt; page = professorService.findAll(pageable);</span>
+<span class="fc" id="L96">        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, &quot;/api/professors&quot;);</span>
+<span class="fc" id="L97">        return new ResponseEntity&lt;&gt;(page.getContent(), headers, HttpStatus.OK);</span>
+    }
+
+    /**
+     * GET  /professors/:id : get the &quot;id&quot; professor.
+     *
+     * @param id the id of the professorDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the professorDTO, or with status 404 (Not Found)
+     */
+    @GetMapping(&quot;/professors/{id}&quot;)
+    @Timed
+    public ResponseEntity&lt;ProfessorDTO&gt; getProfessor(@PathVariable Long id) {
+<span class="fc" id="L109">        log.debug(&quot;REST request to get Professor : {}&quot;, id);</span>
+<span class="fc" id="L110">        ProfessorDTO professorDTO = professorService.findOne(id);</span>
+<span class="fc" id="L111">        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(professorDTO));</span>
+    }
+
+    /**
+     * DELETE  /professors/:id : delete the &quot;id&quot; professor.
+     *
+     * @param id the id of the professorDTO to delete
+     * @return the ResponseEntity with status 200 (OK)
+     */
+    @DeleteMapping(&quot;/professors/{id}&quot;)
+    @Timed
+    public ResponseEntity&lt;Void&gt; deleteProfessor(@PathVariable Long id) {
+<span class="fc" id="L123">        log.debug(&quot;REST request to delete Professor : {}&quot;, id);</span>
+<span class="fc" id="L124">        professorService.delete(id);</span>
+<span class="fc" id="L125">        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

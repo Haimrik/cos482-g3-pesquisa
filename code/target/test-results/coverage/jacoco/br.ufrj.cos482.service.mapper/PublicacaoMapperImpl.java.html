@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PublicacaoMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.service.mapper</a> &gt; <span class="el_source">PublicacaoMapperImpl.java</span></div><h1>PublicacaoMapperImpl.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.service.mapper;
+
+import br.ufrj.cos482.domain.Aluno;
+
+import br.ufrj.cos482.domain.Publicacao;
+
+import br.ufrj.cos482.service.dto.PublicacaoDTO;
+
+import java.util.ArrayList;
+
+import java.util.List;
+
+import javax.annotation.Generated;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Component;
+
+@Generated(
+
+    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+
+    date = &quot;2017-10-15T22:11:41-0200&quot;,
+
+    comments = &quot;version: 1.1.0.Final, compiler: javac, environment: Java 1.8.0_131 (Oracle Corporation)&quot;
+
+)
+
+@Component
+
+<span class="fc" id="L31">public class PublicacaoMapperImpl implements PublicacaoMapper {</span>
+
+    @Autowired
+
+    private AlunoMapper alunoMapper;
+
+    @Override
+
+    public List&lt;Publicacao&gt; toEntity(List&lt;PublicacaoDTO&gt; dtoList) {
+
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if ( dtoList == null ) {</span>
+
+<span class="nc" id="L43">            return null;</span>
+        }
+
+<span class="nc" id="L46">        List&lt;Publicacao&gt; list = new ArrayList&lt;Publicacao&gt;();</span>
+
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        for ( PublicacaoDTO publicacaoDTO : dtoList ) {</span>
+
+<span class="nc" id="L50">            list.add( toEntity( publicacaoDTO ) );</span>
+<span class="nc" id="L51">        }</span>
+
+<span class="nc" id="L53">        return list;</span>
+    }
+
+    @Override
+
+    public List&lt;PublicacaoDTO&gt; toDto(List&lt;Publicacao&gt; entityList) {
+
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        if ( entityList == null ) {</span>
+
+<span class="nc" id="L62">            return null;</span>
+        }
+
+<span class="nc" id="L65">        List&lt;PublicacaoDTO&gt; list = new ArrayList&lt;PublicacaoDTO&gt;();</span>
+
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        for ( Publicacao publicacao : entityList ) {</span>
+
+<span class="nc" id="L69">            list.add( toDto( publicacao ) );</span>
+<span class="nc" id="L70">        }</span>
+
+<span class="nc" id="L72">        return list;</span>
+    }
+
+    @Override
+
+    public PublicacaoDTO toDto(Publicacao publicacao) {
+
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        if ( publicacao == null ) {</span>
+
+<span class="fc" id="L81">            return null;</span>
+        }
+
+<span class="fc" id="L84">        PublicacaoDTO publicacaoDTO_ = new PublicacaoDTO();</span>
+
+<span class="fc" id="L86">        publicacaoDTO_.setAlunoId( publicacaoAlunoId( publicacao ) );</span>
+
+<span class="fc" id="L88">        publicacaoDTO_.setId( publicacao.getId() );</span>
+
+<span class="fc" id="L90">        publicacaoDTO_.setUrl( publicacao.getUrl() );</span>
+
+<span class="fc" id="L92">        publicacaoDTO_.setPertenceAoPrograma( publicacao.isPertenceAoPrograma() );</span>
+
+<span class="fc" id="L94">        return publicacaoDTO_;</span>
+    }
+
+    @Override
+
+    public Publicacao toEntity(PublicacaoDTO publicacaoDTO) {
+
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">        if ( publicacaoDTO == null ) {</span>
+
+<span class="nc" id="L103">            return null;</span>
+        }
+
+<span class="fc" id="L106">        Publicacao publicacao_ = new Publicacao();</span>
+
+<span class="fc" id="L108">        publicacao_.setAluno( alunoMapper.fromId( publicacaoDTO.getAlunoId() ) );</span>
+
+<span class="fc" id="L110">        publicacao_.setId( publicacaoDTO.getId() );</span>
+
+<span class="fc" id="L112">        publicacao_.setUrl( publicacaoDTO.getUrl() );</span>
+
+<span class="fc" id="L114">        publicacao_.setPertenceAoPrograma( publicacaoDTO.isPertenceAoPrograma() );</span>
+
+<span class="fc" id="L116">        return publicacao_;</span>
+    }
+
+    private Long publicacaoAlunoId(Publicacao publicacao) {
+
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        if ( publicacao == null ) {</span>
+
+<span class="nc" id="L123">            return null;</span>
+        }
+
+<span class="fc" id="L126">        Aluno aluno = publicacao.getAluno();</span>
+
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">        if ( aluno == null ) {</span>
+
+<span class="fc" id="L130">            return null;</span>
+        }
+
+<span class="nc" id="L133">        Long id = aluno.getId();</span>
+
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        if ( id == null ) {</span>
+
+<span class="nc" id="L137">            return null;</span>
+        }
+
+<span class="nc" id="L140">        return id;</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

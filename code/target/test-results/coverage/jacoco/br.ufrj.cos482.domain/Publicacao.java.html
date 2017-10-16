@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Publicacao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.domain</a> &gt; <span class="el_source">Publicacao.java</span></div><h1>Publicacao.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
+
+/**
+ * A Publicacao.
+ */
+@Entity
+@Table(name = &quot;publicacao&quot;)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+<span class="fc" id="L20">public class Publicacao implements Serializable {</span>
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    @Column(name = &quot;url&quot;, nullable = false)
+    private String url;
+
+    @Column(name = &quot;pertence_ao_programa&quot;)
+    private Boolean pertenceAoPrograma;
+
+    @ManyToOne
+    private Aluno aluno;
+
+<span class="fc" id="L38">    @ManyToMany(mappedBy = &quot;publicacaos&quot;)</span>
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set&lt;Usuario&gt; coautors = new HashSet&lt;&gt;();
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public Long getId() {
+<span class="fc" id="L45">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L49">        this.id = id;</span>
+<span class="fc" id="L50">    }</span>
+
+    public String getUrl() {
+<span class="fc" id="L53">        return url;</span>
+    }
+
+    public Publicacao url(String url) {
+<span class="fc" id="L57">        this.url = url;</span>
+<span class="fc" id="L58">        return this;</span>
+    }
+
+    public void setUrl(String url) {
+<span class="fc" id="L62">        this.url = url;</span>
+<span class="fc" id="L63">    }</span>
+
+    public Boolean isPertenceAoPrograma() {
+<span class="fc" id="L66">        return pertenceAoPrograma;</span>
+    }
+
+    public Publicacao pertenceAoPrograma(Boolean pertenceAoPrograma) {
+<span class="fc" id="L70">        this.pertenceAoPrograma = pertenceAoPrograma;</span>
+<span class="fc" id="L71">        return this;</span>
+    }
+
+    public void setPertenceAoPrograma(Boolean pertenceAoPrograma) {
+<span class="fc" id="L75">        this.pertenceAoPrograma = pertenceAoPrograma;</span>
+<span class="fc" id="L76">    }</span>
+
+    public Aluno getAluno() {
+<span class="fc" id="L79">        return aluno;</span>
+    }
+
+    public Publicacao aluno(Aluno aluno) {
+<span class="nc" id="L83">        this.aluno = aluno;</span>
+<span class="nc" id="L84">        return this;</span>
+    }
+
+    public void setAluno(Aluno aluno) {
+<span class="fc" id="L88">        this.aluno = aluno;</span>
+<span class="fc" id="L89">    }</span>
+
+    public Set&lt;Usuario&gt; getCoautors() {
+<span class="nc" id="L92">        return coautors;</span>
+    }
+
+    public Publicacao coautors(Set&lt;Usuario&gt; usuarios) {
+<span class="nc" id="L96">        this.coautors = usuarios;</span>
+<span class="nc" id="L97">        return this;</span>
+    }
+
+    public Publicacao addCoautor(Usuario usuario) {
+<span class="nc" id="L101">        this.coautors.add(usuario);</span>
+<span class="nc" id="L102">        usuario.getPublicacaos().add(this);</span>
+<span class="nc" id="L103">        return this;</span>
+    }
+
+    public Publicacao removeCoautor(Usuario usuario) {
+<span class="nc" id="L107">        this.coautors.remove(usuario);</span>
+<span class="nc" id="L108">        usuario.getPublicacaos().remove(this);</span>
+<span class="nc" id="L109">        return this;</span>
+    }
+
+    public void setCoautors(Set&lt;Usuario&gt; usuarios) {
+<span class="nc" id="L113">        this.coautors = usuarios;</span>
+<span class="nc" id="L114">    }</span>
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L120">            return true;</span>
+        }
+<span class="fc bfc" id="L122" title="All 4 branches covered.">        if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L123">            return false;</span>
+        }
+<span class="fc" id="L125">        Publicacao publicacao = (Publicacao) o;</span>
+<span class="fc bfc" id="L126" title="All 4 branches covered.">        if (publicacao.getId() == null || getId() == null) {</span>
+<span class="fc" id="L127">            return false;</span>
+        }
+<span class="fc" id="L129">        return Objects.equals(getId(), publicacao.getId());</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L134">        return Objects.hashCode(getId());</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L139">        return &quot;Publicacao{&quot; +</span>
+<span class="fc" id="L140">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L141">            &quot;, url='&quot; + getUrl() + &quot;'&quot; +</span>
+<span class="fc" id="L142">            &quot;, pertenceAoPrograma='&quot; + isPertenceAoPrograma() + &quot;'&quot; +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

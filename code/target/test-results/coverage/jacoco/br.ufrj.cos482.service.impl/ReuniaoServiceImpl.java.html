@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReuniaoServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pesquisa</a> &gt; <a href="index.source.html" class="el_package">br.ufrj.cos482.service.impl</a> &gt; <span class="el_source">ReuniaoServiceImpl.java</span></div><h1>ReuniaoServiceImpl.java</h1><pre class="source lang-java linenums">package br.ufrj.cos482.service.impl;
+
+import br.ufrj.cos482.service.ReuniaoService;
+import br.ufrj.cos482.domain.Reuniao;
+import br.ufrj.cos482.repository.ReuniaoRepository;
+import br.ufrj.cos482.service.dto.ReuniaoDTO;
+import br.ufrj.cos482.service.mapper.ReuniaoMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+/**
+ * Service Implementation for managing Reuniao.
+ */
+@Service
+@Transactional
+public class ReuniaoServiceImpl implements ReuniaoService{
+
+<span class="fc" id="L23">    private final Logger log = LoggerFactory.getLogger(ReuniaoServiceImpl.class);</span>
+
+    private final ReuniaoRepository reuniaoRepository;
+
+    private final ReuniaoMapper reuniaoMapper;
+
+<span class="fc" id="L29">    public ReuniaoServiceImpl(ReuniaoRepository reuniaoRepository, ReuniaoMapper reuniaoMapper) {</span>
+<span class="fc" id="L30">        this.reuniaoRepository = reuniaoRepository;</span>
+<span class="fc" id="L31">        this.reuniaoMapper = reuniaoMapper;</span>
+<span class="fc" id="L32">    }</span>
+
+    /**
+     * Save a reuniao.
+     *
+     * @param reuniaoDTO the entity to save
+     * @return the persisted entity
+     */
+    @Override
+    public ReuniaoDTO save(ReuniaoDTO reuniaoDTO) {
+<span class="fc" id="L42">        log.debug(&quot;Request to save Reuniao : {}&quot;, reuniaoDTO);</span>
+<span class="fc" id="L43">        Reuniao reuniao = reuniaoMapper.toEntity(reuniaoDTO);</span>
+<span class="fc" id="L44">        reuniao = reuniaoRepository.save(reuniao);</span>
+<span class="fc" id="L45">        return reuniaoMapper.toDto(reuniao);</span>
+    }
+
+    /**
+     *  Get all the reuniaos.
+     *
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page&lt;ReuniaoDTO&gt; findAll(Pageable pageable) {
+<span class="fc" id="L57">        log.debug(&quot;Request to get all Reuniaos&quot;);</span>
+<span class="fc" id="L58">        return reuniaoRepository.findAll(pageable)</span>
+<span class="fc" id="L59">            .map(reuniaoMapper::toDto);</span>
+    }
+
+    /**
+     *  Get one reuniao by id.
+     *
+     *  @param id the id of the entity
+     *  @return the entity
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public ReuniaoDTO findOne(Long id) {
+<span class="fc" id="L71">        log.debug(&quot;Request to get Reuniao : {}&quot;, id);</span>
+<span class="fc" id="L72">        Reuniao reuniao = reuniaoRepository.findOne(id);</span>
+<span class="fc" id="L73">        return reuniaoMapper.toDto(reuniao);</span>
+    }
+
+    /**
+     *  Delete the  reuniao by id.
+     *
+     *  @param id the id of the entity
+     */
+    @Override
+    public void delete(Long id) {
+<span class="fc" id="L83">        log.debug(&quot;Request to delete Reuniao : {}&quot;, id);</span>
+<span class="fc" id="L84">        reuniaoRepository.delete(id);</span>
+<span class="fc" id="L85">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
