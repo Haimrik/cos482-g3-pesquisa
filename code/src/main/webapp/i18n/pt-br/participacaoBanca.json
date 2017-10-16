@@ -1,0 +1,24 @@
+{
+    "pesquisaApp": {
+        "participacaoBanca" : {
+            "home": {
+                "title": "Participacao Bancas",
+                "createLabel": "Criar novo Participacao Banca",
+                "createOrEditLabel": "Criar ou editar Participacao Banca"
+            },
+            "created": "Um novo Participacao Banca foi criado com o identificador {{ param }}",
+            "updated": "Um Participacao Banca foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Participacao Banca foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Participacao Banca {{ id }}?"
+            },
+            "detail": {
+                "title": "Participacao Banca"
+            },
+            "confirmado": "Confirmado",
+            "estadoAprovacaoDefesa": "Estado Aprovacao Defesa",
+            "defesa": "Defesa",
+            "professor": "Professor"
+        }
+    }
+}

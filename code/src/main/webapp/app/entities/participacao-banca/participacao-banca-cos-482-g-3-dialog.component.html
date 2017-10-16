@@ -1,0 +1,52 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myParticipacaoBancaLabel" jhiTranslate="pesquisaApp.participacaoBanca.home.createOrEditLabel">Create or edit a Participacao Banca</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!participacaoBanca.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="participacaoBanca.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.participacaoBanca.confirmado" for="field_confirmado">Confirmado</label>
+            <input type="checkbox" class="form-control" name="confirmado" id="field_confirmado"
+                [(ngModel)]="participacaoBanca.confirmado"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.participacaoBanca.estadoAprovacaoDefesa" for="field_estadoAprovacaoDefesa">Estado Aprovacao Defesa</label>
+            <select class="form-control" name="estadoAprovacaoDefesa" [(ngModel)]="participacaoBanca.estadoAprovacaoDefesa" id="field_estadoAprovacaoDefesa" >
+                <option value="PENDENTE">{{'pesquisaApp.EstadoAprovacaoDefesa.PENDENTE' | translate}}</option>
+                <option value="APROVADO">{{'pesquisaApp.EstadoAprovacaoDefesa.APROVADO' | translate}}</option>
+                <option value="REPROVADO">{{'pesquisaApp.EstadoAprovacaoDefesa.REPROVADO' | translate}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.participacaoBanca.defesa" for="field_defesa">Defesa</label>
+            <select class="form-control" id="field_defesa" name="defesa" [(ngModel)]="participacaoBanca.defesaId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="defesaOption.id" *ngFor="let defesaOption of defesas; trackBy: trackDefesaById">{{defesaOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.participacaoBanca.professor" for="field_professor">Professor</label>
+            <select class="form-control" id="field_professor" name="professor" [(ngModel)]="participacaoBanca.professorId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="professorOption.id" *ngFor="let professorOption of professors; trackBy: trackProfessorById">{{professorOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

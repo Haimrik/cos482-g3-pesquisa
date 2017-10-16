@@ -1,0 +1,10 @@
+{
+    "pesquisaApp": {
+        "EstadoAprovacaoDefesa" : {
+            "null": "",
+            "PENDENTE": "PENDENTE",
+            "APROVADO": "APROVADO",
+            "REPROVADO": "REPROVADO"
+        }
+    }
+}

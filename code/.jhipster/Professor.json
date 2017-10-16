@@ -1,0 +1,80 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "usuario",
+            "otherEntityName": "usuario",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "professor"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "aluno",
+            "otherEntityName": "aluno",
+            "otherEntityRelationshipName": "orientador"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "participacaoBanca",
+            "otherEntityName": "participacaoBanca",
+            "otherEntityRelationshipName": "professor"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "reuniao",
+            "otherEntityName": "reuniao",
+            "otherEntityRelationshipName": "professor"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "aluno",
+            "relationshipName": "coorientador",
+            "otherEntityName": "aluno",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "matricula",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "linkLattes",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "programa",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "linhaDePesquisa",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "areasDeInteresse",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171015234857",
+    "entityTableName": "professor",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularJSSuffix": "cos482_g3"
+}
