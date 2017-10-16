@@ -1,0 +1,49 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySeminarioLabel" jhiTranslate="pesquisaApp.seminario.home.createOrEditLabel">Create or edit a Seminario</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!seminario.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="seminario.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.seminario.titulo" for="field_titulo">Titulo</label>
+            <input type="text" class="form-control" name="titulo" id="field_titulo"
+                [(ngModel)]="seminario.titulo"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.seminario.dataEHora" for="field_dataEHora">Data E Hora</label>
+            <div class="d-flex">
+                <input id="field_dataEHora" type="datetime-local" class="form-control" name="dataEHora" [(ngModel)]="seminario.dataEHora"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.seminario.local" for="field_local">Local</label>
+            <input type="text" class="form-control" name="local" id="field_local"
+                [(ngModel)]="seminario.local"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.seminario.organizador" for="field_organizador">Organizador</label>
+            <select class="form-control" id="field_organizador" name="organizador" [(ngModel)]="seminario.organizadorId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="usuarioOption.id" *ngFor="let usuarioOption of usuarios; trackBy: trackUsuarioById">{{usuarioOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

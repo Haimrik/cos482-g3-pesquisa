@@ -1,0 +1,24 @@
+{
+    "pesquisaApp": {
+        "seminario" : {
+            "home": {
+                "title": "Seminarios",
+                "createLabel": "Criar novo Seminario",
+                "createOrEditLabel": "Criar ou editar Seminario"
+            },
+            "created": "Um novo Seminario foi criado com o identificador {{ param }}",
+            "updated": "Um Seminario foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Seminario foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Seminario {{ id }}?"
+            },
+            "detail": {
+                "title": "Seminario"
+            },
+            "titulo": "Titulo",
+            "dataEHora": "Data E Hora",
+            "local": "Local",
+            "organizador": "Organizador"
+        }
+    }
+}

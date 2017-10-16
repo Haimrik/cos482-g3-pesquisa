@@ -7,6 +7,14 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
+                "usuarioCos482G3": "Usuario",
+                "alunoCos482G3": "Aluno",
+                "professorCos482G3": "Professor",
+                "publicacaoCos482G3": "Publicacao",
+                "seminarioCos482G3": "Seminario",
+                "participacaoBancaCos482G3": "Participacao Banca",
+                "defesaCos482G3": "Defesa",
+                "reuniaoCos482G3": "Reuniao",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
