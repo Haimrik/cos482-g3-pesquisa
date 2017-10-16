@@ -1,0 +1,24 @@
+{
+    "pesquisaApp": {
+        "publicacao" : {
+            "home": {
+                "title": "Publicacaos",
+                "createLabel": "Create a new Publicacao",
+                "createOrEditLabel": "Create or edit a Publicacao"
+            },
+            "created": "A new Publicacao is created with identifier {{ param }}",
+            "updated": "A Publicacao is updated with identifier {{ param }}",
+            "deleted": "A Publicacao is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Publicacao {{ id }}?"
+            },
+            "detail": {
+                "title": "Publicacao"
+            },
+            "url": "Url",
+            "pertenceAoPrograma": "Pertence Ao Programa",
+            "aluno": "Aluno",
+            "coautor": "Coautor"
+        }
+    }
+}

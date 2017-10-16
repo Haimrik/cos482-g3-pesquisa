@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "professor",
+            "otherEntityName": "professor",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "aluno",
+            "otherEntityName": "aluno",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dataEHora",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "local",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171015234902",
+    "entityTableName": "reuniao",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularJSSuffix": "cos482_g3"
+}

@@ -1,0 +1,35 @@
+
+<div *ngIf="publicacao">
+    <h2><span jhiTranslate="pesquisaApp.publicacao.detail.title">Publicacao</span> {{publicacao.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="pesquisaApp.publicacao.url">Url</span></dt>
+        <dd>
+            <span>{{publicacao.url}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.publicacao.pertenceAoPrograma">Pertence Ao Programa</span></dt>
+        <dd>
+            <span>{{publicacao.pertenceAoPrograma}}</span>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.publicacao.aluno">Aluno</span></dt>
+        <dd>
+            <div *ngIf="publicacao.alunoId">
+                <a [routerLink]="['/aluno-cos-482-g-3', publicacao.alunoId]">{{publicacao.alunoId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'publicacao-cos-482-g-3/'+ publicacao.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

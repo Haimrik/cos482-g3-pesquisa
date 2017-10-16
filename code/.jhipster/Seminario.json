@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "organizador",
+            "otherEntityName": "usuario",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataEHora",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "local",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171015234859",
+    "entityTableName": "seminario",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularJSSuffix": "cos482_g3"
+}

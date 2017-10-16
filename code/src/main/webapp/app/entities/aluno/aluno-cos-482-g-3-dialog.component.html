@@ -1,0 +1,78 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAlunoLabel" jhiTranslate="pesquisaApp.aluno.home.createOrEditLabel">Create or edit a Aluno</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!aluno.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="aluno.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.aluno.nome" for="field_nome">Nome</label>
+            <input type="text" class="form-control" name="nome" id="field_nome"
+                [(ngModel)]="aluno.nome" required />
+            <div [hidden]="!(editForm.controls.nome?.dirty && editForm.controls.nome?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nome?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.aluno.dre" for="field_dre">Dre</label>
+            <input type="text" class="form-control" name="dre" id="field_dre"
+                [(ngModel)]="aluno.dre" required />
+            <div [hidden]="!(editForm.controls.dre?.dirty && editForm.controls.dre?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dre?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.aluno.dataDeEntrada" for="field_dataDeEntrada">Data De Entrada</label>
+            <div class="d-flex">
+                <input id="field_dataDeEntrada" type="datetime-local" class="form-control" name="dataDeEntrada" [(ngModel)]="aluno.dataDeEntrada"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.dataDeEntrada?.dirty && editForm.controls.dataDeEntrada?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dataDeEntrada?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.dataDeEntrada?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.aluno.usuario" for="field_usuario">Usuario</label>
+            <select class="form-control" id="field_usuario" name="usuario" [(ngModel)]="aluno.usuarioId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="usuarioOption.id" *ngFor="let usuarioOption of usuarios; trackBy: trackUsuarioById">{{usuarioOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.aluno.orientador" for="field_orientador">Orientador</label>
+            <select class="form-control" id="field_orientador" name="orientador" [(ngModel)]="aluno.orientadorId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="professorOption.id" *ngFor="let professorOption of professors; trackBy: trackProfessorById">{{professorOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

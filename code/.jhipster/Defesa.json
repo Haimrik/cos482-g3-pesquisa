@@ -1,0 +1,42 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "participacaoBanca",
+            "otherEntityName": "participacaoBanca",
+            "otherEntityRelationshipName": "defesa"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "aluno",
+            "otherEntityName": "aluno",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dataEHora",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "local",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "arquivoTexto",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tipoDefesa",
+            "fieldType": "TipoDefesa",
+            "fieldValues": "QUALIFICACAO,DEFESADETESE"
+        }
+    ],
+    "changelogDate": "20171015234901",
+    "entityTableName": "defesa",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularJSSuffix": "cos482_g3"
+}

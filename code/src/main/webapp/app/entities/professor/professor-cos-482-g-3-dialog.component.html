@@ -1,0 +1,86 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProfessorLabel" jhiTranslate="pesquisaApp.professor.home.createOrEditLabel">Create or edit a Professor</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!professor.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="professor.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.professor.nome" for="field_nome">Nome</label>
+            <input type="text" class="form-control" name="nome" id="field_nome"
+                [(ngModel)]="professor.nome" required />
+            <div [hidden]="!(editForm.controls.nome?.dirty && editForm.controls.nome?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nome?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.professor.matricula" for="field_matricula">Matricula</label>
+            <input type="text" class="form-control" name="matricula" id="field_matricula"
+                [(ngModel)]="professor.matricula" required />
+            <div [hidden]="!(editForm.controls.matricula?.dirty && editForm.controls.matricula?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.matricula?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.professor.linkLattes" for="field_linkLattes">Link Lattes</label>
+            <input type="text" class="form-control" name="linkLattes" id="field_linkLattes"
+                [(ngModel)]="professor.linkLattes" required />
+            <div [hidden]="!(editForm.controls.linkLattes?.dirty && editForm.controls.linkLattes?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.linkLattes?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.professor.programa" for="field_programa">Programa</label>
+            <input type="text" class="form-control" name="programa" id="field_programa"
+                [(ngModel)]="professor.programa"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.professor.linhaDePesquisa" for="field_linhaDePesquisa">Linha De Pesquisa</label>
+            <input type="text" class="form-control" name="linhaDePesquisa" id="field_linhaDePesquisa"
+                [(ngModel)]="professor.linhaDePesquisa"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.professor.areasDeInteresse" for="field_areasDeInteresse">Areas De Interesse</label>
+            <input type="text" class="form-control" name="areasDeInteresse" id="field_areasDeInteresse"
+                [(ngModel)]="professor.areasDeInteresse"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.professor.usuario" for="field_usuario">Usuario</label>
+            <select class="form-control" id="field_usuario" name="usuario" [(ngModel)]="professor.usuarioId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="usuarioOption.id" *ngFor="let usuarioOption of usuarios; trackBy: trackUsuarioById">{{usuarioOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="pesquisaApp.professor.coorientador" for="field_coorientador">Coorientador</label>
+            <select class="form-control" id="field_coorientador" multiple name="coorientador" [(ngModel)]="professor.coorientadors">
+                <option [ngValue]="getSelected(professor.coorientadors, alunoOption)" *ngFor="let alunoOption of alunos; trackBy: trackAlunoById">{{alunoOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
