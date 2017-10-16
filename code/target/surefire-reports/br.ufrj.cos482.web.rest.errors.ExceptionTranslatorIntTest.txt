@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: br.ufrj.cos482.web.rest.errors.ExceptionTranslatorIntTest
--------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.708 sec - in br.ufrj.cos482.web.rest.errors.ExceptionTranslatorIntTest
