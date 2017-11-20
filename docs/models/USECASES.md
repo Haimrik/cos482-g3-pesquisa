@@ -57,7 +57,7 @@ O -|> P
 ### UC01 - Cadastrar aluno
 * **Descrição**: O ator deseja cadastrar um novo aluno na plataforma
 * **Atores**: Administrador
-* **Pré-condições**: 
+* **Pré-condições**:
     * Aluno ainda não existe no sistema
     * O ator deve estar logado no sistema
 * **Pos-condições**: Aluno existe no sistema
@@ -74,7 +74,7 @@ O -|> P
 ### UC02 - Visualizar aluno
 * **Descrição**:  O ator deseja ver os eventos que estão sendo anunciados na plataforma
 * **Atores**: Administrador
-* **Pré-condições**: 
+* **Pré-condições**:
     * Aluno existe no sistema
     * O ator deve estar logado no sistema
 * **Pos-condições**: -
@@ -91,7 +91,7 @@ O -|> P
 ### UC03 - Atualizar aluno
 * **Descrição**: O ator deseja que seja possível editar um cadastro de aluno previamente realizado.
 * **Atores**: Administrador
-* **Pré-condições**: 
+* **Pré-condições**:
     * Aluno existe no sistema
     * O ator deve estar logado no sistema
 * **Pos-condições**: Aluno é modificado no sistema
@@ -108,7 +108,7 @@ O -|> P
 ### UC04 - Remover aluno
 * **Descrição**: O ator deseja deletar um aluno
 * **Atores**: Administrador
-* **Pré-condições**: 
+* **Pré-condições**:
     * Aluno existe no sistema
     * O ator deve estar logado no sistema
 * **Pos-condições**: Aluno não existe mais no sistema
@@ -125,7 +125,7 @@ O -|> P
 ### UC05 - Cadastrar professor
 * **Descrição**: O administrador do sistema deseja que seja possível cadastrar um novo professor no sistema
 * **Atores**: Administrador
-* **Pré-condições**: 
+* **Pré-condições**:
     * Professor ainda não existe no sistema
     * O ator deve estar logado no sistema
 * **Pos-condições**: Professor existe no sistema
@@ -141,7 +141,7 @@ O -|> P
 ### UC06 - Visualizar professor
 * **Descrição**: O ator deseja ver os eventos que estão sendo anunciados na plataforma
 * **Atores**: Administrador
-* **Pré-condições**: 
+* **Pré-condições**:
     * Professor existe no sistema
     * O ator deve estar logado no sistema
 * **Pos-condições**: -
@@ -157,7 +157,7 @@ O -|> P
 ### UC07 - Atualizar professor
 * **Descrição**: O ator do sistema deseja que seja possível editar um cadastro de professor previamente realizado
 * **Atores**: Administrador
-* **Pré-condições**: 
+* **Pré-condições**:
     * Professor existe no sistema
     * O ator deve estar logado no sistema
 * **Pos-condições**: Professor é modificado no sistema
@@ -173,7 +173,7 @@ O -|> P
 ### UC08 - Remover professor
 * **Descrição**: O ator deseja deletar o um Professor do sistema.
 * **Atores**: Administrador
-* **Pré-condições**: 
+* **Pré-condições**:
     * Professor existe no sistema
     * O ator deve estar logado no sistema
 * **Pos-condições**: Professor não existe mais no sistema
@@ -189,7 +189,7 @@ O -|> P
 ### UC09 - Escolher professor orientador
 * **Descrição**: O ator deseja que seja possível escolher o professor orientador
 * **Atores**: Aluno
-* **Pré-condições**: 
+* **Pré-condições**:
     * Ator existe no sistema e está autenticado
     * O ator deve estar logado no sistema
 * **Pos-condições**: Professor é associado como orientador do ator em estado não confirmado
@@ -204,7 +204,7 @@ O -|> P
 
 ### UC10 - Cadastrar publicação
 * **Descrição**: O aluno deseja uma nova publicação sua no sistema
-* **Atores**: Aluno 
+* **Atores**: Aluno
 * **Pré-condições**:
     * Aluno existe no sistema
     * O ator deve estar logado no sistema
@@ -332,6 +332,37 @@ O -|> P
 | 4. O ator poderá editar as seguintes informações: link, coautores       |
 
 
-## Declaração de casos de uso não contemplados para iteração 
+### UC18 - Escolher Professor Orientador
+* **Descrição**:  O ator deseja escolher um professor orientador para sua pesquisa
+* **Atores**: Aluno
+* **Pré-condições**
+    * O ator deve estar logado no sistema
+    * O professor deve estar cadastrado no sistema
+* **Pos-condições**: Um professor é associado ao aluno como seu orientador
+
+| Fluxo principal                                                         |
+| ----------------------------------------------------------------------- |
+| 1. O ator deverá acessar a página de gerenciamento da pesquisa          |
+| 2. O ator deverá escolher seu orientador em uma lista                   |
+| 3. O ator deverá confirmar a escolha                                    |
+| 4. O professor escolhido será associado ao ator                         |
+
+
+### UC19 - Agendar Reuniões com o Orientador
+* **Descrição**:  O ator deseja agendar uma reunião com o professor orientador
+* **Atores**: Aluno
+* **Pré-condições**
+    * O ator deve estar logado no sistema
+    * O ator deverá ter um professor orientador associado
+* **Pos-condições**: Uma reunião é agendada com o professor orientador
+
+| Fluxo principal                                                                   |
+| --------------------------------------------------------------------------------- |
+| 1. O ator deverá acessar a página de gerenciamento                                |
+| 2. O ator deverá selecionar a opção de agendar reunião                            |
+| 3. O ator deverá escolher um horário dentre os disponibilizados pelo orientador   |
+| 4. O ator deverá confirmar o horário escolhido                                    |
+
+## Declaração de casos de uso não contemplados para iteração
 
 Os casos de uso não especificados neste documento neste momento serão contemplados na próxima iteração.
