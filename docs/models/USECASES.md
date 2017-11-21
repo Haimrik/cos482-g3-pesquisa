@@ -363,6 +363,23 @@ O -|> P
 | 3. O ator deverá escolher um horário dentre os disponibilizados pelo orientador   |
 | 4. O ator deverá confirmar o horário escolhido                                    |
 
+
+### UC20 - Escolher Banca da Defesa
+* **Descrição**:  O ator deseja escolher a banca da defesa
+* **Atores**: Aluno
+* **Pré-condições**
+    * O ator deve estar logado no sistema
+    * O ator deverá ter um professor orientador associado
+* **Pos-condições**: A banca será definida
+
+| Fluxo principal                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1. O ator deverá acessar a página de gerenciamento                                                                                                            |
+| 2. O ator deverá selecionar a opção de escolher a banca da defesa                                                                                             |
+| 3. O ator deverá escolher os integrantes da banca dentre os professores disponibilizados em uma lista ou preencher as informações sobre um professor externo  |
+| 4. O ator confirma a composição da banca                                                                                                                      |
+| 5. Os integrantes da banca são notificados sobre a criação da banca de defesa                                                                                 |
+
 ## Declaração de casos de uso não contemplados para iteração
 
 Os casos de uso não especificados neste documento neste momento serão contemplados na próxima iteração.
