@@ -365,20 +365,48 @@ O -|> P
 
 
 ### UC20 - Escolher Banca da Defesa
-* **Descrição**:  O ator deseja escolher a banca da defesa
-* **Atores**: Aluno
+* **Descrição**:  O ator deseja agendar a banca da defesa
+* **Atores**: Orientador
 * **Pré-condições**
     * O ator deve estar logado no sistema
-    * O ator deverá ter um professor orientador associado
-* **Pos-condições**: A banca será definida
+    * O ator deverá ter um aluno orientado associado
+* **Pos-condições**: A banca será definida e os membros da banca notificados
 
 | Fluxo principal                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1. O ator deverá acessar a página de gerenciamento                                                                                                            |
-| 2. O ator deverá selecionar a opção de escolher a banca da defesa                                                                                             |
-| 3. O ator deverá escolher os integrantes da banca dentre os professores disponibilizados em uma lista ou preencher as informações sobre um professor externo  |
-| 4. O ator confirma a composição da banca                                                                                                                      |
-| 5. Os integrantes da banca são notificados sobre a criação da banca de defesa                                                                                 |
+| 1. O ator deverá acessar a página de agendamento de banca de defesa                                                                                           |
+| 2. O ator deverá  escolher o aluno que irá apresentar a defesa em uma lista dos alunos orientados por ele                                                     |
+| 3. O ator deverá  escolher a data e hora da apresentação da defesa                                                                                            |
+| 4. O ator deverá escolher os integrantes da banca dentre os professores disponibilizados em uma lista ou preencher as informações sobre um professor externo  |
+| 5. O ator confirma a composição da banca                                                                                                                      |
+| 6. Os integrantes da banca são notificados sobre a criação da banca de defesa                                                                                 |
+
+### UC21 - 	Participação na banca
+* **Descrição**:  O ator deseja confirmar a participação na banca
+* **Atores**: Professor
+* **Pré-condições**
+    * O ator deve estar logado no sistema
+* **Pos-condições**: O ator estará definido como membro da banca
+
+| Fluxo principal                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1. O ator deverá acessar o convite para participar da banca de defesa                                                                                         |
+| 2. O ator deverá  acessar a página de confirmação de participação de banca                                                                                    |
+
+### UC22 - 	Aprovação de defesa
+* **Descrição**:  O ator deseja fornecer a nota do Aluno na banca de defesa
+* **Atores**: Orientador
+* **Pré-condições**
+    * O ator deve estar logado no sistema
+    * O ator deve possuir alunos orientados
+* **Pos-condições**: O aluno terá sua avaliação da banca definida
+
+| Fluxo principal                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1. O ator deverá acessar a página de bancas                                                                                                                   |
+| 2. O ator deverá selecionar a banca que deseja avaliar                                                                                                        |
+| 3. O ator deverá definir a nota do aluno                                                                                                                      |
+| 4. O ator deverá selecionar o estado de aprovação da defesa                                                                                                   |
 
 ## Declaração de casos de uso não contemplados para iteração
 

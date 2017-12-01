@@ -234,3 +234,48 @@ Serão realizados testes unitários e funcionais. O objetivo dos testes é asseg
 * Dados de teste:
 * Resultado esperado: A Publicação não será mais exibida na lista de publicações
 * Pós-condicões:
+
+## T23
+* Cenário de teste: Verificação da funcionalidade Escolher professor orientador
+* Caso de teste: UC18
+* Pré-condições: O ator deve estar logado no sistema; O sistema deve ter professores cadastrados
+* Etapas de teste: O Ator deverá seguir o Fluxo Principal do caso de uso.
+* Dados de teste:
+* Resultado esperado: O sistema deverá exibir o professor escolhido como Orientador do aluno.
+* Pós-condições:
+
+## T24
+* Cenário de teste: Verificação da funcionalidade Agendar reunião com o orientador
+* Caso de teste: UC19
+* Pré-condições: O ator deve estar logado no sistema; O ator deverá ter um professor orientador associado
+* Etapas de teste: O Ator deverá seguir o Fluxo Principal do caso de uso.
+* Dados de teste:
+* Resultado esperado: O sistema deverá exibir uma mensagem de confirmação do agendamento da reunião
+* Pós-condições:
+
+## T25
+* Cenário de teste: Verificação da funcionalidade Aprovar defesa
+* Caso de teste: UC22
+* Pré-condições: O ator deve estar logado no sistema; O ator deve possuir alunos orientados
+* Etapas de teste: O Ator deverá seguir o Fluxo Principal do caso de uso.
+* Dados de teste:
+* Resultado esperado: A nota do aluno e o estado da aprovação da defesa deverão estar registrados no sistema.
+* Pós-condições:
+
+## T26
+* Cenário de teste: Verificação da funcionalidade Escolha da Banca de Defesa
+* Caso de teste: UC20
+* Pré-condicoões: O ator deve estar logado no sistema
+* Etapas de teste: O Ator deverá seguir o Fluxo Principal do caso de uso. O ator deverá escolher os professores que irão compor a banca de defesa e confirmar a composição da banca
+* Dados de teste:
+* Resultado esperado: Os professores selecionados para compor a banca deverão receber o convite de participação
+* Pós-condicões:
+
+## T27
+* Cenário de teste: Verificação da funcionalidade Confirmar participação na banca
+* Caso de teste: UC21
+* Pré-condicoões: O ator deve estar logado no sistema
+* Etapas de teste: O Ator deverá seguir o Fluxo Principal do caso de uso. O ator deverá clicar no link de confirmação de participação na banca
+* Dados de teste:
+* Resultado esperado: O ator será registrado no sistema como participante da banca
+* Pós-condicões:
