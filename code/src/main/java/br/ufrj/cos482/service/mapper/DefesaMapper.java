@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface DefesaMapper extends EntityMapper <DefesaDTO, Defesa> {
 
     @Mapping(source = "aluno.id", target = "alunoId")
+    @Mapping(source = "aluno.nome", target = "alunoNome")
     DefesaDTO toDto(Defesa defesa); 
     @Mapping(target = "participacaoBancas", ignore = true)
 

@@ -11,7 +11,7 @@
             "relationshipType": "many-to-one",
             "relationshipName": "aluno",
             "otherEntityName": "aluno",
-            "otherEntityField": "id"
+            "otherEntityField": "nome"
         }
     ],
     "fields": [

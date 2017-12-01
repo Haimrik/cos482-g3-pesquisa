@@ -23,7 +23,6 @@
             <th jhiSortBy="programa"><span jhiTranslate="pesquisaApp.professor.programa">Programa</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="linhaDePesquisa"><span jhiTranslate="pesquisaApp.professor.linhaDePesquisa">Linha De Pesquisa</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="areasDeInteresse"><span jhiTranslate="pesquisaApp.professor.areasDeInteresse">Areas De Interesse</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="usuarioId"><span jhiTranslate="pesquisaApp.professor.usuario">Usuario</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -36,11 +35,6 @@
                 <td>{{professor.programa}}</td>
                 <td>{{professor.linhaDePesquisa}}</td>
                 <td>{{professor.areasDeInteresse}}</td>
-                <td>
-                    <div *ngIf="professor.usuarioId">
-                        <a [routerLink]="['../usuario-cos-482-g-3', professor.usuarioId  ]" >{{professor.usuarioId}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

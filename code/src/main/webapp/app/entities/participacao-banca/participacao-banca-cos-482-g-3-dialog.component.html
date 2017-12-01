@@ -37,7 +37,7 @@
             <label class="form-control-label" jhiTranslate="pesquisaApp.participacaoBanca.professor" for="field_professor">Professor</label>
             <select class="form-control" id="field_professor" name="professor" [(ngModel)]="participacaoBanca.professorId" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="professorOption.id" *ngFor="let professorOption of professors; trackBy: trackProfessorById">{{professorOption.id}}</option>
+                <option [ngValue]="professorOption.id" *ngFor="let professorOption of professors; trackBy: trackProfessorById">{{professorOption.nome}}</option>
             </select>
         </div>
     </div>

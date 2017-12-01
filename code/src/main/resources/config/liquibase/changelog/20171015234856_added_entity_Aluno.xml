@@ -33,9 +33,7 @@
             <column name="data_de_entrada" type="timestamp">
                 <constraints nullable="false" />
             </column>
-            <column name="usuario_id" type="bigint">
-                <constraints unique="true" nullable="true" />
-            </column>
+
             <column name="orientador_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -43,6 +41,17 @@
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="aluno" columnName="data_de_entrada" columnDataType="datetime"/>
+        
+        <createTable tableName="aluno_copublicacao">
+            <column name="copublicacaos_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alunos_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="alunos_id, copublicacaos_id" tableName="aluno_copublicacao"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

@@ -34,7 +34,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="organizador_id" type="bigint">
+            <column name="organizador_aluno_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="organizador_professor_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

@@ -22,6 +22,8 @@ public class ParticipacaoBancaDTO implements Serializable {
 
     private Long professorId;
 
+    private String professorNome;
+
     public Long getId() {
         return id;
     }
@@ -60,6 +62,14 @@ public class ParticipacaoBancaDTO implements Serializable {
 
     public void setProfessorId(Long professorId) {
         this.professorId = professorId;
+    }
+
+    public String getProfessorNome() {
+        return professorNome;
+    }
+
+    public void setProfessorNome(String professorNome) {
+        this.professorNome = professorNome;
     }
 
     @Override

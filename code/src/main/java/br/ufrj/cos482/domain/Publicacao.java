@@ -35,10 +35,15 @@ public class Publicacao implements Serializable {
     @ManyToOne
     private Aluno aluno;
 
-    @ManyToMany(mappedBy = "publicacaos")
+    @ManyToMany(mappedBy = "copublicacaos")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Usuario> coautors = new HashSet<>();
+    private Set<Aluno> coautorAlunos = new HashSet<>();
+
+    @ManyToMany(mappedBy = "copublicacaos")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Professor> coautorProfessors = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -88,29 +93,54 @@ public class Publicacao implements Serializable {
         this.aluno = aluno;
     }
 
-    public Set<Usuario> getCoautors() {
-        return coautors;
+    public Set<Aluno> getCoautorAlunos() {
+        return coautorAlunos;
     }
 
-    public Publicacao coautors(Set<Usuario> usuarios) {
-        this.coautors = usuarios;
+    public Publicacao coautorAlunos(Set<Aluno> alunos) {
+        this.coautorAlunos = alunos;
         return this;
     }
 
-    public Publicacao addCoautor(Usuario usuario) {
-        this.coautors.add(usuario);
-        usuario.getPublicacaos().add(this);
+    public Publicacao addCoautorAluno(Aluno aluno) {
+        this.coautorAlunos.add(aluno);
+        aluno.getCopublicacaos().add(this);
         return this;
     }
 
-    public Publicacao removeCoautor(Usuario usuario) {
-        this.coautors.remove(usuario);
-        usuario.getPublicacaos().remove(this);
+    public Publicacao removeCoautorAluno(Aluno aluno) {
+        this.coautorAlunos.remove(aluno);
+        aluno.getCopublicacaos().remove(this);
         return this;
     }
 
-    public void setCoautors(Set<Usuario> usuarios) {
-        this.coautors = usuarios;
+    public void setCoautorAlunos(Set<Aluno> alunos) {
+        this.coautorAlunos = alunos;
+    }
+
+    public Set<Professor> getCoautorProfessors() {
+        return coautorProfessors;
+    }
+
+    public Publicacao coautorProfessors(Set<Professor> professors) {
+        this.coautorProfessors = professors;
+        return this;
+    }
+
+    public Publicacao addCoautorProfessor(Professor professor) {
+        this.coautorProfessors.add(professor);
+        professor.getCopublicacaos().add(this);
+        return this;
+    }
+
+    public Publicacao removeCoautorProfessor(Professor professor) {
+        this.coautorProfessors.remove(professor);
+        professor.getCopublicacaos().remove(this);
+        return this;
+    }
+
+    public void setCoautorProfessors(Set<Professor> professors) {
+        this.coautorProfessors = professors;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -20,7 +20,8 @@
             <th jhiSortBy="titulo"><span jhiTranslate="pesquisaApp.seminario.titulo">Titulo</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dataEHora"><span jhiTranslate="pesquisaApp.seminario.dataEHora">Data E Hora</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="local"><span jhiTranslate="pesquisaApp.seminario.local">Local</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="organizadorId"><span jhiTranslate="pesquisaApp.seminario.organizador">Organizador</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="organizadorAlunoNome"><span jhiTranslate="pesquisaApp.seminario.organizadorAluno">Organizador Aluno</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="organizadorProfessorNome"><span jhiTranslate="pesquisaApp.seminario.organizadorProfessor">Organizador Professor</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -31,8 +32,13 @@
                 <td>{{seminario.dataEHora | date:'medium'}}</td>
                 <td>{{seminario.local}}</td>
                 <td>
-                    <div *ngIf="seminario.organizadorId">
-                        <a [routerLink]="['../usuario-cos-482-g-3', seminario.organizadorId  ]" >{{seminario.organizadorId}}</a>
+                    <div *ngIf="seminario.organizadorAlunoId">
+                        <a [routerLink]="['../aluno-cos-482-g-3', seminario.organizadorAlunoId  ]" >{{seminario.organizadorAlunoNome}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="seminario.organizadorProfessorId">
+                        <a [routerLink]="['../professor-cos-482-g-3', seminario.organizadorProfessorId  ]" >{{seminario.organizadorProfessorNome}}</a>
                     </div>
                 </td>
                 <td class="text-right">

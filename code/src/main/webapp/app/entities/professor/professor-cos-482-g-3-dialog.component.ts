@@ -9,8 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { ProfessorCos482G3 } from './professor-cos-482-g-3.model';
 import { ProfessorCos482G3PopupService } from './professor-cos-482-g-3-popup.service';
 import { ProfessorCos482G3Service } from './professor-cos-482-g-3.service';
-import { UsuarioCos482G3, UsuarioCos482G3Service } from '../usuario';
 import { AlunoCos482G3, AlunoCos482G3Service } from '../aluno';
+import { PublicacaoCos482G3, PublicacaoCos482G3Service } from '../publicacao';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -22,7 +22,7 @@ export class ProfessorCos482G3DialogComponent implements OnInit {
     professor: ProfessorCos482G3;
     isSaving: boolean;
 
-    usuarios: UsuarioCos482G3[];
+    publicacaos: PublicacaoCos482G3[];
 
     alunos: AlunoCos482G3[];
 
@@ -30,27 +30,16 @@ export class ProfessorCos482G3DialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private professorService: ProfessorCos482G3Service,
-        private usuarioService: UsuarioCos482G3Service,
         private alunoService: AlunoCos482G3Service,
+        private publicacaoService: PublicacaoCos482G3Service,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.usuarioService
-            .query({filter: 'professor-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.professor.usuarioId) {
-                    this.usuarios = res.json;
-                } else {
-                    this.usuarioService
-                        .find(this.professor.usuarioId)
-                        .subscribe((subRes: UsuarioCos482G3) => {
-                            this.usuarios = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.publicacaoService.query()
+            .subscribe((res: ResponseWrapper) => { this.publicacaos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.alunoService.query()
             .subscribe((res: ResponseWrapper) => { this.alunos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -89,7 +78,7 @@ export class ProfessorCos482G3DialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackUsuarioById(index: number, item: UsuarioCos482G3) {
+    trackPublicacaoById(index: number, item: PublicacaoCos482G3) {
         return item.id;
     }
 

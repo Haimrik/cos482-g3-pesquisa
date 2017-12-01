@@ -41,7 +41,7 @@
             <label class="form-control-label" jhiTranslate="pesquisaApp.defesa.aluno" for="field_aluno">Aluno</label>
             <select class="form-control" id="field_aluno" name="aluno" [(ngModel)]="defesa.alunoId" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="alunoOption.id" *ngFor="let alunoOption of alunos; trackBy: trackAlunoById">{{alunoOption.id}}</option>
+                <option [ngValue]="alunoOption.id" *ngFor="let alunoOption of alunos; trackBy: trackAlunoById">{{alunoOption.nome}}</option>
             </select>
         </div>
     </div>

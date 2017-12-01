@@ -2,18 +2,16 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "relationshipName": "usuario",
-            "otherEntityName": "usuario",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "professor"
-        },
-        {
             "relationshipType": "one-to-many",
             "relationshipName": "aluno",
             "otherEntityName": "aluno",
             "otherEntityRelationshipName": "orientador"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "seminario",
+            "otherEntityName": "seminario",
+            "otherEntityRelationshipName": "organizadorProfessor"
         },
         {
             "relationshipType": "one-to-many",
@@ -29,10 +27,18 @@
         },
         {
             "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "aluno",
-            "relationshipName": "coorientador",
-            "otherEntityName": "aluno",
+            "otherEntityRelationshipName": "coautorProfessor",
+            "relationshipName": "copublicacao",
+            "otherEntityName": "publicacao",
             "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "coorientador",
+            "relationshipName": "coorientando",
+            "otherEntityName": "aluno",
+            "otherEntityField": "nome",
             "ownerSide": true
         }
     ],

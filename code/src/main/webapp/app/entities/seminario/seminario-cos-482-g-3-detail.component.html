@@ -16,10 +16,16 @@
         <dd>
             <span>{{seminario.local}}</span>
         </dd>
-        <dt><span jhiTranslate="pesquisaApp.seminario.organizador">Organizador</span></dt>
+        <dt><span jhiTranslate="pesquisaApp.seminario.organizadorAluno">Organizador Aluno</span></dt>
         <dd>
-            <div *ngIf="seminario.organizadorId">
-                <a [routerLink]="['/usuario-cos-482-g-3', seminario.organizadorId]">{{seminario.organizadorId}}</a>
+            <div *ngIf="seminario.organizadorAlunoId">
+                <a [routerLink]="['/aluno-cos-482-g-3', seminario.organizadorAlunoId]">{{seminario.organizadorAlunoNome}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="pesquisaApp.seminario.organizadorProfessor">Organizador Professor</span></dt>
+        <dd>
+            <div *ngIf="seminario.organizadorProfessorId">
+                <a [routerLink]="['/professor-cos-482-g-3', seminario.organizadorProfessorId]">{{seminario.organizadorProfessorNome}}</a>
             </div>
         </dd>
     </dl>

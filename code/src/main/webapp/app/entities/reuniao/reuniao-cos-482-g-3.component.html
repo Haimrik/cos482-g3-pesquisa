@@ -19,8 +19,8 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dataEHora"><span jhiTranslate="pesquisaApp.reuniao.dataEHora">Data E Hora</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="local"><span jhiTranslate="pesquisaApp.reuniao.local">Local</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="professorId"><span jhiTranslate="pesquisaApp.reuniao.professor">Professor</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="alunoId"><span jhiTranslate="pesquisaApp.reuniao.aluno">Aluno</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="professorNome"><span jhiTranslate="pesquisaApp.reuniao.professor">Professor</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="alunoNome"><span jhiTranslate="pesquisaApp.reuniao.aluno">Aluno</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -31,12 +31,12 @@
                 <td>{{reuniao.local}}</td>
                 <td>
                     <div *ngIf="reuniao.professorId">
-                        <a [routerLink]="['../professor-cos-482-g-3', reuniao.professorId  ]" >{{reuniao.professorId}}</a>
+                        <a [routerLink]="['../professor-cos-482-g-3', reuniao.professorId  ]" >{{reuniao.professorNome}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="reuniao.alunoId">
-                        <a [routerLink]="['../aluno-cos-482-g-3', reuniao.alunoId  ]" >{{reuniao.alunoId}}</a>
+                        <a [routerLink]="['../aluno-cos-482-g-3', reuniao.alunoId  ]" >{{reuniao.alunoNome}}</a>
                     </div>
                 </td>
                 <td class="text-right">

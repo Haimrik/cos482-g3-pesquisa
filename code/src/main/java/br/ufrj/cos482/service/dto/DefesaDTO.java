@@ -25,6 +25,8 @@ public class DefesaDTO implements Serializable {
 
     private Long alunoId;
 
+    private String alunoNome;
+
     public Long getId() {
         return id;
     }
@@ -71,6 +73,14 @@ public class DefesaDTO implements Serializable {
 
     public void setAlunoId(Long alunoId) {
         this.alunoId = alunoId;
+    }
+
+    public String getAlunoNome() {
+        return alunoNome;
+    }
+
+    public void setAlunoNome(String alunoNome) {
+        this.alunoNome = alunoNome;
     }
 
     @Override

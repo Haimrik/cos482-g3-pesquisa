@@ -3,9 +3,15 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "organizador",
-            "otherEntityName": "usuario",
-            "otherEntityField": "id"
+            "relationshipName": "organizadorAluno",
+            "otherEntityName": "aluno",
+            "otherEntityField": "nome"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "organizadorProfessor",
+            "otherEntityName": "professor",
+            "otherEntityField": "nome"
         }
     ],
     "fields": [

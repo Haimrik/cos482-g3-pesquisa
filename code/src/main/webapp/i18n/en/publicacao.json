@@ -18,7 +18,8 @@
             "url": "Url",
             "pertenceAoPrograma": "Pertence Ao Programa",
             "aluno": "Aluno",
-            "coautor": "Coautor"
+            "coautorAluno": "Coautor Aluno",
+            "coautorProfessor": "Coautor Professor"
         }
     }
 }

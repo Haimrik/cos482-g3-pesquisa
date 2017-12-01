@@ -9,7 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { SeminarioCos482G3 } from './seminario-cos-482-g-3.model';
 import { SeminarioCos482G3PopupService } from './seminario-cos-482-g-3-popup.service';
 import { SeminarioCos482G3Service } from './seminario-cos-482-g-3.service';
-import { UsuarioCos482G3, UsuarioCos482G3Service } from '../usuario';
+import { AlunoCos482G3, AlunoCos482G3Service } from '../aluno';
+import { ProfessorCos482G3, ProfessorCos482G3Service } from '../professor';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -21,21 +22,26 @@ export class SeminarioCos482G3DialogComponent implements OnInit {
     seminario: SeminarioCos482G3;
     isSaving: boolean;
 
-    usuarios: UsuarioCos482G3[];
+    alunos: AlunoCos482G3[];
+
+    professors: ProfessorCos482G3[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private seminarioService: SeminarioCos482G3Service,
-        private usuarioService: UsuarioCos482G3Service,
+        private alunoService: AlunoCos482G3Service,
+        private professorService: ProfessorCos482G3Service,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.usuarioService.query()
-            .subscribe((res: ResponseWrapper) => { this.usuarios = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.alunoService.query()
+            .subscribe((res: ResponseWrapper) => { this.alunos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.professorService.query()
+            .subscribe((res: ResponseWrapper) => { this.professors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -72,7 +78,11 @@ export class SeminarioCos482G3DialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackUsuarioById(index: number, item: UsuarioCos482G3) {
+    trackAlunoById(index: number, item: AlunoCos482G3) {
+        return item.id;
+    }
+
+    trackProfessorById(index: number, item: ProfessorCos482G3) {
         return item.id;
     }
 }

@@ -15,13 +15,13 @@
         <dt><span jhiTranslate="pesquisaApp.reuniao.professor">Professor</span></dt>
         <dd>
             <div *ngIf="reuniao.professorId">
-                <a [routerLink]="['/professor-cos-482-g-3', reuniao.professorId]">{{reuniao.professorId}}</a>
+                <a [routerLink]="['/professor-cos-482-g-3', reuniao.professorId]">{{reuniao.professorNome}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="pesquisaApp.reuniao.aluno">Aluno</span></dt>
         <dd>
             <div *ngIf="reuniao.alunoId">
-                <a [routerLink]="['/aluno-cos-482-g-3', reuniao.alunoId]">{{reuniao.alunoId}}</a>
+                <a [routerLink]="['/aluno-cos-482-g-3', reuniao.alunoId]">{{reuniao.alunoNome}}</a>
             </div>
         </dd>
     </dl>

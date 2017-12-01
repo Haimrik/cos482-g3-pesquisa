@@ -21,7 +21,7 @@
             <th jhiSortBy="local"><span jhiTranslate="pesquisaApp.defesa.local">Local</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="arquivoTexto"><span jhiTranslate="pesquisaApp.defesa.arquivoTexto">Arquivo Texto</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="tipoDefesa"><span jhiTranslate="pesquisaApp.defesa.tipoDefesa">Tipo Defesa</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="alunoId"><span jhiTranslate="pesquisaApp.defesa.aluno">Aluno</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="alunoNome"><span jhiTranslate="pesquisaApp.defesa.aluno">Aluno</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -34,7 +34,7 @@
                 <td jhiTranslate="{{'pesquisaApp.TipoDefesa.' + defesa.tipoDefesa}}">{{defesa.tipoDefesa}}</td>
                 <td>
                     <div *ngIf="defesa.alunoId">
-                        <a [routerLink]="['../aluno-cos-482-g-3', defesa.alunoId  ]" >{{defesa.alunoId}}</a>
+                        <a [routerLink]="['../aluno-cos-482-g-3', defesa.alunoId  ]" >{{defesa.alunoNome}}</a>
                     </div>
                 </td>
                 <td class="text-right">

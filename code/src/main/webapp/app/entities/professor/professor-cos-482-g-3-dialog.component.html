@@ -62,16 +62,15 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="pesquisaApp.professor.usuario" for="field_usuario">Usuario</label>
-            <select class="form-control" id="field_usuario" name="usuario" [(ngModel)]="professor.usuarioId">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="usuarioOption.id" *ngFor="let usuarioOption of usuarios; trackBy: trackUsuarioById">{{usuarioOption.id}}</option>
+            <label jhiTranslate="pesquisaApp.professor.copublicacao" for="field_copublicacao">Copublicacao</label>
+            <select class="form-control" id="field_copublicacao" multiple name="copublicacao" [(ngModel)]="professor.copublicacaos">
+                <option [ngValue]="getSelected(professor.copublicacaos, publicacaoOption)" *ngFor="let publicacaoOption of publicacaos; trackBy: trackPublicacaoById">{{publicacaoOption.id}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label jhiTranslate="pesquisaApp.professor.coorientador" for="field_coorientador">Coorientador</label>
-            <select class="form-control" id="field_coorientador" multiple name="coorientador" [(ngModel)]="professor.coorientadors">
-                <option [ngValue]="getSelected(professor.coorientadors, alunoOption)" *ngFor="let alunoOption of alunos; trackBy: trackAlunoById">{{alunoOption.id}}</option>
+            <label jhiTranslate="pesquisaApp.professor.coorientando" for="field_coorientando">Coorientando</label>
+            <select class="form-control" id="field_coorientando" multiple name="coorientando" [(ngModel)]="professor.coorientandos">
+                <option [ngValue]="getSelected(professor.coorientandos, alunoOption)" *ngFor="let alunoOption of alunos; trackBy: trackAlunoById">{{alunoOption.nome}}</option>
             </select>
         </div>
     </div>

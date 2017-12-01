@@ -32,7 +32,10 @@ public class Seminario implements Serializable {
     private String local;
 
     @ManyToOne
-    private Usuario organizador;
+    private Aluno organizadorAluno;
+
+    @ManyToOne
+    private Professor organizadorProfessor;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -82,17 +85,30 @@ public class Seminario implements Serializable {
         this.local = local;
     }
 
-    public Usuario getOrganizador() {
-        return organizador;
+    public Aluno getOrganizadorAluno() {
+        return organizadorAluno;
     }
 
-    public Seminario organizador(Usuario usuario) {
-        this.organizador = usuario;
+    public Seminario organizadorAluno(Aluno aluno) {
+        this.organizadorAluno = aluno;
         return this;
     }
 
-    public void setOrganizador(Usuario usuario) {
-        this.organizador = usuario;
+    public void setOrganizadorAluno(Aluno aluno) {
+        this.organizadorAluno = aluno;
+    }
+
+    public Professor getOrganizadorProfessor() {
+        return organizadorProfessor;
+    }
+
+    public Seminario organizadorProfessor(Professor professor) {
+        this.organizadorProfessor = professor;
+        return this;
+    }
+
+    public void setOrganizadorProfessor(Professor professor) {
+        this.organizadorProfessor = professor;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

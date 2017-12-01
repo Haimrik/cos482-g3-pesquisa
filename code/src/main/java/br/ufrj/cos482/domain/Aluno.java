@@ -38,14 +38,15 @@ public class Aluno implements Serializable {
     @Column(name = "data_de_entrada", nullable = false)
     private ZonedDateTime dataDeEntrada;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Usuario usuario;
-
     @OneToMany(mappedBy = "aluno")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Publicacao> publicacaos = new HashSet<>();
+
+    @OneToMany(mappedBy = "organizadorAluno")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Seminario> seminarios = new HashSet<>();
 
     @OneToMany(mappedBy = "aluno")
     @JsonIgnore
@@ -57,13 +58,20 @@ public class Aluno implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Reuniao> reuniaos = new HashSet<>();
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "aluno_copublicacao",
+               joinColumns = @JoinColumn(name="alunos_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="copublicacaos_id", referencedColumnName="id"))
+    private Set<Publicacao> copublicacaos = new HashSet<>();
+
     @ManyToOne
     private Professor orientador;
 
-    @ManyToMany(mappedBy = "coorientadors")
+    @ManyToMany(mappedBy = "coorientandos")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Professor> alunos = new HashSet<>();
+    private Set<Professor> coorientadors = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -113,19 +121,6 @@ public class Aluno implements Serializable {
         this.dataDeEntrada = dataDeEntrada;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public Aluno usuario(Usuario usuario) {
-        this.usuario = usuario;
-        return this;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
     public Set<Publicacao> getPublicacaos() {
         return publicacaos;
     }
@@ -149,6 +144,31 @@ public class Aluno implements Serializable {
 
     public void setPublicacaos(Set<Publicacao> publicacaos) {
         this.publicacaos = publicacaos;
+    }
+
+    public Set<Seminario> getSeminarios() {
+        return seminarios;
+    }
+
+    public Aluno seminarios(Set<Seminario> seminarios) {
+        this.seminarios = seminarios;
+        return this;
+    }
+
+    public Aluno addSeminario(Seminario seminario) {
+        this.seminarios.add(seminario);
+        seminario.setOrganizadorAluno(this);
+        return this;
+    }
+
+    public Aluno removeSeminario(Seminario seminario) {
+        this.seminarios.remove(seminario);
+        seminario.setOrganizadorAluno(null);
+        return this;
+    }
+
+    public void setSeminarios(Set<Seminario> seminarios) {
+        this.seminarios = seminarios;
     }
 
     public Set<Defesa> getDefesas() {
@@ -201,6 +221,31 @@ public class Aluno implements Serializable {
         this.reuniaos = reuniaos;
     }
 
+    public Set<Publicacao> getCopublicacaos() {
+        return copublicacaos;
+    }
+
+    public Aluno copublicacaos(Set<Publicacao> publicacaos) {
+        this.copublicacaos = publicacaos;
+        return this;
+    }
+
+    public Aluno addCopublicacao(Publicacao publicacao) {
+        this.copublicacaos.add(publicacao);
+        publicacao.getCoautorAlunos().add(this);
+        return this;
+    }
+
+    public Aluno removeCopublicacao(Publicacao publicacao) {
+        this.copublicacaos.remove(publicacao);
+        publicacao.getCoautorAlunos().remove(this);
+        return this;
+    }
+
+    public void setCopublicacaos(Set<Publicacao> publicacaos) {
+        this.copublicacaos = publicacaos;
+    }
+
     public Professor getOrientador() {
         return orientador;
     }
@@ -214,29 +259,29 @@ public class Aluno implements Serializable {
         this.orientador = professor;
     }
 
-    public Set<Professor> getAlunos() {
-        return alunos;
+    public Set<Professor> getCoorientadors() {
+        return coorientadors;
     }
 
-    public Aluno alunos(Set<Professor> professors) {
-        this.alunos = professors;
+    public Aluno coorientadors(Set<Professor> professors) {
+        this.coorientadors = professors;
         return this;
     }
 
-    public Aluno addAluno(Professor professor) {
-        this.alunos.add(professor);
-        professor.getCoorientadors().add(this);
+    public Aluno addCoorientador(Professor professor) {
+        this.coorientadors.add(professor);
+        professor.getCoorientandos().add(this);
         return this;
     }
 
-    public Aluno removeAluno(Professor professor) {
-        this.alunos.remove(professor);
-        professor.getCoorientadors().remove(this);
+    public Aluno removeCoorientador(Professor professor) {
+        this.coorientadors.remove(professor);
+        professor.getCoorientandos().remove(this);
         return this;
     }
 
-    public void setAlunos(Set<Professor> professors) {
-        this.alunos = professors;
+    public void setCoorientadors(Set<Professor> professors) {
+        this.coorientadors = professors;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

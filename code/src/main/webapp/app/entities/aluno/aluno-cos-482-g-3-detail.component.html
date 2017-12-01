@@ -16,16 +16,16 @@
         <dd>
             <span>{{aluno.dataDeEntrada | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="pesquisaApp.aluno.usuario">Usuario</span></dt>
+        <dt><span jhiTranslate="pesquisaApp.aluno.copublicacao">Copublicacao</span></dt>
         <dd>
-            <div *ngIf="aluno.usuarioId">
-                <a [routerLink]="['/usuario-cos-482-g-3', aluno.usuarioId]">{{aluno.usuarioId}}</a>
-            </div>
+            <span *ngFor="let copublicacao of aluno.copublicacaos; let last = last">
+                <a [routerLink]="['/publicacao-cos-482-g-3', copublicacao?.id ]">{{copublicacao.id}}</a>{{last ? '' : ', '}}
+            </span>
         </dd>
         <dt><span jhiTranslate="pesquisaApp.aluno.orientador">Orientador</span></dt>
         <dd>
             <div *ngIf="aluno.orientadorId">
-                <a [routerLink]="['/professor-cos-482-g-3', aluno.orientadorId]">{{aluno.orientadorId}}</a>
+                <a [routerLink]="['/professor-cos-482-g-3', aluno.orientadorId]">{{aluno.orientadorNome}}</a>
             </div>
         </dd>
     </dl>

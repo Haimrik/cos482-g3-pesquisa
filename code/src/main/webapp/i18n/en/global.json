@@ -7,7 +7,6 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
-                "usuarioCos482G3": "Usuario",
                 "alunoCos482G3": "Aluno",
                 "professorCos482G3": "Professor",
                 "publicacaoCos482G3": "Publicacao",

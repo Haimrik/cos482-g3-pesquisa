@@ -31,10 +31,17 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="pesquisaApp.seminario.organizador" for="field_organizador">Organizador</label>
-            <select class="form-control" id="field_organizador" name="organizador" [(ngModel)]="seminario.organizadorId" >
+            <label class="form-control-label" jhiTranslate="pesquisaApp.seminario.organizadorAluno" for="field_organizadorAluno">Organizador Aluno</label>
+            <select class="form-control" id="field_organizadorAluno" name="organizadorAluno" [(ngModel)]="seminario.organizadorAlunoId" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="usuarioOption.id" *ngFor="let usuarioOption of usuarios; trackBy: trackUsuarioById">{{usuarioOption.id}}</option>
+                <option [ngValue]="alunoOption.id" *ngFor="let alunoOption of alunos; trackBy: trackAlunoById">{{alunoOption.nome}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pesquisaApp.seminario.organizadorProfessor" for="field_organizadorProfessor">Organizador Professor</label>
+            <select class="form-control" id="field_organizadorProfessor" name="organizadorProfessor" [(ngModel)]="seminario.organizadorProfessorId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="professorOption.id" *ngFor="let professorOption of professors; trackBy: trackProfessorById">{{professorOption.nome}}</option>
             </select>
         </div>
     </div>

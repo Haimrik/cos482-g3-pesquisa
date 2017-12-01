@@ -14,6 +14,7 @@ public interface ParticipacaoBancaMapper extends EntityMapper <ParticipacaoBanca
     @Mapping(source = "defesa.id", target = "defesaId")
 
     @Mapping(source = "professor.id", target = "professorId")
+    @Mapping(source = "professor.nome", target = "professorNome")
     ParticipacaoBancaDTO toDto(ParticipacaoBanca participacaoBanca); 
 
     @Mapping(source = "defesaId", target = "defesa")

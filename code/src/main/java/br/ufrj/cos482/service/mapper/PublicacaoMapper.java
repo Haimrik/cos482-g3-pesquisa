@@ -12,10 +12,12 @@ import org.mapstruct.*;
 public interface PublicacaoMapper extends EntityMapper <PublicacaoDTO, Publicacao> {
 
     @Mapping(source = "aluno.id", target = "alunoId")
+    @Mapping(source = "aluno.nome", target = "alunoNome")
     PublicacaoDTO toDto(Publicacao publicacao); 
 
     @Mapping(source = "alunoId", target = "aluno")
-    @Mapping(target = "coautors", ignore = true)
+    @Mapping(target = "coautorAlunos", ignore = true)
+    @Mapping(target = "coautorProfessors", ignore = true)
     Publicacao toEntity(PublicacaoDTO publicacaoDTO); 
     default Publicacao fromId(Long id) {
         if (id == null) {

@@ -47,8 +47,8 @@ describe('Professor e2e test', () => {
         expect(professorDialogPage.getLinhaDePesquisaInput()).toMatch('linhaDePesquisa');
         professorDialogPage.setAreasDeInteresseInput('areasDeInteresse');
         expect(professorDialogPage.getAreasDeInteresseInput()).toMatch('areasDeInteresse');
-        professorDialogPage.usuarioSelectLastOption();
-        // professorDialogPage.coorientadorSelectLastOption();
+        // professorDialogPage.copublicacaoSelectLastOption();
+        // professorDialogPage.coorientandoSelectLastOption();
         professorDialogPage.save();
         expect(professorDialogPage.getSaveButton().isPresent()).toBeFalsy();
     }); 
@@ -81,8 +81,8 @@ export class ProfessorDialogPage {
     programaInput = element(by.css('input#field_programa'));
     linhaDePesquisaInput = element(by.css('input#field_linhaDePesquisa'));
     areasDeInteresseInput = element(by.css('input#field_areasDeInteresse'));
-    usuarioSelect = element(by.css('select#field_usuario'));
-    coorientadorSelect = element(by.css('select#field_coorientador'));
+    copublicacaoSelect = element(by.css('select#field_copublicacao'));
+    coorientandoSelect = element(by.css('select#field_coorientando'));
 
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
@@ -136,36 +136,36 @@ export class ProfessorDialogPage {
         return this.areasDeInteresseInput.getAttribute('value');
     }
 
-    usuarioSelectLastOption = function () {
-        this.usuarioSelect.all(by.tagName('option')).last().click();
+    copublicacaoSelectLastOption = function () {
+        this.copublicacaoSelect.all(by.tagName('option')).last().click();
     }
 
-    usuarioSelectOption = function (option) {
-        this.usuarioSelect.sendKeys(option);
+    copublicacaoSelectOption = function (option) {
+        this.copublicacaoSelect.sendKeys(option);
     }
 
-    getUsuarioSelect = function () {
-        return this.usuarioSelect;
+    getCopublicacaoSelect = function () {
+        return this.copublicacaoSelect;
     }
 
-    getUsuarioSelectedOption = function () {
-        return this.usuarioSelect.element(by.css('option:checked')).getText();
+    getCopublicacaoSelectedOption = function () {
+        return this.copublicacaoSelect.element(by.css('option:checked')).getText();
     }
 
-    coorientadorSelectLastOption = function () {
-        this.coorientadorSelect.all(by.tagName('option')).last().click();
+    coorientandoSelectLastOption = function () {
+        this.coorientandoSelect.all(by.tagName('option')).last().click();
     }
 
-    coorientadorSelectOption = function (option) {
-        this.coorientadorSelect.sendKeys(option);
+    coorientandoSelectOption = function (option) {
+        this.coorientandoSelect.sendKeys(option);
     }
 
-    getCoorientadorSelect = function () {
-        return this.coorientadorSelect;
+    getCoorientandoSelect = function () {
+        return this.coorientandoSelect;
     }
 
-    getCoorientadorSelectedOption = function () {
-        return this.coorientadorSelect.element(by.css('option:checked')).getText();
+    getCoorientandoSelectedOption = function () {
+        return this.coorientandoSelect.element(by.css('option:checked')).getText();
     }
 
     save() {

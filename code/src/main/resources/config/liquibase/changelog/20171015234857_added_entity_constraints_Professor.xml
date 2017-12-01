@@ -8,20 +8,25 @@
     -->
     <changeSet id="20171015234857-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="usuario_id"
-                                 baseTableName="professor"
-                                 constraintName="fk_professor_usuario_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="usuario"/>
-
         <addForeignKeyConstraint baseColumnNames="professors_id"
-                                 baseTableName="professor_coorientador"
-                                 constraintName="fk_professor_coorientador_professors_id"
+                                 baseTableName="professor_copublicacao"
+                                 constraintName="fk_professor_copublicacao_professors_id"
                                  referencedColumnNames="id"
                                  referencedTableName="professor"/>
-        <addForeignKeyConstraint baseColumnNames="coorientadors_id"
-                                 baseTableName="professor_coorientador"
-                                 constraintName="fk_professor_coorientador_coorientadors_id"
+        <addForeignKeyConstraint baseColumnNames="copublicacaos_id"
+                                 baseTableName="professor_copublicacao"
+                                 constraintName="fk_professor_copublicacao_copublicacaos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="publicacao"/>
+        
+        <addForeignKeyConstraint baseColumnNames="professors_id"
+                                 baseTableName="professor_coorientando"
+                                 constraintName="fk_professor_coorientando_professors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="professor"/>
+        <addForeignKeyConstraint baseColumnNames="coorientandos_id"
+                                 baseTableName="professor_coorientando"
+                                 constraintName="fk_professor_coorientando_coorientandos_id"
                                  referencedColumnNames="id"
                                  referencedTableName="aluno"/>
         

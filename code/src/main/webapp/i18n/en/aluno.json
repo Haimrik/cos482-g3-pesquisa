@@ -18,12 +18,13 @@
             "nome": "Nome",
             "dre": "Dre",
             "dataDeEntrada": "Data De Entrada",
-            "usuario": "Usuario",
             "publicacao": "Publicacao",
+            "seminario": "Seminario",
             "defesa": "Defesa",
             "reuniao": "Reuniao",
+            "copublicacao": "Copublicacao",
             "orientador": "Orientador",
-            "aluno": "Aluno"
+            "coorientador": "Coorientador"
         }
     }
 }

@@ -21,11 +21,12 @@
             "programa": "Programa",
             "linhaDePesquisa": "Linha De Pesquisa",
             "areasDeInteresse": "Areas De Interesse",
-            "usuario": "Usuario",
             "aluno": "Aluno",
+            "seminario": "Seminario",
             "participacaoBanca": "Participacao Banca",
             "reuniao": "Reuniao",
-            "coorientador": "Coorientador"
+            "copublicacao": "Copublicacao",
+            "coorientando": "Coorientando"
         }
     }
 }

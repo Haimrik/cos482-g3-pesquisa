@@ -8,14 +8,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Professor and its DTO ProfessorDTO.
  */
-@Mapper(componentModel = "spring", uses = {UsuarioMapper.class, AlunoMapper.class, })
+@Mapper(componentModel = "spring", uses = {PublicacaoMapper.class, AlunoMapper.class, })
 public interface ProfessorMapper extends EntityMapper <ProfessorDTO, Professor> {
-
-    @Mapping(source = "usuario.id", target = "usuarioId")
-    ProfessorDTO toDto(Professor professor); 
-
-    @Mapping(source = "usuarioId", target = "usuario")
+    
     @Mapping(target = "alunos", ignore = true)
+    @Mapping(target = "seminarios", ignore = true)
     @Mapping(target = "participacaoBancas", ignore = true)
     @Mapping(target = "reuniaos", ignore = true)
     Professor toEntity(ProfessorDTO professorDTO); 

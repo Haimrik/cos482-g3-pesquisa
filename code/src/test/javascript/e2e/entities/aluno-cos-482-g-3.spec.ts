@@ -41,7 +41,7 @@ describe('Aluno e2e test', () => {
         expect(alunoDialogPage.getDreInput()).toMatch('dre');
         alunoDialogPage.setDataDeEntradaInput(12310020012301);
         expect(alunoDialogPage.getDataDeEntradaInput()).toMatch('2001-12-31T02:30');
-        alunoDialogPage.usuarioSelectLastOption();
+        // alunoDialogPage.copublicacaoSelectLastOption();
         alunoDialogPage.orientadorSelectLastOption();
         alunoDialogPage.save();
         expect(alunoDialogPage.getSaveButton().isPresent()).toBeFalsy();
@@ -72,7 +72,7 @@ export class AlunoDialogPage {
     nomeInput = element(by.css('input#field_nome'));
     dreInput = element(by.css('input#field_dre'));
     dataDeEntradaInput = element(by.css('input#field_dataDeEntrada'));
-    usuarioSelect = element(by.css('select#field_usuario'));
+    copublicacaoSelect = element(by.css('select#field_copublicacao'));
     orientadorSelect = element(by.css('select#field_orientador'));
 
     getModalTitle() {
@@ -103,20 +103,20 @@ export class AlunoDialogPage {
         return this.dataDeEntradaInput.getAttribute('value');
     }
 
-    usuarioSelectLastOption = function () {
-        this.usuarioSelect.all(by.tagName('option')).last().click();
+    copublicacaoSelectLastOption = function () {
+        this.copublicacaoSelect.all(by.tagName('option')).last().click();
     }
 
-    usuarioSelectOption = function (option) {
-        this.usuarioSelect.sendKeys(option);
+    copublicacaoSelectOption = function (option) {
+        this.copublicacaoSelect.sendKeys(option);
     }
 
-    getUsuarioSelect = function () {
-        return this.usuarioSelect;
+    getCopublicacaoSelect = function () {
+        return this.copublicacaoSelect;
     }
 
-    getUsuarioSelectedOption = function () {
-        return this.usuarioSelect.element(by.css('option:checked')).getText();
+    getCopublicacaoSelectedOption = function () {
+        return this.copublicacaoSelect.element(by.css('option:checked')).getText();
     }
 
     orientadorSelectLastOption = function () {

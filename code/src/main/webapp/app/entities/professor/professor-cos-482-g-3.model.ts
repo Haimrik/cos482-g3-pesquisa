@@ -9,11 +9,12 @@ export class ProfessorCos482G3 implements BaseEntity {
         public programa?: string,
         public linhaDePesquisa?: string,
         public areasDeInteresse?: string,
-        public usuarioId?: number,
         public alunos?: BaseEntity[],
+        public seminarios?: BaseEntity[],
         public participacaoBancas?: BaseEntity[],
         public reuniaos?: BaseEntity[],
-        public coorientadors?: BaseEntity[],
+        public copublicacaos?: BaseEntity[],
+        public coorientandos?: BaseEntity[],
     ) {
     }
 }

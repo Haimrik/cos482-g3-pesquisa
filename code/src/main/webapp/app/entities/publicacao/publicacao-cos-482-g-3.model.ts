@@ -6,7 +6,8 @@ export class PublicacaoCos482G3 implements BaseEntity {
         public url?: string,
         public pertenceAoPrograma?: boolean,
         public alunoId?: number,
-        public coautors?: BaseEntity[],
+        public coautorAlunos?: BaseEntity[],
+        public coautorProfessors?: BaseEntity[],
     ) {
         this.pertenceAoPrograma = false;
     }

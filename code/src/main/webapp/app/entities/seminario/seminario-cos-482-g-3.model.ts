@@ -6,7 +6,8 @@ export class SeminarioCos482G3 implements BaseEntity {
         public titulo?: string,
         public dataEHora?: any,
         public local?: string,
-        public organizadorId?: number,
+        public organizadorAlunoId?: number,
+        public organizadorProfessorId?: number,
     ) {
     }
 }

@@ -20,7 +20,7 @@
             <th jhiSortBy="confirmado"><span jhiTranslate="pesquisaApp.participacaoBanca.confirmado">Confirmado</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="estadoAprovacaoDefesa"><span jhiTranslate="pesquisaApp.participacaoBanca.estadoAprovacaoDefesa">Estado Aprovacao Defesa</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="defesaId"><span jhiTranslate="pesquisaApp.participacaoBanca.defesa">Defesa</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="professorId"><span jhiTranslate="pesquisaApp.participacaoBanca.professor">Professor</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="professorNome"><span jhiTranslate="pesquisaApp.participacaoBanca.professor">Professor</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -36,7 +36,7 @@
                 </td>
                 <td>
                     <div *ngIf="participacaoBanca.professorId">
-                        <a [routerLink]="['../professor-cos-482-g-3', participacaoBanca.professorId  ]" >{{participacaoBanca.professorId}}</a>
+                        <a [routerLink]="['../professor-cos-482-g-3', participacaoBanca.professorId  ]" >{{participacaoBanca.professorNome}}</a>
                     </div>
                 </td>
                 <td class="text-right">

@@ -5,14 +5,21 @@
             "relationshipType": "many-to-one",
             "relationshipName": "aluno",
             "otherEntityName": "aluno",
-            "otherEntityField": "id"
+            "otherEntityField": "nome"
         },
         {
             "relationshipType": "many-to-many",
-            "relationshipName": "coautor",
-            "otherEntityName": "usuario",
+            "relationshipName": "coautorAluno",
+            "otherEntityName": "aluno",
             "ownerSide": false,
-            "otherEntityRelationshipName": "publicacao"
+            "otherEntityRelationshipName": "copublicacao"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "coautorProfessor",
+            "otherEntityName": "professor",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "copublicacao"
         }
     ],
     "fields": [

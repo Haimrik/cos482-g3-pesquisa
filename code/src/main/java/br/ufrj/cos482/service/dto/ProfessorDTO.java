@@ -29,9 +29,9 @@ public class ProfessorDTO implements Serializable {
 
     private String areasDeInteresse;
 
-    private Long usuarioId;
+    private Set<PublicacaoDTO> copublicacaos = new HashSet<>();
 
-    private Set<AlunoDTO> coorientadors = new HashSet<>();
+    private Set<AlunoDTO> coorientandos = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -89,20 +89,20 @@ public class ProfessorDTO implements Serializable {
         this.areasDeInteresse = areasDeInteresse;
     }
 
-    public Long getUsuarioId() {
-        return usuarioId;
+    public Set<PublicacaoDTO> getCopublicacaos() {
+        return copublicacaos;
     }
 
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setCopublicacaos(Set<PublicacaoDTO> publicacaos) {
+        this.copublicacaos = publicacaos;
     }
 
-    public Set<AlunoDTO> getCoorientadors() {
-        return coorientadors;
+    public Set<AlunoDTO> getCoorientandos() {
+        return coorientandos;
     }
 
-    public void setCoorientadors(Set<AlunoDTO> alunos) {
-        this.coorientadors = alunos;
+    public void setCoorientandos(Set<AlunoDTO> alunos) {
+        this.coorientandos = alunos;
     }
 
     @Override

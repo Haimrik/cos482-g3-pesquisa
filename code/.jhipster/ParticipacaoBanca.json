@@ -11,7 +11,7 @@
             "relationshipType": "many-to-one",
             "relationshipName": "professor",
             "otherEntityName": "professor",
-            "otherEntityField": "id"
+            "otherEntityField": "nome"
         }
     ],
     "fields": [

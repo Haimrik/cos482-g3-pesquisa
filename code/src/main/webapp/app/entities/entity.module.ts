@@ -1,6 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { PesquisaUsuarioCos482G3Module } from './usuario/usuario-cos-482-g-3.module';
 import { PesquisaAlunoCos482G3Module } from './aluno/aluno-cos-482-g-3.module';
 import { PesquisaProfessorCos482G3Module } from './professor/professor-cos-482-g-3.module';
 import { PesquisaPublicacaoCos482G3Module } from './publicacao/publicacao-cos-482-g-3.module';
@@ -12,7 +11,6 @@ import { PesquisaReuniaoCos482G3Module } from './reuniao/reuniao-cos-482-g-3.mod
 
 @NgModule({
     imports: [
-        PesquisaUsuarioCos482G3Module,
         PesquisaAlunoCos482G3Module,
         PesquisaProfessorCos482G3Module,
         PesquisaPublicacaoCos482G3Module,

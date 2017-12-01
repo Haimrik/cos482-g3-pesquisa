@@ -24,9 +24,11 @@ public class AlunoDTO implements Serializable {
     @NotNull
     private ZonedDateTime dataDeEntrada;
 
-    private Long usuarioId;
+    private Set<PublicacaoDTO> copublicacaos = new HashSet<>();
 
     private Long orientadorId;
+
+    private String orientadorNome;
 
     public Long getId() {
         return id;
@@ -60,12 +62,12 @@ public class AlunoDTO implements Serializable {
         this.dataDeEntrada = dataDeEntrada;
     }
 
-    public Long getUsuarioId() {
-        return usuarioId;
+    public Set<PublicacaoDTO> getCopublicacaos() {
+        return copublicacaos;
     }
 
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setCopublicacaos(Set<PublicacaoDTO> publicacaos) {
+        this.copublicacaos = publicacaos;
     }
 
     public Long getOrientadorId() {
@@ -74,6 +76,14 @@ public class AlunoDTO implements Serializable {
 
     public void setOrientadorId(Long professorId) {
         this.orientadorId = professorId;
+    }
+
+    public String getOrientadorNome() {
+        return orientadorNome;
+    }
+
+    public void setOrientadorNome(String professorNome) {
+        this.orientadorNome = professorNome;
     }
 
     @Override

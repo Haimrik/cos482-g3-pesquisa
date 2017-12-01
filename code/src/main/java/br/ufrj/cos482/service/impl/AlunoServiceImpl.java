@@ -69,7 +69,7 @@ public class AlunoServiceImpl implements AlunoService{
     @Transactional(readOnly = true)
     public AlunoDTO findOne(Long id) {
         log.debug("Request to get Aluno : {}", id);
-        Aluno aluno = alunoRepository.findOne(id);
+        Aluno aluno = alunoRepository.findOneWithEagerRelationships(id);
         return alunoMapper.toDto(aluno);
     }
 

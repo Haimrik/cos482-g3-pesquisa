@@ -41,7 +41,8 @@ describe('Seminario e2e test', () => {
         expect(seminarioDialogPage.getDataEHoraInput()).toMatch('2001-12-31T02:30');
         seminarioDialogPage.setLocalInput('local');
         expect(seminarioDialogPage.getLocalInput()).toMatch('local');
-        seminarioDialogPage.organizadorSelectLastOption();
+        seminarioDialogPage.organizadorAlunoSelectLastOption();
+        seminarioDialogPage.organizadorProfessorSelectLastOption();
         seminarioDialogPage.save();
         expect(seminarioDialogPage.getSaveButton().isPresent()).toBeFalsy();
     }); 
@@ -71,7 +72,8 @@ export class SeminarioDialogPage {
     tituloInput = element(by.css('input#field_titulo'));
     dataEHoraInput = element(by.css('input#field_dataEHora'));
     localInput = element(by.css('input#field_local'));
-    organizadorSelect = element(by.css('select#field_organizador'));
+    organizadorAlunoSelect = element(by.css('select#field_organizadorAluno'));
+    organizadorProfessorSelect = element(by.css('select#field_organizadorProfessor'));
 
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
@@ -101,20 +103,36 @@ export class SeminarioDialogPage {
         return this.localInput.getAttribute('value');
     }
 
-    organizadorSelectLastOption = function () {
-        this.organizadorSelect.all(by.tagName('option')).last().click();
+    organizadorAlunoSelectLastOption = function () {
+        this.organizadorAlunoSelect.all(by.tagName('option')).last().click();
     }
 
-    organizadorSelectOption = function (option) {
-        this.organizadorSelect.sendKeys(option);
+    organizadorAlunoSelectOption = function (option) {
+        this.organizadorAlunoSelect.sendKeys(option);
     }
 
-    getOrganizadorSelect = function () {
-        return this.organizadorSelect;
+    getOrganizadorAlunoSelect = function () {
+        return this.organizadorAlunoSelect;
     }
 
-    getOrganizadorSelectedOption = function () {
-        return this.organizadorSelect.element(by.css('option:checked')).getText();
+    getOrganizadorAlunoSelectedOption = function () {
+        return this.organizadorAlunoSelect.element(by.css('option:checked')).getText();
+    }
+
+    organizadorProfessorSelectLastOption = function () {
+        this.organizadorProfessorSelect.all(by.tagName('option')).last().click();
+    }
+
+    organizadorProfessorSelectOption = function (option) {
+        this.organizadorProfessorSelect.sendKeys(option);
+    }
+
+    getOrganizadorProfessorSelect = function () {
+        return this.organizadorProfessorSelect;
+    }
+
+    getOrganizadorProfessorSelectedOption = function () {
+        return this.organizadorProfessorSelect.element(by.css('option:checked')).getText();
     }
 
     save() {

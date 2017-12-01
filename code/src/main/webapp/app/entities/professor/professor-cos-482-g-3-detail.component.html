@@ -28,16 +28,16 @@
         <dd>
             <span>{{professor.areasDeInteresse}}</span>
         </dd>
-        <dt><span jhiTranslate="pesquisaApp.professor.usuario">Usuario</span></dt>
+        <dt><span jhiTranslate="pesquisaApp.professor.copublicacao">Copublicacao</span></dt>
         <dd>
-            <div *ngIf="professor.usuarioId">
-                <a [routerLink]="['/usuario-cos-482-g-3', professor.usuarioId]">{{professor.usuarioId}}</a>
-            </div>
+            <span *ngFor="let copublicacao of professor.copublicacaos; let last = last">
+                <a [routerLink]="['/publicacao-cos-482-g-3', copublicacao?.id ]">{{copublicacao.id}}</a>{{last ? '' : ', '}}
+            </span>
         </dd>
-        <dt><span jhiTranslate="pesquisaApp.professor.coorientador">Coorientador</span></dt>
+        <dt><span jhiTranslate="pesquisaApp.professor.coorientando">Coorientando</span></dt>
         <dd>
-            <span *ngFor="let coorientador of professor.coorientadors; let last = last">
-                <a [routerLink]="['/aluno-cos-482-g-3', coorientador?.id ]">{{coorientador.id}}</a>{{last ? '' : ', '}}
+            <span *ngFor="let coorientando of professor.coorientandos; let last = last">
+                <a [routerLink]="['/aluno-cos-482-g-3', coorientando?.id ]">{{coorientando.nome}}</a>{{last ? '' : ', '}}
             </span>
         </dd>
     </dl>

@@ -12,8 +12,10 @@ import org.mapstruct.*;
 public interface ReuniaoMapper extends EntityMapper <ReuniaoDTO, Reuniao> {
 
     @Mapping(source = "professor.id", target = "professorId")
+    @Mapping(source = "professor.nome", target = "professorNome")
 
     @Mapping(source = "aluno.id", target = "alunoId")
+    @Mapping(source = "aluno.nome", target = "alunoNome")
     ReuniaoDTO toDto(Reuniao reuniao); 
 
     @Mapping(source = "professorId", target = "professor")

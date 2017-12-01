@@ -20,8 +20,7 @@
             <th jhiSortBy="nome"><span jhiTranslate="pesquisaApp.aluno.nome">Nome</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dre"><span jhiTranslate="pesquisaApp.aluno.dre">Dre</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dataDeEntrada"><span jhiTranslate="pesquisaApp.aluno.dataDeEntrada">Data De Entrada</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="usuarioId"><span jhiTranslate="pesquisaApp.aluno.usuario">Usuario</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="orientadorId"><span jhiTranslate="pesquisaApp.aluno.orientador">Orientador</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orientadorNome"><span jhiTranslate="pesquisaApp.aluno.orientador">Orientador</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -32,13 +31,8 @@
                 <td>{{aluno.dre}}</td>
                 <td>{{aluno.dataDeEntrada | date:'medium'}}</td>
                 <td>
-                    <div *ngIf="aluno.usuarioId">
-                        <a [routerLink]="['../usuario-cos-482-g-3', aluno.usuarioId  ]" >{{aluno.usuarioId}}</a>
-                    </div>
-                </td>
-                <td>
                     <div *ngIf="aluno.orientadorId">
-                        <a [routerLink]="['../professor-cos-482-g-3', aluno.orientadorId  ]" >{{aluno.orientadorId}}</a>
+                        <a [routerLink]="['../professor-cos-482-g-3', aluno.orientadorId  ]" >{{aluno.orientadorNome}}</a>
                     </div>
                 </td>
                 <td class="text-right">

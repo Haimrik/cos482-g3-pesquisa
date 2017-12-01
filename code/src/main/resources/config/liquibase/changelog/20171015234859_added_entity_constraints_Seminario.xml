@@ -8,11 +8,17 @@
     -->
     <changeSet id="20171015234859-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="organizador_id"
+        <addForeignKeyConstraint baseColumnNames="organizador_aluno_id"
                                  baseTableName="seminario"
-                                 constraintName="fk_seminario_organizador_id"
+                                 constraintName="fk_seminario_organizador_aluno_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="usuario"/>
+                                 referencedTableName="aluno"/>
+
+        <addForeignKeyConstraint baseColumnNames="organizador_professor_id"
+                                 baseTableName="seminario"
+                                 constraintName="fk_seminario_organizador_professor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="professor"/>
 
     </changeSet>
 </databaseChangeLog>

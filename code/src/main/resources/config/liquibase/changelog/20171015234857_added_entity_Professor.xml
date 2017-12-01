@@ -45,14 +45,12 @@
             <column name="areas_de_interesse" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="usuario_id" type="bigint">
-                <constraints unique="true" nullable="true" />
-            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
-        <createTable tableName="professor_coorientador">
-            <column name="coorientadors_id" type="bigint">
+        <createTable tableName="professor_copublicacao">
+            <column name="copublicacaos_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="professors_id" type="bigint">
@@ -60,7 +58,18 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="professors_id, coorientadors_id" tableName="professor_coorientador"/>
+        <addPrimaryKey columnNames="professors_id, copublicacaos_id" tableName="professor_copublicacao"/>
+        
+        <createTable tableName="professor_coorientando">
+            <column name="coorientandos_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="professors_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="professors_id, coorientandos_id" tableName="professor_coorientando"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

@@ -6,12 +6,13 @@ export class AlunoCos482G3 implements BaseEntity {
         public nome?: string,
         public dre?: string,
         public dataDeEntrada?: any,
-        public usuarioId?: number,
         public publicacaos?: BaseEntity[],
+        public seminarios?: BaseEntity[],
         public defesas?: BaseEntity[],
         public reuniaos?: BaseEntity[],
+        public copublicacaos?: BaseEntity[],
         public orientadorId?: number,
-        public alunos?: BaseEntity[],
+        public coorientadors?: BaseEntity[],
     ) {
     }
 }

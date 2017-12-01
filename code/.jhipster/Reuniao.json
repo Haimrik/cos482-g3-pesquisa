@@ -5,13 +5,13 @@
             "relationshipType": "many-to-one",
             "relationshipName": "professor",
             "otherEntityName": "professor",
-            "otherEntityField": "id"
+            "otherEntityField": "nome"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "aluno",
             "otherEntityName": "aluno",
-            "otherEntityField": "id"
+            "otherEntityField": "nome"
         }
     ],
     "fields": [

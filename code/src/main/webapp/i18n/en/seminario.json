@@ -18,7 +18,8 @@
             "titulo": "Titulo",
             "dataEHora": "Data E Hora",
             "local": "Local",
-            "organizador": "Organizador"
+            "organizadorAluno": "Organizador Aluno",
+            "organizadorProfessor": "Organizador Professor"
         }
     }
 }

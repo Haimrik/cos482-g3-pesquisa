@@ -20,7 +20,11 @@ public class ReuniaoDTO implements Serializable {
 
     private Long professorId;
 
+    private String professorNome;
+
     private Long alunoId;
+
+    private String alunoNome;
 
     public Long getId() {
         return id;
@@ -54,12 +58,28 @@ public class ReuniaoDTO implements Serializable {
         this.professorId = professorId;
     }
 
+    public String getProfessorNome() {
+        return professorNome;
+    }
+
+    public void setProfessorNome(String professorNome) {
+        this.professorNome = professorNome;
+    }
+
     public Long getAlunoId() {
         return alunoId;
     }
 
     public void setAlunoId(Long alunoId) {
         this.alunoId = alunoId;
+    }
+
+    public String getAlunoNome() {
+        return alunoNome;
+    }
+
+    public void setAlunoNome(String alunoNome) {
+        this.alunoNome = alunoNome;
     }
 
     @Override

@@ -20,7 +20,13 @@ public class SeminarioDTO implements Serializable {
 
     private String local;
 
-    private Long organizadorId;
+    private Long organizadorAlunoId;
+
+    private String organizadorAlunoNome;
+
+    private Long organizadorProfessorId;
+
+    private String organizadorProfessorNome;
 
     public Long getId() {
         return id;
@@ -54,12 +60,36 @@ public class SeminarioDTO implements Serializable {
         this.local = local;
     }
 
-    public Long getOrganizadorId() {
-        return organizadorId;
+    public Long getOrganizadorAlunoId() {
+        return organizadorAlunoId;
     }
 
-    public void setOrganizadorId(Long usuarioId) {
-        this.organizadorId = usuarioId;
+    public void setOrganizadorAlunoId(Long alunoId) {
+        this.organizadorAlunoId = alunoId;
+    }
+
+    public String getOrganizadorAlunoNome() {
+        return organizadorAlunoNome;
+    }
+
+    public void setOrganizadorAlunoNome(String alunoNome) {
+        this.organizadorAlunoNome = alunoNome;
+    }
+
+    public Long getOrganizadorProfessorId() {
+        return organizadorProfessorId;
+    }
+
+    public void setOrganizadorProfessorId(Long professorId) {
+        this.organizadorProfessorId = professorId;
+    }
+
+    public String getOrganizadorProfessorNome() {
+        return organizadorProfessorNome;
+    }
+
+    public void setOrganizadorProfessorNome(String professorNome) {
+        this.organizadorProfessorNome = professorNome;
     }
 
     @Override

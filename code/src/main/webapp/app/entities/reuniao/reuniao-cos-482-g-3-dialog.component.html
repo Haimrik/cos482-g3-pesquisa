@@ -29,14 +29,14 @@
             <label class="form-control-label" jhiTranslate="pesquisaApp.reuniao.professor" for="field_professor">Professor</label>
             <select class="form-control" id="field_professor" name="professor" [(ngModel)]="reuniao.professorId" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="professorOption.id" *ngFor="let professorOption of professors; trackBy: trackProfessorById">{{professorOption.id}}</option>
+                <option [ngValue]="professorOption.id" *ngFor="let professorOption of professors; trackBy: trackProfessorById">{{professorOption.nome}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="pesquisaApp.reuniao.aluno" for="field_aluno">Aluno</label>
             <select class="form-control" id="field_aluno" name="aluno" [(ngModel)]="reuniao.alunoId" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="alunoOption.id" *ngFor="let alunoOption of alunos; trackBy: trackAlunoById">{{alunoOption.id}}</option>
+                <option [ngValue]="alunoOption.id" *ngFor="let alunoOption of alunos; trackBy: trackAlunoById">{{alunoOption.nome}}</option>
             </select>
         </div>
     </div>

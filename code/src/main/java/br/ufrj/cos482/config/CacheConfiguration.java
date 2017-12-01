@@ -44,9 +44,6 @@ public class CacheConfiguration {
             cm.createCache(br.ufrj.cos482.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(br.ufrj.cos482.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(br.ufrj.cos482.domain.User.class.getName() + ".authorities", jcacheConfiguration);
-            cm.createCache(br.ufrj.cos482.domain.Usuario.class.getName(), jcacheConfiguration);
-            cm.createCache(br.ufrj.cos482.domain.Usuario.class.getName() + ".seminarios", jcacheConfiguration);
-            cm.createCache(br.ufrj.cos482.domain.Usuario.class.getName() + ".publicacaos", jcacheConfiguration);
             cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName(), jcacheConfiguration);
             cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName() + ".publicacaos", jcacheConfiguration);
             cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName() + ".defesas", jcacheConfiguration);
@@ -64,6 +61,16 @@ public class CacheConfiguration {
             cm.createCache(br.ufrj.cos482.domain.Defesa.class.getName(), jcacheConfiguration);
             cm.createCache(br.ufrj.cos482.domain.Defesa.class.getName() + ".participacaoBancas", jcacheConfiguration);
             cm.createCache(br.ufrj.cos482.domain.Reuniao.class.getName(), jcacheConfiguration);
+            cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName() + ".seminarios", jcacheConfiguration);
+            cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName() + ".", jcacheConfiguration);
+            cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName() + ".coorientadors", jcacheConfiguration);
+            cm.createCache(br.ufrj.cos482.domain.Professor.class.getName() + ".seminarios", jcacheConfiguration);
+            cm.createCache(br.ufrj.cos482.domain.Professor.class.getName() + ".", jcacheConfiguration);
+            cm.createCache(br.ufrj.cos482.domain.Professor.class.getName() + ".coorientandos", jcacheConfiguration);
+            cm.createCache(br.ufrj.cos482.domain.Publicacao.class.getName() + ".coautorAlunos", jcacheConfiguration);
+            cm.createCache(br.ufrj.cos482.domain.Publicacao.class.getName() + ".coautorProfessors", jcacheConfiguration);
+            cm.createCache(br.ufrj.cos482.domain.Aluno.class.getName() + ".copublicacaos", jcacheConfiguration);
+            cm.createCache(br.ufrj.cos482.domain.Professor.class.getName() + ".copublicacaos", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
