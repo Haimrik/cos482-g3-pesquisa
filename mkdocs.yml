@@ -3,9 +3,8 @@ site_description: Sistema de acompanhamento de pesquisa COPPE/UFRJ
 theme: 'material'
 theme_dir: 'docs/theme'
 markdown_extensions:
-  - plantuml
+  - textimager
   - tables
-  - graphviz
 pages:
 - Introdução: 'index.md'
 - Visão: 'VISION.md'

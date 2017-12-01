@@ -26,7 +26,7 @@ O projeto e seu desenvolvimento existem motivados pela demanda imposta pela equi
 
 ### 1. Modelo GQ(I)M
 
-```dot format="png" classes="graph" alt="Modelo GQ(I)M" title="Modelo GQ(I)M"
+::dot:: alt="Modelo GQ(I)M" title="Modelo GQ(I)M"
   digraph gqim {
     N0 -> N10;
     N0 -> N11;
@@ -56,7 +56,7 @@ O projeto e seu desenvolvimento existem motivados pela demanda imposta pela equi
     N30 [label="Caracterizar densidade \n de defeitos encontrados \n em testes de software"];
     N31 [label="Caracterizar número de \n defeitos encontrados em \n revisão de artefato"];
   }
-```
+::end-dot::
 
 ### 2. Definição operacional de indicadores e respectivas medidas
 
