@@ -1,6 +1,6 @@
 # Diagrama de Classes (ou modelo JDL)
 
-```plantuml format="png" classes="uml myDiagram" alt="My super diagram placeholder" title="My super diagram"
+::plantuml::
 @startuml
 ' Cadastro
 package Cadastro {
@@ -101,7 +101,7 @@ package Publicacao {
 }
 
 @enduml
-```
+::end-plantuml::
 
 ## Observação sobre estado da Defesa
 

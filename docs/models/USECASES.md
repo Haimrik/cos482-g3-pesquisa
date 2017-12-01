@@ -2,7 +2,7 @@
 
 ## Visão geral dos casos de uso ##
 
-```plantuml format="png" classes="uml" alt="Diagrama de Casos de Uso" title="Diagrama de Casos de Uso"
+::plantuml:: format="png" classes="uml" alt="Diagrama de Casos de Uso" title="Diagrama de Casos de Uso"
 @startuml
 !include docs/uc.plantuml
 
@@ -49,7 +49,7 @@ P -|> MB
 O -|> P
 
 @enduml
-```
+::end-plantuml::
 
 ## Detalhamento dos Casos de Uso (contemplados para a primiera iteração)
 
