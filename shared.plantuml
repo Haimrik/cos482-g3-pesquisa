@@ -1,0 +1,14 @@
+@startuml
+  !define CREATE(actor,model) actor -down- (Cadastrar model) 
+  !define READ(actor,model) actor -down- (Visualizar model) 
+  !define UPDATE(actor,model) actor -down- (Atualizar model) 
+  !define DESTROY(actor,model) actor -down- (Remover model) 
+  !definelong CRUD(actor, model)
+    CREATE(actor,model)
+    READ(actor,model)
+    UPDATE(actor,model)
+    DESTROY(actor,model)
+  !enddefinelong
+
+  skinparam packageStyle rect
+@enduml
