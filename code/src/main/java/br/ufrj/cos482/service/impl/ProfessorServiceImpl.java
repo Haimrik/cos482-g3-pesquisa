@@ -1,16 +1,21 @@
 package br.ufrj.cos482.service.impl;
 
+import br.ufrj.cos482.domain.User;
 import br.ufrj.cos482.service.ProfessorService;
 import br.ufrj.cos482.domain.Professor;
 import br.ufrj.cos482.repository.ProfessorRepository;
+import br.ufrj.cos482.service.UserService;
 import br.ufrj.cos482.service.dto.ProfessorDTO;
 import br.ufrj.cos482.service.mapper.ProfessorMapper;
+import br.ufrj.cos482.web.rest.vm.ManagedUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashSet;
 
 
 /**
@@ -25,10 +30,13 @@ public class ProfessorServiceImpl implements ProfessorService{
     private final ProfessorRepository professorRepository;
 
     private final ProfessorMapper professorMapper;
+    private final UserService userService;
 
-    public ProfessorServiceImpl(ProfessorRepository professorRepository, ProfessorMapper professorMapper) {
+    public ProfessorServiceImpl(ProfessorRepository professorRepository, ProfessorMapper professorMapper,
+                                UserService userService) {
         this.professorRepository = professorRepository;
         this.professorMapper = professorMapper;
+        this.userService = userService;
     }
 
     /**
@@ -42,6 +50,12 @@ public class ProfessorServiceImpl implements ProfessorService{
         log.debug("Request to save Professor : {}", professorDTO);
         Professor professor = professorMapper.toEntity(professorDTO);
         professor = professorRepository.save(professor);
+        HashSet<String> authorities  = new HashSet<>();
+        authorities.add("ROLE_USER");
+        ManagedUserVM managedUserVM = new ManagedUserVM(null, professorDTO.getMatricula(), null,
+            professorDTO.getNome(), null, null, false, null, "pt-br",
+            null, null, null, null, authorities);
+        User newUser = userService.createUser(managedUserVM);
         return professorMapper.toDto(professor);
     }
 

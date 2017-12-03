@@ -52,7 +52,7 @@ public class AlunoServiceImpl implements AlunoService{
         aluno = alunoRepository.save(aluno);
         HashSet<String> authorities  = new HashSet<>();
         authorities.add("ROLE_USER");
-        ManagedUserVM managedUserVM = new ManagedUserVM(null, aluno.getDre(), null, aluno.getNome(),
+        ManagedUserVM managedUserVM = new ManagedUserVM(null, alunoDTO.getDre(), null, alunoDTO.getNome(),
             null, null, false, null, "pt-br", null, null,
             null, null, authorities);
         User newUser = userService.createUser(managedUserVM);
