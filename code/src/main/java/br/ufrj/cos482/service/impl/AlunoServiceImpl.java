@@ -1,16 +1,22 @@
 package br.ufrj.cos482.service.impl;
 
+import br.ufrj.cos482.domain.User;
 import br.ufrj.cos482.service.AlunoService;
 import br.ufrj.cos482.domain.Aluno;
 import br.ufrj.cos482.repository.AlunoRepository;
+import br.ufrj.cos482.service.UserService;
 import br.ufrj.cos482.service.dto.AlunoDTO;
 import br.ufrj.cos482.service.mapper.AlunoMapper;
+import br.ufrj.cos482.web.rest.vm.ManagedUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.HashSet;
 
 
 /**
@@ -25,10 +31,12 @@ public class AlunoServiceImpl implements AlunoService{
     private final AlunoRepository alunoRepository;
 
     private final AlunoMapper alunoMapper;
+    private final UserService userService;
 
-    public AlunoServiceImpl(AlunoRepository alunoRepository, AlunoMapper alunoMapper) {
+    public AlunoServiceImpl(AlunoRepository alunoRepository, AlunoMapper alunoMapper, UserService userService) {
         this.alunoRepository = alunoRepository;
         this.alunoMapper = alunoMapper;
+        this.userService = userService;
     }
 
     /**
@@ -42,6 +50,12 @@ public class AlunoServiceImpl implements AlunoService{
         log.debug("Request to save Aluno : {}", alunoDTO);
         Aluno aluno = alunoMapper.toEntity(alunoDTO);
         aluno = alunoRepository.save(aluno);
+        HashSet<String> authorities  = new HashSet<>();
+        authorities.add("ROLE_USER");
+        ManagedUserVM managedUserVM = new ManagedUserVM(null, aluno.getDre(), null, aluno.getNome(),
+            null, null, false, null, "pt-br", null, null,
+            null, null, authorities);
+        User newUser = userService.createUser(managedUserVM);
         return alunoMapper.toDto(aluno);
     }
 
