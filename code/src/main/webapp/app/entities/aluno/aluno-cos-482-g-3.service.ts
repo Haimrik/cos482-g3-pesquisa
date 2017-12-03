@@ -73,7 +73,7 @@ export class AlunoCos482G3Service {
     private convert(aluno: AlunoCos482G3): AlunoCos482G3 {
         const copy: AlunoCos482G3 = Object.assign({}, aluno);
 
-        copy.dataDeEntrada = this.dateUtils.toDate(aluno.dataDeEntrada);
+        copy.dataDeEntrada = new Date();
         return copy;
     }
 }

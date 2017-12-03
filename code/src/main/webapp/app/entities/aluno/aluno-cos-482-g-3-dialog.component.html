@@ -35,24 +35,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="pesquisaApp.aluno.dataDeEntrada" for="field_dataDeEntrada">Data De Entrada</label>
-            <div class="d-flex">
-                <input id="field_dataDeEntrada" type="datetime-local" class="form-control" name="dataDeEntrada" [(ngModel)]="aluno.dataDeEntrada"
-                required  />
-            </div>
-            <div [hidden]="!(editForm.controls.dataDeEntrada?.dirty && editForm.controls.dataDeEntrada?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.dataDeEntrada?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.dataDeEntrada?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
-                    This field should be a date and time.
-                </small>
-            </div>
-        </div>
-
-        <div class="form-group">
             <label jhiTranslate="pesquisaApp.aluno.copublicacao" for="field_copublicacao">Copublicacao</label>
             <select class="form-control" id="field_copublicacao" multiple name="copublicacao" [(ngModel)]="aluno.copublicacaos">
                 <option [ngValue]="getSelected(aluno.copublicacaos, publicacaoOption)" *ngFor="let publicacaoOption of publicacaos; trackBy: trackPublicacaoById">{{publicacaoOption.id}}</option>

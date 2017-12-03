@@ -29,7 +29,7 @@ export class AlunoCos482G3PopupService {
             if (id) {
                 this.alunoService.find(id).subscribe((aluno) => {
                     aluno.dataDeEntrada = this.datePipe
-                        .transform(aluno.dataDeEntrada, 'yyyy-MM-ddTHH:mm:ss');
+                        .transform(new Date(), 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.alunoModalRef(component, aluno);
                     resolve(this.ngbModalRef);
                 });
