@@ -2,9 +2,12 @@ package br.ufrj.cos482.web.rest;
 
 import br.ufrj.cos482.PesquisaApp;
 
+import br.ufrj.cos482.domain.Aluno;
 import br.ufrj.cos482.domain.Seminario;
 import br.ufrj.cos482.repository.SeminarioRepository;
+import br.ufrj.cos482.service.AlunoService;
 import br.ufrj.cos482.service.SeminarioService;
+import br.ufrj.cos482.service.dto.AlunoDTO;
 import br.ufrj.cos482.service.dto.SeminarioDTO;
 import br.ufrj.cos482.service.mapper.SeminarioMapper;
 import br.ufrj.cos482.web.rest.errors.ExceptionTranslator;
@@ -12,6 +15,7 @@ import br.ufrj.cos482.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,6 +39,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
 
 /**
  * Test class for the SeminarioResource REST controller.
@@ -54,6 +59,15 @@ public class SeminarioResourceIntTest {
     private static final String DEFAULT_LOCAL = "AAAAAAAAAA";
     private static final String UPDATED_LOCAL = "BBBBBBBBBB";
 
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DRE = "AAAAAAAAAA";
+    private static final String UPDATED_DRE = "BBBBBBBBBB";
+
+    private static final ZonedDateTime DEFAULT_DATA_DE_ENTRADA = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final ZonedDateTime UPDATED_DATA_DE_ENTRADA = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
     @Autowired
     private SeminarioRepository seminarioRepository;
 
@@ -62,6 +76,9 @@ public class SeminarioResourceIntTest {
 
     @Autowired
     private SeminarioService seminarioService;
+
+    @Mock
+    private AlunoService alunoService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -82,7 +99,13 @@ public class SeminarioResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final SeminarioResource seminarioResource = new SeminarioResource(seminarioService);
+        AlunoDTO alunoDTO = new AlunoDTO();
+        alunoDTO.setNome(DEFAULT_NOME);
+        alunoDTO.setDre(DEFAULT_DRE);
+        alunoDTO.setDataDeEntrada(DEFAULT_DATA_DE_ENTRADA);
+        when(alunoService.findOne(anyLong()))
+            .thenReturn(alunoDTO);
+        final SeminarioResource seminarioResource = new SeminarioResource(seminarioService, alunoService);
         this.restSeminarioMockMvc = MockMvcBuilders.standaloneSetup(seminarioResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -147,6 +170,24 @@ public class SeminarioResourceIntTest {
         // Validate the Seminario in the database
         List<Seminario> seminarioList = seminarioRepository.findAll();
         assertThat(seminarioList).hasSize(databaseSizeBeforeCreate);
+    }
+
+    @Test
+    @Transactional
+    public void createSeminarioWithUserWithMoreThanTwoYears() throws Exception {
+        // Create the Seminario
+        ZonedDateTime threeYearsAgo = ZonedDateTime.now().minusYears(3);
+        AlunoDTO alunoDTO = new AlunoDTO();
+        alunoDTO.setNome(DEFAULT_NOME);
+        alunoDTO.setDre(DEFAULT_DRE);
+        alunoDTO.setDataDeEntrada(threeYearsAgo);
+        when(alunoService.findOne(anyLong()))
+            .thenReturn(alunoDTO);
+        SeminarioDTO seminarioDTO = seminarioMapper.toDto(seminario);
+        restSeminarioMockMvc.perform(post("/api/seminarios")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(seminarioDTO)))
+            .andExpect(status().isForbidden());
     }
 
     @Test

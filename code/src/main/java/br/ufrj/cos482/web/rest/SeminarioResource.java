@@ -1,5 +1,7 @@
 package br.ufrj.cos482.web.rest;
 
+import br.ufrj.cos482.service.AlunoService;
+import br.ufrj.cos482.service.dto.AlunoDTO;
 import com.codahale.metrics.annotation.Timed;
 import br.ufrj.cos482.service.SeminarioService;
 import br.ufrj.cos482.web.rest.util.HeaderUtil;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,9 +38,11 @@ public class SeminarioResource {
     private static final String ENTITY_NAME = "seminario";
 
     private final SeminarioService seminarioService;
+    private final AlunoService alunoService;
 
-    public SeminarioResource(SeminarioService seminarioService) {
+    public SeminarioResource(SeminarioService seminarioService, AlunoService alunoService) {
         this.seminarioService = seminarioService;
+        this.alunoService = alunoService;
     }
 
     /**
@@ -52,6 +58,11 @@ public class SeminarioResource {
         log.debug("REST request to save Seminario : {}", seminarioDTO);
         if (seminarioDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new seminario cannot already have an ID")).body(null);
+        }
+        AlunoDTO alunoDTO = this.alunoService.findOne(seminarioDTO.getOrganizadorAlunoId());
+        Date now = new Date();
+        if (ZonedDateTime.now().isAfter(alunoDTO.getDataDeEntrada().plusYears(2))) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }
         SeminarioDTO result = seminarioService.save(seminarioDTO);
         return ResponseEntity.created(new URI("/api/seminarios/" + result.getId()))
@@ -74,6 +85,11 @@ public class SeminarioResource {
         log.debug("REST request to update Seminario : {}", seminarioDTO);
         if (seminarioDTO.getId() == null) {
             return createSeminario(seminarioDTO);
+        }
+        AlunoDTO alunoDTO = this.alunoService.findOne(seminarioDTO.getOrganizadorAlunoId());
+        Date now = new Date();
+        if (ZonedDateTime.now().isAfter(alunoDTO.getDataDeEntrada().plusYears(2))) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }
         SeminarioDTO result = seminarioService.save(seminarioDTO);
         return ResponseEntity.ok()
