@@ -59,4 +59,41 @@ Implementar e testar os CRUD's das principais entidades do sistema.
 |   30 | Implementar os casos de teste para o CRUD de seminários.  | TestCase                        |
 
 
+## Segunda Iteração
+
+### Objetivo da iteração
+
+Implementar as funcionalidades e regras de negócio definidas após o planejamento e execução da primeira iteração, resultando na versão final do projeto.
+
+### Tarefas contempladas nesta iterção
+
+| Item | Nome da tarefa                                            | 
+| ---- | --------------------------------------------------------- | 
+|    1 | Implementar os casos de teste para participação na banca  |
+|    2 | Implementar os casos de teste para agendamento de reuniões  | 
+|    3 | Implementar os casos de teste para agendamento de reuniões | 
+|    4 | Implementar o sistema de participação na banca | 
+|    5 | Implementar aprovação da defesa   | 
+|    6 | Implementar aprovação da defesa                | 
+|    7 | Implementar sistema de escolha da banca de defesa     | 
+|    8 | Executar agenda de entrevistas         | 
+|    9 | Integrar o github com o redmine.                          | 
+|   10 | Implementar agendamento de reuniões          | 
+|   11 | Escrever os casos de uso para agendamento de reuniões           | 
+|   12 | Escrever casos de uso para aprovação de defesa      | 
+|   13 | Escrever caso de uso do agendamento da defesa    | 
+|   14 | Escrever caso de uso da escolha da banca de defesa       | 
+|   15 | Escrever caso de uso da participação na banca                       | 
+|   16 | Planejar casos de teste para participação na banca                     | 
+|   17 | Planejar casos de teste para escolha da banca de defesa                        | 
+|   18 | Planejar casos de teste para agendamento da defesa                         | 
+|   19 | Planejar casos de teste para aprovação de defesa       | 
+|   20 | Executar agenda de entrevistas  | 
+|   21 | Planejar casos de teste para agendamento de reuniões  | 
+|   22 | Planejar casos de teste para escolha do professor orientador   | 
+|   23 | Escrever caso de uso da escolha do professor orientador         | 
+|   24 | Implementar escolha do professor orientador       | 
+
+
+
 
