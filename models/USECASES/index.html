@@ -369,6 +369,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#uc21-participacao-na-banca" title="UC21 -  Participação na banca" class="md-nav__link">
+    UC21 -  Participação na banca
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc22-aprovacao-de-defesa" title="UC22 -  Aprovação de defesa" class="md-nav__link">
+    UC22 -  Aprovação de defesa
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -609,6 +623,20 @@
           <li class="md-nav__item">
   <a href="#uc20-escolher-banca-da-defesa" title="UC20 - Escolher Banca da Defesa" class="md-nav__link">
     UC20 - Escolher Banca da Defesa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc21-participacao-na-banca" title="UC21 -  Participação na banca" class="md-nav__link">
+    UC21 -  Participação na banca
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc22-aprovacao-de-defesa" title="UC22 -  Aprovação de defesa" class="md-nav__link">
+    UC22 -  Aprovação de defesa
   </a>
   
 </li>
@@ -1267,14 +1295,14 @@
 </table>
 <h3 id="uc20-escolher-banca-da-defesa">UC20 - Escolher Banca da Defesa</h3>
 <ul>
-<li><strong>Descrição</strong>:  O ator deseja escolher a banca da defesa</li>
-<li><strong>Atores</strong>: Aluno</li>
+<li><strong>Descrição</strong>:  O ator deseja agendar a banca da defesa</li>
+<li><strong>Atores</strong>: Orientador</li>
 <li><strong>Pré-condições</strong><ul>
 <li>O ator deve estar logado no sistema</li>
-<li>O ator deverá ter um professor orientador associado</li>
+<li>O ator deverá ter um aluno orientado associado</li>
 </ul>
 </li>
-<li><strong>Pos-condições</strong>: A banca será definida</li>
+<li><strong>Pos-condições</strong>: A banca será definida e os membros da banca notificados</li>
 </ul>
 <table>
 <thead>
@@ -1284,19 +1312,79 @@
 </thead>
 <tbody>
 <tr>
-<td>1. O ator deverá acessar a página de gerenciamento</td>
+<td>1. O ator deverá acessar a página de agendamento de banca de defesa</td>
 </tr>
 <tr>
-<td>2. O ator deverá selecionar a opção de escolher a banca da defesa</td>
+<td>2. O ator deverá  escolher o aluno que irá apresentar a defesa em uma lista dos alunos orientados por ele</td>
 </tr>
 <tr>
-<td>3. O ator deverá escolher os integrantes da banca dentre os professores disponibilizados em uma lista ou preencher as informações sobre um professor externo</td>
+<td>3. O ator deverá  escolher a data e hora da apresentação da defesa</td>
 </tr>
 <tr>
-<td>4. O ator confirma a composição da banca</td>
+<td>4. O ator deverá escolher os integrantes da banca dentre os professores disponibilizados em uma lista ou preencher as informações sobre um professor externo</td>
 </tr>
 <tr>
-<td>5. Os integrantes da banca são notificados sobre a criação da banca de defesa</td>
+<td>5. O ator confirma a composição da banca</td>
+</tr>
+<tr>
+<td>6. Os integrantes da banca são notificados sobre a criação da banca de defesa</td>
+</tr>
+</tbody>
+</table>
+<h3 id="uc21-participacao-na-banca">UC21 -  Participação na banca</h3>
+<ul>
+<li><strong>Descrição</strong>:  O ator deseja confirmar a participação na banca</li>
+<li><strong>Atores</strong>: Professor</li>
+<li><strong>Pré-condições</strong><ul>
+<li>O ator deve estar logado no sistema</li>
+</ul>
+</li>
+<li><strong>Pos-condições</strong>: O ator estará definido como membro da banca</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Fluxo principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. O ator deverá acessar o convite para participar da banca de defesa</td>
+</tr>
+<tr>
+<td>2. O ator deverá  acessar a página de confirmação de participação de banca</td>
+</tr>
+</tbody>
+</table>
+<h3 id="uc22-aprovacao-de-defesa">UC22 -  Aprovação de defesa</h3>
+<ul>
+<li><strong>Descrição</strong>:  O ator deseja fornecer a nota do Aluno na banca de defesa</li>
+<li><strong>Atores</strong>: Orientador</li>
+<li><strong>Pré-condições</strong><ul>
+<li>O ator deve estar logado no sistema</li>
+<li>O ator deve possuir alunos orientados</li>
+</ul>
+</li>
+<li><strong>Pos-condições</strong>: O aluno terá sua avaliação da banca definida</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Fluxo principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. O ator deverá acessar a página de bancas</td>
+</tr>
+<tr>
+<td>2. O ator deverá selecionar a banca que deseja avaliar</td>
+</tr>
+<tr>
+<td>3. O ator deverá definir a nota do aluno</td>
+</tr>
+<tr>
+<td>4. O ator deverá selecionar o estado de aprovação da defesa</td>
 </tr>
 </tbody>
 </table>
