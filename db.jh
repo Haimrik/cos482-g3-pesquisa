@@ -55,7 +55,7 @@ relationship OneToMany {
   Aluno{seminario} to Seminario{organizadorAluno(nome)},
   Professor{seminario} to Seminario{organizadorProfessor(nome)},
   Aluno{defesa} to Defesa{aluno(nome)},
-  Defesa{participacaoBanca} to ParticipacaoBanca{defesa},
+  Defesa{participacaoBanca} to ParticipacaoBanca{defesa(arquivoTexto)},
   Professor{participacaoBanca} to ParticipacaoBanca{professor(nome)},
   Professor{reuniao} to Reuniao{professor(nome)},
   Aluno{reuniao} to Reuniao{aluno(nome)}

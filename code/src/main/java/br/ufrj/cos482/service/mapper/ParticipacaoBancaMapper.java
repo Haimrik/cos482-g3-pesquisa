@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface ParticipacaoBancaMapper extends EntityMapper <ParticipacaoBancaDTO, ParticipacaoBanca> {
 
     @Mapping(source = "defesa.id", target = "defesaId")
+    @Mapping(source = "defesa.arquivoTexto", target = "defesaArquivoTexto")
 
     @Mapping(source = "professor.id", target = "professorId")
     @Mapping(source = "professor.nome", target = "professorNome")

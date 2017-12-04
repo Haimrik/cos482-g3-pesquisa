@@ -5,7 +5,7 @@
             "relationshipType": "many-to-one",
             "relationshipName": "defesa",
             "otherEntityName": "defesa",
-            "otherEntityField": "id"
+            "otherEntityField": "arquivoTexto"
         },
         {
             "relationshipType": "many-to-one",

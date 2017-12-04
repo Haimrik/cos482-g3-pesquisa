@@ -19,7 +19,7 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="confirmado"><span jhiTranslate="pesquisaApp.participacaoBanca.confirmado">Confirmado</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="estadoAprovacaoDefesa"><span jhiTranslate="pesquisaApp.participacaoBanca.estadoAprovacaoDefesa">Estado Aprovacao Defesa</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="defesaId"><span jhiTranslate="pesquisaApp.participacaoBanca.defesa">Defesa</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="defesaArquivoTexto"><span jhiTranslate="pesquisaApp.participacaoBanca.defesa">Defesa</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="professorNome"><span jhiTranslate="pesquisaApp.participacaoBanca.professor">Professor</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -31,7 +31,7 @@
                 <td jhiTranslate="{{'pesquisaApp.EstadoAprovacaoDefesa.' + participacaoBanca.estadoAprovacaoDefesa}}">{{participacaoBanca.estadoAprovacaoDefesa}}</td>
                 <td>
                     <div *ngIf="participacaoBanca.defesaId">
-                        <a [routerLink]="['../defesa-cos-482-g-3', participacaoBanca.defesaId  ]" >{{participacaoBanca.defesaId}}</a>
+                        <a [routerLink]="['../defesa-cos-482-g-3', participacaoBanca.defesaId  ]" >{{participacaoBanca.defesaArquivoTexto}}</a>
                     </div>
                 </td>
                 <td>

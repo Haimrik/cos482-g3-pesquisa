@@ -20,6 +20,8 @@ public class ParticipacaoBancaDTO implements Serializable {
 
     private Long defesaId;
 
+    private String defesaArquivoTexto;
+
     private Long professorId;
 
     private String professorNome;
@@ -54,6 +56,14 @@ public class ParticipacaoBancaDTO implements Serializable {
 
     public void setDefesaId(Long defesaId) {
         this.defesaId = defesaId;
+    }
+
+    public String getDefesaArquivoTexto() {
+        return defesaArquivoTexto;
+    }
+
+    public void setDefesaArquivoTexto(String defesaArquivoTexto) {
+        this.defesaArquivoTexto = defesaArquivoTexto;
     }
 
     public Long getProfessorId() {
