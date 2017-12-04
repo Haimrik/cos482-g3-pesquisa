@@ -259,23 +259,23 @@ Serão realizados testes unitários e funcionais. O objetivo dos testes é asseg
 * Pré-condições: O ator deve estar logado no sistema; O ator deve possuir alunos orientados
 * Etapas de teste: O Ator deverá seguir o Fluxo Principal do caso de uso.
 * Dados de teste:
-* Resultado esperado: A nota do aluno e o estado da aprovação da defesa deverão estar registrados no sistema.
+* Resultado esperado: O estado da aprovação da defesa deverá estar registrados no sistema.
 * Pós-condições:
 
 ## T26
 * Cenário de teste: Verificação da funcionalidade Escolha da Banca de Defesa
 * Caso de teste: UC20
 * Pré-condicoões: O ator deve estar logado no sistema
-* Etapas de teste: O Ator deverá seguir o Fluxo Principal do caso de uso. O ator deverá escolher os professores que irão compor a banca de defesa e confirmar a composição da banca
+* Etapas de teste: O Ator deverá seguir o Fluxo Principal do caso de uso. O ator deverá escolher os professores que irão compor a banca de defesa
 * Dados de teste:
-* Resultado esperado: Os professores selecionados para compor a banca deverão receber o convite de participação
+* Resultado esperado: Os professores selecionados para compor a banca deverão ser registrados como membros da banca de defesa
 * Pós-condicões:
 
 ## T27
 * Cenário de teste: Verificação da funcionalidade Confirmar participação na banca
 * Caso de teste: UC21
 * Pré-condicoões: O ator deve estar logado no sistema
-* Etapas de teste: O Ator deverá seguir o Fluxo Principal do caso de uso. O ator deverá clicar no link de confirmação de participação na banca
+* Etapas de teste: O Ator deverá seguir o Fluxo Principal do caso de uso. O ator deverá clicar confirmar a participação na banca
 * Dados de teste:
 * Resultado esperado: O ator será registrado no sistema como participante da banca
 * Pós-condicões:

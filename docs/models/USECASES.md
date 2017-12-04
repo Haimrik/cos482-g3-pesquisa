@@ -370,16 +370,17 @@ O -|> P
 * **Pré-condições**
     * O ator deve estar logado no sistema
     * O ator deverá ter um aluno orientado associado
+    * O ator deverá ter uma defesa cadastrada no sistema
 * **Pos-condições**: A banca será definida e os membros da banca notificados
 
 | Fluxo principal                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1. O ator deverá acessar a página de agendamento de banca de defesa                                                                                           |
-| 2. O ator deverá  escolher o aluno que irá apresentar a defesa em uma lista dos alunos orientados por ele                                                     |
-| 3. O ator deverá  escolher a data e hora da apresentação da defesa                                                                                            |
-| 4. O ator deverá escolher os integrantes da banca dentre os professores disponibilizados em uma lista ou preencher as informações sobre um professor externo  |
-| 5. O ator confirma a composição da banca                                                                                                                      |
-| 6. Os integrantes da banca são notificados sobre a criação da banca de defesa                                                                                 |
+| 1. O ator deverá acessar a página de participação na banca                                                                                                    |
+| 2. O ator deverá  criar uma nova participação na banca                                                                                                        |
+| 3. O ator deverá  escolher qual a defesa está relacionada aquela banca                                                                                        |
+| 4. O ator deverá escolher qual professor ele está cadastrando nessa participação                                                                              |
+| 5. O ator salva essa participação na banca                                                                                                                    |
+
 
 ### UC21 - 	Participação na banca
 * **Descrição**:  O ator deseja confirmar a participação na banca
@@ -390,11 +391,12 @@ O -|> P
 
 | Fluxo principal                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1. O ator deverá acessar o convite para participar da banca de defesa                                                                                         |
-| 2. O ator deverá  acessar a página de confirmação de participação de banca                                                                                    |
+| 1. O ator deverá acessar a página de participação na banca                                                                                                    |
+| 2. O ator deverá  encontrar a participação na banca em que ele está associado                                                                                 |
+| 2. O ator deverá  confirmar a participação na banca desejada                                                                                                  |
 
 ### UC22 - 	Aprovação de defesa
-* **Descrição**:  O ator deseja fornecer a nota do Aluno na banca de defesa
+* **Descrição**:  O ator deseja fornecer o status da banca
 * **Atores**: Orientador
 * **Pré-condições**
     * O ator deve estar logado no sistema
@@ -403,10 +405,9 @@ O -|> P
 
 | Fluxo principal                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1. O ator deverá acessar a página de bancas                                                                                                                   |
+| 1. O ator deverá acessar a página de participação na banca                                                                                                    |
 | 2. O ator deverá selecionar a banca que deseja avaliar                                                                                                        |
-| 3. O ator deverá definir a nota do aluno                                                                                                                      |
-| 4. O ator deverá selecionar o estado de aprovação da defesa                                                                                                   |
+| 3. O ator deverá selecionar o estado de aprovação da defesa                                                                                                   |
 
 ## Declaração de casos de uso não contemplados para iteração
 
