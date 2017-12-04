@@ -17,5 +17,6 @@
 
 3. Relatórios:
 
-    1. [Relatórios de entrevistas](reports/MEETINGS.md)
+    1. [Relatório de entrevistas](reports/MEETINGS.md)
     2. [Relatório de testes](reports/TESTS.md)
+    3. [Relatório de medições](reports/MEASUREMENTS.md)
